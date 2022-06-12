@@ -1,0 +1,28 @@
+@import "../../variables.css";
+.portfolioPage {
+    background-color: var(--background-color);
+    width: auto;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.fillFirstScreen {
+    display: flex;
+    width: auto;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+}
+
+.introSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 2000px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("src/assets/background_image.jpg"), linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+    background-blend-mode: overlay;
+}

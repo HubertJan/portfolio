@@ -1,15 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import { PortfolioPage } from './routes/PortfolioPage/PortfolioPage';
+import { HomePage } from './routes/HomePage/HomePage';
+import { MainPage } from './routes/MainPage/MainPage';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <PortfolioPage />
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/main" element={<MainPage />} />
+      </Routes>
+    </Router>
   </React.StrictMode>
 );
 

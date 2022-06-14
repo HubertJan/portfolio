@@ -1,0 +1,26 @@
+@import "../../variables.css";
+@mixin backgroundImage {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("/assets/background_image.jpg"), linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+    background-blend-mode: overlay;
+}
+
+.portfolioPage {
+    @include backgroundImage;
+    width: auto;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    box-sizing: border-box;
+}
+
+.banner {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: center;
+}

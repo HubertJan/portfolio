@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column; }
+
+.scrollable {
+  width: 100%;
+  scroll-snap-type: x mandatory;
+  display: flex;
+  overflow-x: hidden;
+  flex-direction: row;
+  align-items: stretch; }
+
+.slide {
+  scroll-snap-align: start;
+  min-width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center; }

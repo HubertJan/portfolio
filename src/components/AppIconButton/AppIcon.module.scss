@@ -9,5 +9,11 @@
     height: 250px;
     width: 250px;
     border-radius: 50%;
-    background-color: yellow;
+    background-repeat: no-repeat;
+    background-size: cover, 128px;
+    background-position: center;
+}
+
+.title {
+    -webkit-text-stroke: 0.3px black;
 }

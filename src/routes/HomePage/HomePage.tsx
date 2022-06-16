@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FillScreenContainer } from "src/components/FillScreenContainer/FillScreenContainer";
 
 import { StartNotificationStyledBanner } from "../../components/StartNotificationStyledBanner/StartNotificationStyledBanner";
 
 import styles from './HomePage.module.scss';
-
+import backgroundImage from "src/assets/background_image.jpg";
 
 function getWindowDimensions() {
     const { innerWidth: width, innerHeight: height } = window;
@@ -15,23 +16,22 @@ function getWindowDimensions() {
 }
 
 export const HomePage: React.FC<{}> = () => {
-    const [windowDimensions] = useState(getWindowDimensions());
     const navigate = useNavigate();
 
     return (
-        <div className={styles.portfolioPage} style={
-            {
-                height: windowDimensions.height
-            }
-        }>
-            <div className={styles.banner}>
-                <StartNotificationStyledBanner />
+        <FillScreenContainer
+            backgroundImage={backgroundImage}>
+            <div className={styles.portfolioPage}>
+                <div className={styles.banner}>
+                    <StartNotificationStyledBanner />
+                </div>
+                <div>
+                    <button onClick={() => {
+                        navigate("/main");
+                    }}>Hi</button>
+                </div>
             </div>
-            <div>
-                <button onClick={() => {
-                    navigate("/main");
-                }}>Hi</button>
-            </div>
-        </div>
+        </FillScreenContainer>
+
     );
 };

@@ -1,11 +1,27 @@
-import { __String } from 'typescript';
 import styles from './AppIcon.module.scss';
+import javascriptIcon from "src/assets/javascript.png";
 
-export const AppIconButton: React.FC<{ title: string }> = ({ title }) => {
-    return (
-        <div className={styles.content}>
-            <div className={styles.icon}></div>
-            <h3 >{title}</h3>
-        </div>
-    );
-}
+export const AppIconButton: React.FC<{
+    title: string,
+    backgroundImage?: string,
+    backgroundColor?: string,
+    iconImage?: string,
+}> = ({
+    title,
+    backgroundImage,
+    backgroundColor = "black",
+    iconImage,
+}) => {
+    console.log(javascriptIcon);
+        return (
+            <div className={styles.content}>
+                <div className={styles.icon} 
+                style={{
+                    backgroundImage: `url(${backgroundImage}), url(${iconImage})`,
+                    backgroundColor: backgroundColor,
+                }}
+                />
+                <div className={styles.title}><h3 >{title}</h3></div>
+            </div>
+        );
+    }

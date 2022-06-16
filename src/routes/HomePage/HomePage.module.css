@@ -1,11 +1,8 @@
 @import url(../../variables.css);
 .portfolioPage {
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-image: url("/assets/background_image.jpg"), linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
-  background-blend-mode: overlay;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
   width: auto;
-  height: fit-content;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;

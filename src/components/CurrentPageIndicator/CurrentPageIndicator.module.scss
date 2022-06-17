@@ -1,0 +1,29 @@
+@mixin isCurrent {
+    background-color: white;
+    cursor: default;
+}
+
+@mixin indicator {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.someIndicator {
+    @include indicator;
+}
+
+.currentSlideIndicator {
+    @include indicator;
+    @include isCurrent;
+}
+
+.indicators {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+}

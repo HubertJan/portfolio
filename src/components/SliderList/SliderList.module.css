@@ -11,7 +11,11 @@
   display: flex;
   overflow-x: hidden;
   flex-direction: row;
-  align-items: stretch; }
+  align-items: stretch;
+  flex-grow: 1; }
+
+.indicator {
+  margin-bottom: 32px; }
 
 .slide {
   scroll-snap-align: start;

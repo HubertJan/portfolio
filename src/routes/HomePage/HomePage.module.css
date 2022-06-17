@@ -1,6 +1,5 @@
 @import url(../../variables.css);
 .portfolioPage {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
   width: auto;
   height: 100%;
   display: flex;

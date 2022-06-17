@@ -1,47 +1,109 @@
-@import "../../variables.css";
+@import url(../../variables.css);
 .startNotificationStyledBanner {
-    background-color: white;
-    width: 512px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+  background-color: white;
+  width: 512px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 32px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); }
+
+@media screen {
+  .startNotificationStyledBanner {
+    padding: 20px;
+    width: 256px; } }
+
+@media screen and (min-width: 500px) {
+  .startNotificationStyledBanner {
+    padding: 24px;
+    width: 256px; } }
+
+@media screen and (min-width: 1300px) {
+  .startNotificationStyledBanner {
     padding: 32px;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-}
+    width: 512px; } }
 
 .headerText {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 8px;
-}
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px; }
+
+@media screen {
+  .headerText {
+    font-size: 12px; } }
+
+@media screen and (min-width: 500px) {
+  .headerText {
+    font-size: 18px; } }
+
+@media screen and (min-width: 1300px) {
+  .headerText {
+    font-size: 21px; } }
 
 .heartIconBox {
-    width: 24px;
-    height: 24px;
-}
+  width: 24px;
+  height: 24px; }
 
 .heartIcon {
-    fill: yellow;
+  fill: yellow;
+  width: 24px;
+  height: 24px; }
+
+@media screen {
+  .heartIcon {
+    width: 16px;
+    height: 16px; } }
+
+@media screen and (min-width: 500px) {
+  .heartIcon {
+    width: 16px;
+    height: 16px; } }
+
+@media screen and (min-width: 1300px) {
+  .heartIcon {
     width: 24px;
-    height: 24px;
-}
+    height: 24px; } }
 
 .title {
-    font-size: 32px;
-    font-weight: 600;
-}
+  font-weight: 600; }
+
+@media screen {
+  .title {
+    font-size: 20px; } }
+
+@media screen and (min-width: 500px) {
+  .title {
+    font-size: 24px; } }
+
+@media screen and (min-width: 1300px) {
+  .title {
+    font-size: 32px; } }
 
 .subTitle {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 32px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 48px;
+  color: #000000;
+  opacity: 0.6; }
+
+@media screen {
+  .subTitle {
+    line-height: 24px;
+    font-size: 20px; } }
+
+@media screen and (min-width: 500px) {
+  .subTitle {
+    line-height: 26px;
+    font-size: 24px; } }
+
+@media screen and (min-width: 1300px) {
+  .subTitle {
     line-height: 48px;
-    color: #000000;
-    opacity: 0.6;
-}
+    font-size: 32px; } }
 
 p {
-    margin: 0px;
-}
+  margin: 0px; }

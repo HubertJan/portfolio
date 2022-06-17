@@ -20,7 +20,9 @@ export const HomePage: React.FC<{}> = () => {
 
     return (
         <FillScreenContainer
-            backgroundImage={backgroundImage}>
+            backgroundImage={backgroundImage}
+            withBackgroundOverlay={true}
+        >
             <div className={styles.portfolioPage}>
                 <div className={styles.banner}>
                     <StartNotificationStyledBanner />

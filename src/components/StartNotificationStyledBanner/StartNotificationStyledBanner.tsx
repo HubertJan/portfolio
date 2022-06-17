@@ -1,5 +1,5 @@
 import React from "react";
-import styles from './StartNotificationStyledBanner.module.css';
+import styles from './StartNotificationStyledBanner.module.scss';
 import icon from '../../assets/heart.svg';
 import "src/variables.css";
 

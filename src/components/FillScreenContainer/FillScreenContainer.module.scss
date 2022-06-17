@@ -1,6 +1,9 @@
 .container {
     background-repeat: no-repeat;
     background-size: cover;
-    background-image: url("/assets/background_image.jpg");
     background-blend-mode: overlay;
+}
+
+.backgroundOverlay {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
 }

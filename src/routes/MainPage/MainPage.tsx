@@ -4,39 +4,38 @@ import javascriptIcon from "src/assets/javascript.png";
 import flutterIcon from "src/assets/flutter.png";
 import { FillScreenContainer } from "src/components/FillScreenContainer/FillScreenContainer";
 
-import backgroundImage from "src/assets/background_image.jpg";
-import { ScrollableSlideContainerList } from "src/components/ScrollableFullScreenList/ScrollableFullScreenList";
+import backgroundImage from "src/assets/galaxy.jpg";
+import { SliderList } from "src/components/SliderList/SliderList";
 
 export const MainPage: React.FC<{}> = () => {
 
     return (
         <FillScreenContainer
             backgroundImage={backgroundImage}
-        > 
-            <ScrollableSlideContainerList>
+            withBackgroundOverlay={true}
+        >
+            <SliderList>
                 <div className={styles.content}>
-                    <h2>Meine Skills</h2>
+                    <h2 className={styles.titleText}>Meine Skills</h2>
                     <div className={styles.iconRow}>
                         <AppIconButton title={"Javascript"}
                             backgroundImage={javascriptIcon}
-
                         />
-                        <AppIconButton title={"Javascript"}
+                        <AppIconButton title={"Flutter"}
                             backgroundColor={"var(--background-contrast-color)"}
                             iconImage={flutterIcon}
                         />
                     </div>
                 </div>
                 <div className={styles.content}>
-                    <h2>Meine Projekte</h2>
+                    <h2 className={styles.titleText}>Meine Projekte</h2>
                     <div className={styles.iconRow}>
-                        <AppIconButton title={"Sachen"}
+                        <AppIconButton title={"Meine Homepage"}
                             backgroundImage={javascriptIcon}
-
                         />
                     </div>
                 </div>
-            </ScrollableSlideContainerList>
+            </SliderList>
         </FillScreenContainer>
     );
 };

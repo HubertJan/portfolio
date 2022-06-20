@@ -33,10 +33,6 @@ export const MainPage: React.FC<{}> = () => {
                                 Anwendungen mit einen Fokus auf <span className={styles.secondaryTextColor}>verständlichen Code und Design</span>.
                             </p>
                         </RoundedEdgesContainer>
-            {/*             <RoundedEdgesContainer>
-                            <p className={styles.text}>So, dass sowohl der Anwender das Programm versteht, <span className={styles.secondaryTextColor}>aber auch der Programmierer den Quellcode</span>.
-                            </p>
-                        </RoundedEdgesContainer> */}
                     </div>
 
                 </div>

@@ -1,4 +1,25 @@
-.content {
+@import url(../../variables.css);
+.aboutMeSlide {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 32px;
+    max-width: 1200px;
+    @media screen {
+        flex-direction: row;
+    }
+    @media screen and (max-width: 1000px) {
+        flex-direction: column;
+        max-width: 600px;
+        min-width: 300px;
+        gap: 32px;
+    }
+}
+
+.appIconSlide {
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -11,6 +32,22 @@
     display: flex;
     flex-direction: row;
     gap: 32px;
+}
+
+.aboutMeColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.germanyMap {
+    object-fit: scale-down;
+    object-position: top center;
+    margin-top: 16px;
+    margin-bottom: -32px;
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
 .titleText {
@@ -26,4 +63,28 @@
     @media screen and (min-width: 1300px) {
         font-size: 32px;
     }
+}
+
+.text {
+    color: white;
+    text-align: left;
+    @media screen {
+        font-size: 18px;
+    }
+    @media screen and (min-width: 500px) {
+        font-size: 21px;
+    }
+    @media screen and (min-width: 1300px) {
+        font-size: 28px;
+    }
+}
+
+.primaryTextBackgroundColor {
+    padding: 4px 8px;
+    background-color: var(--primary-color);
+    line-height: 48px;
+}
+
+.secondaryTextColor {
+    color: var(--secondary-alt-color);
 }

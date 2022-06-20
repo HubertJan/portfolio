@@ -1,4 +1,26 @@
-.content {
+@import url(../../variables.css);
+.aboutMeSlide {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 32px;
+  max-width: 1200px; }
+
+@media screen {
+  .aboutMeSlide {
+    flex-direction: row; } }
+
+@media screen and (max-width: 1000px) {
+  .aboutMeSlide {
+    flex-direction: column;
+    max-width: 600px;
+    min-width: 300px;
+    gap: 32px; } }
+
+.appIconSlide {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -11,16 +33,57 @@
   flex-direction: row;
   gap: 32px; }
 
+.aboutMeColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; }
+
+.germanyMap {
+  object-fit: scale-down;
+  object-position: top center;
+  margin-top: 16px;
+  margin-bottom: -32px;
+  max-width: 100%;
+  height: auto;
+  display: block; }
+
 .titleText {
   color: white;
   font-family: "Roboto";
   text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25); }
-  @media screen {
-    .titleText {
-      font-size: 21px; } }
-  @media screen and (min-width: 500px) {
-    .titleText {
-      font-size: 24px; } }
-  @media screen and (min-width: 1300px) {
-    .titleText {
-      font-size: 32px; } }
+
+@media screen {
+  .titleText {
+    font-size: 21px; } }
+
+@media screen and (min-width: 500px) {
+  .titleText {
+    font-size: 24px; } }
+
+@media screen and (min-width: 1300px) {
+  .titleText {
+    font-size: 32px; } }
+
+.text {
+  color: white;
+  text-align: left; }
+
+@media screen {
+  .text {
+    font-size: 18px; } }
+
+@media screen and (min-width: 500px) {
+  .text {
+    font-size: 21px; } }
+
+@media screen and (min-width: 1300px) {
+  .text {
+    font-size: 28px; } }
+
+.primaryTextBackgroundColor {
+  padding: 4px 8px;
+  background-color: var(--primary-color);
+  line-height: 48px; }
+
+.secondaryTextColor {
+  color: var(--secondary-alt-color); }

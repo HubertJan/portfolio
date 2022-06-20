@@ -12,6 +12,7 @@
   overflow-x: hidden;
   flex-direction: row;
   align-items: stretch;
+  overflow: hidden;
   flex-grow: 1; }
 
 .indicator {

@@ -2,6 +2,8 @@ import { AppIconButton } from "src/components/AppIconButton/AppIconButton";
 import styles from "./MainPage.module.scss";
 import javascriptIcon from "src/assets/javascript.png";
 import flutterIcon from "src/assets/flutter.png";
+import pythonIcon from "src/assets/python.png";
+import reactjsIcon from "src/assets/reactjs.png";
 import { FillScreenContainer } from "src/components/FillScreenContainer/FillScreenContainer";
 
 import backgroundImage from "src/assets/galaxy.jpg";
@@ -39,21 +41,44 @@ export const MainPage: React.FC<{}> = () => {
                 <div className={styles.appIconSlide}>
                     <h2 className={styles.titleText}>Meine Skills</h2>
                     <div className={styles.iconRow}>
-                        <AppIconButton title={"Javascript"}
-                            backgroundImage={javascriptIcon}
-                        />
                         <AppIconButton title={"Flutter"}
                             backgroundColor={"var(--background-contrast-color)"}
                             iconImage={flutterIcon}
+                        />
+                        <AppIconButton title={"Python"}
+                            iconImage={pythonIcon}
+                            backgroundColor={"#FFDA4E"}
+                        />
+                        <AppIconButton title={"React"}
+                            iconImage={reactjsIcon}
+                            backgroundColor={"#20232a"}
                         />
                     </div>
                 </div>
                 <div className={styles.appIconSlide}>
                     <h2 className={styles.titleText}>Meine Projekte</h2>
                     <div className={styles.iconRow}>
-                        <AppIconButton title={"Meine Homepage"}
+                        <AppIconButton title={"MorningChess"}
                             backgroundImage={javascriptIcon}
                         />
+                        <AppIconButton title={"3ncrypt"}
+                            backgroundImage={javascriptIcon}
+                        />
+                        <AppIconButton title={"VisualSort"}
+                            backgroundImage={javascriptIcon}
+                        />
+                    </div>
+                    <div className={styles.iconRow}>
+                        <AppIconButton title={"PyChess"}
+                            backgroundImage={javascriptIcon}
+                        />
+                                 <AppIconButton title={"hubertJan.dev"}
+                            backgroundImage={javascriptIcon}
+                        />
+                        <AppIconButton title={"Itspylearning"}
+                            backgroundImage={javascriptIcon}
+                        />
+                        
                     </div>
                 </div>
             </SliderList>

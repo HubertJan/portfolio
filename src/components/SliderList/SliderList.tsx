@@ -47,6 +47,15 @@ function scrollToPreviousSlide(ref: HTMLDivElement) {
     });
 }
 
+function scrollToPageIndex(pageIndex: number, ref: HTMLDivElement) {
+    let currentPageIndex = calculateCurrentPage(ref);
+    console.log("yo");
+    ref.scrollTo({
+        left: ref.clientWidth * (pageIndex),
+        behavior: "smooth",
+    });
+}
+
 export const SliderList: React.FC<{ children?: React.ReactNode }>
     = ({ children,
     }) => {
@@ -69,11 +78,8 @@ export const SliderList: React.FC<{ children?: React.ReactNode }>
                     <CurrentPageIndicator
                         currentIndex={pageIndex !== undefined ? pageIndex : 0} pageCount={slideCount}
                         onIndicatorClick={(index) => {
-                            if (index < pageIndex!) {
-                                scrollToPreviousSlide(containerRef.current!);
-                                return;
-                            }
-                            scrollToNextSlide(containerRef.current!);
+                            scrollToPageIndex(index!, containerRef.current!);
+
                         }}
                     />
                 </div>

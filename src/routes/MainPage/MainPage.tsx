@@ -14,8 +14,13 @@ import germanyMap from 'src/assets/germany.svg';
 import { NavigationBar } from "src/components/NavigationBar/NavigationBar";
 import { NavigationMenuTitle } from "src/components/NavigationMenuTitle/NavigationMenuTitle";
 import { NavigationMenuPageLink } from "src/components/NavigationMenuPageLink/NavigationMenuPageLink";
+import { useState } from "react";
 
 export const MainPage: React.FC<{}> = () => {
+    const [currentIndex, setCurrentIndex] = useState<number | undefined>(undefined);
+
+    const [currentScrollToIndex, setScrollToIndex] = useState<number | undefined>(undefined); // Does not have to be the actual current Navigation index, but SliderList will slide to this index, if index changes.
+
     return (
         <FillScreenContainer
             backgroundImage={backgroundImage}
@@ -23,16 +28,30 @@ export const MainPage: React.FC<{}> = () => {
         >
             <NavigationBar>
                 <NavigationMenuTitle>hubertJan.dev</NavigationMenuTitle>
-                <NavigationMenuPageLink isCurrentPage={false}>Über Mich
+                <NavigationMenuPageLink isCurrentPage={currentIndex === 0}
+                    onClick={() => { setScrollToIndex(0) }}>
+                    Über Mich
                 </NavigationMenuPageLink>
-                <NavigationMenuPageLink isCurrentPage={false}>Skills
+                <NavigationMenuPageLink isCurrentPage={currentIndex === 1}
+                    onClick={() => { setScrollToIndex(1) }}>
+                    Skills
                 </NavigationMenuPageLink>
-                <NavigationMenuPageLink isCurrentPage={false}>Projekte
+                <NavigationMenuPageLink  isCurrentPage={currentIndex === 2}
+                    onClick={() => { setScrollToIndex(2) }}>
+                    Projekte
                 </NavigationMenuPageLink>
-                <NavigationMenuPageLink isCurrentPage={false}>Kontakt
+                <NavigationMenuPageLink  isCurrentPage={currentIndex === 3}
+                    onClick={() => { setScrollToIndex(3) }}>
+                    Kontakt
                 </NavigationMenuPageLink>
             </NavigationBar>
-            <SliderList>
+            <SliderList initialIndex={currentScrollToIndex}
+                getCurrentIndex={(index) => {
+                    console.log("index");
+                    console.log(index);
+                    setCurrentIndex(index)
+                }}
+            >
                 <div className={styles.aboutMeSlide}>
                     <RoundedEdgesContainer>
                         <h2 className={styles.titleText}>Hubert Jan Tomaszczak</h2>
@@ -40,7 +59,6 @@ export const MainPage: React.FC<{}> = () => {
                         </p>
                         <img src={germanyMap} className={styles.germanyMap} alt="Germany" />
                     </RoundedEdgesContainer>
-
                     <div className={styles.aboutMeColumn}>
                         <RoundedEdgesContainer >
                             <p className={styles.text}>Ich programmiere und entwerfe
@@ -84,13 +102,13 @@ export const MainPage: React.FC<{}> = () => {
                         <AppIconButton title={"PyChess"}
                             backgroundImage={javascriptIcon}
                         />
-                                 <AppIconButton title={"hubertJan.dev"}
+                        <AppIconButton title={"hubertJan.dev"}
                             backgroundImage={javascriptIcon}
                         />
                         <AppIconButton title={"Itspylearning"}
                             backgroundImage={javascriptIcon}
                         />
-                        
+
                     </div>
                 </div>
             </SliderList>

@@ -33,22 +33,7 @@ function usePageIndex(ref: React.RefObject<HTMLDivElement>) {
     return pageIndex;
 }
 
-function scrollToNextSlide(ref: HTMLDivElement) {
-    ref.scrollBy({
-        left: 100,
-        behavior: "smooth"
-    });
-};
-
-function scrollToPreviousSlide(ref: HTMLDivElement) {
-    ref.scrollBy({
-        left: -100,
-        behavior: "smooth"
-    });
-}
-
 function scrollToPageIndex(pageIndex: number, ref: HTMLDivElement) {
-    let currentPageIndex = calculateCurrentPage(ref);
     console.log("yo");
     ref.scrollTo({
         left: ref.clientWidth * (pageIndex),
@@ -56,17 +41,23 @@ function scrollToPageIndex(pageIndex: number, ref: HTMLDivElement) {
     });
 }
 
-export const SliderList: React.FC<{ children?: React.ReactNode }>
-    = ({ children,
-    }) => {
+export const SliderList: React.FC<{ initialIndex?: number, children?: React.ReactNode, getCurrentIndex?: (index: number) => void }>
+    = ({ initialIndex, children, getCurrentIndex,}) => {
         const containerRef = useRef<HTMLDivElement>(null);
         const pageIndex = usePageIndex(containerRef);
+        const [lastIndexByPropUsed, setLastIndex] = useState<number | undefined>(undefined);
         let wrapppedChildren = React.Children.map(children, child => (
             <div className={styles.slide}>{child}</div>
         ));
         if (wrapppedChildren === undefined || wrapppedChildren === null) {
             return null;
         }
+        if (pageIndex !== undefined && initialIndex !== undefined
+            && lastIndexByPropUsed !== initialIndex && initialIndex !== pageIndex) {
+            scrollToPageIndex(initialIndex!, containerRef.current!);
+            setLastIndex(initialIndex);
+        }
+        getCurrentIndex && containerRef.current && getCurrentIndex(calculateCurrentPage(containerRef.current!));
         const slideCount = wrapppedChildren?.length;
         return (
             <div className={styles.container}>
@@ -79,7 +70,6 @@ export const SliderList: React.FC<{ children?: React.ReactNode }>
                         currentIndex={pageIndex !== undefined ? pageIndex : 0} pageCount={slideCount}
                         onIndicatorClick={(index) => {
                             scrollToPageIndex(index!, containerRef.current!);
-
                         }}
                     />
                 </div>

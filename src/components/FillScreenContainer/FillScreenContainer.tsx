@@ -31,11 +31,11 @@ export const FillScreenContainer: React.FC<{
             style={
                 {
                     height: windowDimensions.height,
+                    width: windowDimensions.width,
                     backgroundImage: `url(${backgroundImage})`
                 }
             }>
             <div className={`${withBackgroundOverlay ? styles.backgroundOverlay : ""}`}
-                style={{ height: "100%" }}
             >
                 {children}
             </div>

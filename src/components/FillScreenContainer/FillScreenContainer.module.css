@@ -1,7 +1,12 @@
 .container {
   background-repeat: no-repeat;
   background-size: cover;
-  background-blend-mode: overlay; }
+  background-blend-mode: overlay;
+  display: flex; }
 
 .backgroundOverlay {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)); }
+  flex-grow: 1;
+  min-width: 0;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+  display: flex;
+  flex-direction: column; }

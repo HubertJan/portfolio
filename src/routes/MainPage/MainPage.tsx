@@ -11,17 +11,29 @@ import { SliderList } from "src/components/SliderList/SliderList";
 import { RoundedEdgesContainer } from "src/components/RoundedEdgesContainer/RoundedEdgesContainer";
 
 import germanyMap from 'src/assets/germany.svg';
+import { NavigationBar } from "src/components/NavigationBar/NavigationBar";
+import { NavigationMenuTitle } from "src/components/NavigationMenuTitle/NavigationMenuTitle";
+import { NavigationMenuPageLink } from "src/components/NavigationMenuPageLink/NavigationMenuPageLink";
 
 export const MainPage: React.FC<{}> = () => {
-
     return (
         <FillScreenContainer
             backgroundImage={backgroundImage}
             withBackgroundOverlay={true}
         >
+            <NavigationBar>
+                <NavigationMenuTitle>hubertJan.dev</NavigationMenuTitle>
+                <NavigationMenuPageLink isCurrentPage={false}>Über Mich
+                </NavigationMenuPageLink>
+                <NavigationMenuPageLink isCurrentPage={false}>Skills
+                </NavigationMenuPageLink>
+                <NavigationMenuPageLink isCurrentPage={false}>Projekte
+                </NavigationMenuPageLink>
+                <NavigationMenuPageLink isCurrentPage={false}>Kontakt
+                </NavigationMenuPageLink>
+            </NavigationBar>
             <SliderList>
                 <div className={styles.aboutMeSlide}>
-
                     <RoundedEdgesContainer>
                         <h2 className={styles.titleText}>Hubert Jan Tomaszczak</h2>
                         <p className={styles.text}>Ich bin ein <span className={styles.primaryTextBackgroundColor}>Anwendungsentwickler</span> aus Deutschland.

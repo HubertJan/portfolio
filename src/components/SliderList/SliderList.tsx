@@ -1,15 +1,14 @@
 
 import React, { useRef } from "react";
-import useSlider from "src/hooks/useSlider";
+
+import { SliderControllerProviderInterface } from "src/hooks/useSlider";
 import { CurrentPageIndicator } from "../CurrentPageIndicator/CurrentPageIndicator";
 import styles from "./SliderList.module.scss";
 
-export const SliderList: React.FC<{ sliderRef?: React.RefObject<HTMLDivElement>, children?: React.ReactNode }>
-    = ({sliderRef, children }) => {
-        const hookRef = useRef<HTMLDivElement>(null);
-        const usedSliderRef = sliderRef !== undefined ? sliderRef : hookRef; 
 
-        const { pageIndex, scrollToPageIndex } = useSlider(usedSliderRef);
+export const SliderList: React.FC<{ sliderController: SliderControllerProviderInterface, children?: React.ReactNode }>
+    = ({ sliderController, children }) => {
+        const { pageIndex, scrollToPageIndex, sliderRef } = sliderController;
         let wrapppedChildren = React.Children.map(children, child => (
             <div className={styles.slide}>{child}</div>
         ));
@@ -19,8 +18,9 @@ export const SliderList: React.FC<{ sliderRef?: React.RefObject<HTMLDivElement>,
         const slideCount = wrapppedChildren?.length;
         return (
             <div className={styles.container}>
-                <div className={styles.scrollable}
-                    ref={usedSliderRef}>
+                <div
+                    className={styles.scrollable}
+                    ref={sliderRef} >
                     {wrapppedChildren}
                 </div>
                 <div className={styles.indicator}>

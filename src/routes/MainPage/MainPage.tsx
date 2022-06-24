@@ -15,14 +15,15 @@ import { NavigationBar } from "src/components/NavigationBar/NavigationBar";
 import { NavigationMenuTitle } from "src/components/NavigationMenuTitle/NavigationMenuTitle";
 import { NavigationMenuPageLink } from "src/components/NavigationMenuPageLink/NavigationMenuPageLink";
 import { useRef } from "react";
-import useSlider from "src/hooks/useSlider";
 import { RoundedMainPageIconButton } from "src/components/RoundedMainPageIconButton/RoundedMainPageIconButton";
 import chatIcon from '../../assets/chat.svg';
 import emailIcon from '../../assets/email.svg';
+import { useSliderController } from "src/hooks/useSlider";
 
 export const MainPage: React.FC<{}> = () => {
-    const sliderRef = useRef<HTMLDivElement>(null);
-    const { pageIndex, scrollToPageIndex } = useSlider(sliderRef);
+
+    const sliderController = useSliderController();
+    const { pageIndex, scrollToPageIndex } = sliderController;
 
     return (
         <FillScreenContainer
@@ -52,7 +53,7 @@ export const MainPage: React.FC<{}> = () => {
             </div>
             }
             <SliderList
-                sliderRef={sliderRef}
+                sliderController={sliderController}
             >
                 <div className={styles.aboutMeSlide}>
                     <RoundedEdgesContainer>

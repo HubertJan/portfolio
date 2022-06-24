@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 function calculateCurrentPage(scrollableContainer: HTMLDivElement)
     : number {
@@ -31,9 +31,26 @@ function usePageIndex(ref: React.RefObject<HTMLDivElement>) {
     }, []);
     return pageIndex;
 }
-
-export default function useSlider(sliderRef: React.RefObject<HTMLDivElement>) {
+function useSlider(sliderRef: React.RefObject<HTMLDivElement>) {
     const currentPageIndex = usePageIndex(sliderRef);
+    const [isScrolling, setIsScrolling] = useState(false);
+    useEffect(() => {
+        console.log("First");
+        sliderRef.current?.addEventListener("mousedown", (_) => {
+            console.log("down");
+            setIsScrolling(true);
+        });
+        sliderRef.current?.addEventListener("mouseup", (_) => {
+            console.log("up");
+            setIsScrolling(false);
+        });
+        sliderRef.current?.addEventListener("mousemove", (_) => {
+            if (isScrolling) {
+                console.log("move");
+                setIsScrolling(false);
+            }
+        });
+    }, []);
     return {
         pageIndex: currentPageIndex,
         scrollToPageIndex:
@@ -41,4 +58,17 @@ export default function useSlider(sliderRef: React.RefObject<HTMLDivElement>) {
                 sliderRef.current != null && scrollToPageIndex(pageIndex, sliderRef.current);
             }
     };
+}
+
+export interface SliderControllerProviderInterface {
+    pageIndex: number | undefined;
+    scrollToPageIndex: (pageIndex: number) => void;
+    sliderRef: React.RefObject<HTMLDivElement>;
+}
+
+
+export function useSliderController(): SliderControllerProviderInterface {
+    const sliderRef = useRef<HTMLDivElement>(null);
+    const { pageIndex, scrollToPageIndex } = useSlider(sliderRef);
+    return { pageIndex: pageIndex, scrollToPageIndex: scrollToPageIndex, sliderRef: sliderRef };
 }

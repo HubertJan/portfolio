@@ -8,32 +8,38 @@
   border-radius: 25%;
   background-repeat: no-repeat;
   background-position: center; }
-  @media screen {
-    .icon {
-      height: 82px;
-      width: 82px;
-      background-size: cover, 42px; } }
-  @media screen and (min-width: 500px) {
-    .icon {
-      height: 128px;
-      width: 128px;
-      background-size: cover, 84px; } }
-  @media screen and (min-width: 1300px) {
-    .icon {
-      height: 250px;
-      width: 250px;
-      background-size: cover, 168px; } }
+
+@media screen {
+  .icon {
+    height: 82px;
+    width: 82px;
+    background-size: cover, 42px; } }
+
+@media screen and (min-width: 500px) {
+  .icon {
+    height: 128px;
+    width: 128px;
+    background-size: cover, 84px; } }
+
+@media screen and (min-width: 1300px) {
+  .icon {
+    height: 250px;
+    width: 250px;
+    background-size: cover, 168px; } }
 
 .title {
   color: white;
   font-family: "Roboto";
   text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25); }
-  @media screen {
-    .title {
-      font-size: 11px; } }
-  @media screen and (min-width: 500px) {
-    .title {
-      font-size: 18px; } }
-  @media screen and (min-width: 1300px) {
-    .title {
-      font-size: 24px; } }
+
+@media screen {
+  .title {
+    font-size: 11px; } }
+
+@media screen and (min-width: 500px) {
+  .title {
+    font-size: 18px; } }
+
+@media screen and (min-width: 1300px) {
+  .title {
+    font-size: 24px; } }

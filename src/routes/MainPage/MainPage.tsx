@@ -14,12 +14,12 @@ import germanyMap from 'src/assets/germany.svg';
 import { NavigationBar } from "src/components/NavigationBar/NavigationBar";
 import { NavigationMenuTitle } from "src/components/NavigationMenuTitle/NavigationMenuTitle";
 import { NavigationMenuPageLink } from "src/components/NavigationMenuPageLink/NavigationMenuPageLink";
-import { useState } from "react";
+import { useRef } from "react";
+import useSlider from "src/hooks/useSlider";
 
 export const MainPage: React.FC<{}> = () => {
-    const [currentIndex, setCurrentIndex] = useState<number | undefined>(undefined);
-
-    const [currentScrollToIndex, setScrollToIndex] = useState<number | undefined>(undefined); // Does not have to be the actual current Navigation index, but SliderList will slide to this index, if index changes.
+    const sliderRef = useRef<HTMLDivElement>(null);
+    const {pageIndex, scrollToPageIndex} = useSlider(sliderRef);
 
     return (
         <FillScreenContainer
@@ -28,29 +28,25 @@ export const MainPage: React.FC<{}> = () => {
         >
             <NavigationBar>
                 <NavigationMenuTitle>hubertJan.dev</NavigationMenuTitle>
-                <NavigationMenuPageLink isCurrentPage={currentIndex === 0}
-                    onClick={() => { setScrollToIndex(0) }}>
+                <NavigationMenuPageLink isCurrentPage={pageIndex === 0}
+                    onClick={() => { scrollToPageIndex(0) }}>
                     Über Mich
                 </NavigationMenuPageLink>
-                <NavigationMenuPageLink isCurrentPage={currentIndex === 1}
-                    onClick={() => { setScrollToIndex(1) }}>
+                <NavigationMenuPageLink isCurrentPage={pageIndex === 1}
+                    onClick={() => { scrollToPageIndex(1) }}>
                     Skills
                 </NavigationMenuPageLink>
-                <NavigationMenuPageLink  isCurrentPage={currentIndex === 2}
-                    onClick={() => { setScrollToIndex(2) }}>
+                <NavigationMenuPageLink isCurrentPage={pageIndex === 2}
+                    onClick={() => { scrollToPageIndex(2) }}>
                     Projekte
                 </NavigationMenuPageLink>
-                <NavigationMenuPageLink  isCurrentPage={currentIndex === 3}
-                    onClick={() => { setScrollToIndex(3) }}>
+                <NavigationMenuPageLink isCurrentPage={pageIndex === 3}
+                    onClick={() => { scrollToPageIndex(3) }}>
                     Kontakt
                 </NavigationMenuPageLink>
             </NavigationBar>
-            <SliderList initialIndex={currentScrollToIndex}
-                getCurrentIndex={(index) => {
-                    console.log("index");
-                    console.log(index);
-                    setCurrentIndex(index)
-                }}
+            <SliderList
+            sliderRef={sliderRef}
             >
                 <div className={styles.aboutMeSlide}>
                     <RoundedEdgesContainer>

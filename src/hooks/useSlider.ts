@@ -31,25 +31,88 @@ function usePageIndex(ref: React.RefObject<HTMLDivElement>) {
     }, []);
     return pageIndex;
 }
+
+interface ScrollDragPointInterface {
+    scrollLeft: number;
+    scrollTop: number;
+    clientX: number;
+    clientY: number;
+}
+
+function scrollByMouseDragging(event: MouseEvent,
+    dragPoint: ScrollDragPointInterface,
+    sliderRef: React.RefObject<HTMLDivElement>,
+) {
+    scrollByDragging(event.clientX, event.clientY, dragPoint, sliderRef);
+}
+
+function scrollByTouchDragging(event: TouchEvent,
+    dragPoint: ScrollDragPointInterface,
+    sliderRef: React.RefObject<HTMLDivElement>,
+) {
+    scrollByDragging(event.touches[0].clientX, event.touches[0].clientY, dragPoint, sliderRef);
+}
+
+function scrollByDragging(x: number, y: number,
+    dragPoint: ScrollDragPointInterface,
+    sliderRef: React.RefObject<HTMLDivElement>,
+) {
+    sliderRef.current!.scroll({
+        left: dragPoint.scrollLeft - dragPoint.clientX + x,
+        behavior: "auto",
+    });
+}
+
 function useSlider(sliderRef: React.RefObject<HTMLDivElement>) {
     const currentPageIndex = usePageIndex(sliderRef);
-    const [isScrolling, setIsScrolling] = useState(false);
     useEffect(() => {
         console.log("First");
-        sliderRef.current?.addEventListener("mousedown", (_) => {
-            console.log("down");
-            setIsScrolling(true);
+        sliderRef.current?.addEventListener("mousedown", (event) => {
+            console.log("set point");
+            let dragPoint = {
+                clientX: event.clientX,
+                clientY: event.clientY,
+                scrollLeft: sliderRef.current!.scrollLeft,
+                scrollTop: sliderRef.current!.scrollTop,
+            };
+            let mouseMoveHandler = (e: MouseEvent) => scrollByMouseDragging(e, dragPoint, sliderRef);
+            let removeAllListener = (_: MouseEvent) => {
+                console.log("removed");
+                sliderRef.current!.removeEventListener(
+                    "mousemove",
+                    mouseMoveHandler
+                );
+                document.removeEventListener("mouseup", removeAllListener);
+                sliderRef.current!.removeEventListener("mousedown", removeAllListener);
+            };
+            sliderRef.current!.addEventListener("mousemove", mouseMoveHandler);
+            document.addEventListener("mouseup", removeAllListener);
+            sliderRef.current!.addEventListener("mousedown", removeAllListener);
         });
-        sliderRef.current?.addEventListener("mouseup", (_) => {
-            console.log("up");
-            setIsScrolling(false);
+
+        sliderRef.current?.addEventListener("touchstart", (event) => {
+            console.log("set point");
+            let dragPoint = {
+                clientX: event.touches[0].clientX,
+                clientY: event.touches[0].clientY,
+                scrollLeft: sliderRef.current!.scrollLeft,
+                scrollTop: sliderRef.current!.scrollTop,
+            };
+            let touchMoveHandler = (e: TouchEvent) => scrollByTouchDragging(e, dragPoint, sliderRef);
+            let removeAllListener = (_: TouchEvent) => {
+                console.log("removed");
+                sliderRef.current!.removeEventListener(
+                    "touchmove",
+                    touchMoveHandler
+                );
+                document.removeEventListener("touchend", removeAllListener);
+                sliderRef.current!.removeEventListener("touchstart", removeAllListener);
+            };
+            sliderRef.current!.addEventListener("touchmove", touchMoveHandler);
+            document.addEventListener("touchend", removeAllListener);
+            sliderRef.current!.addEventListener("touchstart", removeAllListener);
         });
-        sliderRef.current?.addEventListener("mousemove", (_) => {
-            if (isScrolling) {
-                console.log("move");
-                setIsScrolling(false);
-            }
-        });
+
     }, []);
     return {
         pageIndex: currentPageIndex,

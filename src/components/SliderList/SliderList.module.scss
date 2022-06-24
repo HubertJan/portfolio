@@ -8,13 +8,18 @@
 
 .scrollable {
     width: 100%;
-    scroll-snap-type: x mandatory;
+    /*     scroll-snap-type: x mandatory; */
     display: flex;
     overflow-x: hidden;
     flex-direction: row;
     align-items: stretch;
     overflow: hidden;
     flex-grow: 1;
+}
+
+.scrollable:active {
+    scroll-snap-type: none;
+    user-select: none;
 }
 
 .indicator {

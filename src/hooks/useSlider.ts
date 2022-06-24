@@ -1,3 +1,4 @@
+import { time } from "console";
 import React, { useEffect, useRef, useState } from "react";
 
 function calculateCurrentPage(scrollableContainer: HTMLDivElement)
@@ -43,25 +44,25 @@ function scrollByMouseDragging(event: MouseEvent,
     dragPoint: ScrollDragPointInterface,
     sliderRef: React.RefObject<HTMLDivElement>,
 ) {
-    scrollByDragging(event.clientX, event.clientY, dragPoint, sliderRef);
+    sliderRef.current!.scroll({
+        left: dragPoint.scrollLeft - dragPoint.clientX +event.clientX,
+        behavior: "auto",
+    });
 }
 
 function scrollByTouchDragging(event: TouchEvent,
     dragPoint: ScrollDragPointInterface,
     sliderRef: React.RefObject<HTMLDivElement>,
 ) {
-    scrollByDragging(event.touches[0].clientX, event.touches[0].clientY, dragPoint, sliderRef);
-}
-
-function scrollByDragging(x: number, y: number,
-    dragPoint: ScrollDragPointInterface,
-    sliderRef: React.RefObject<HTMLDivElement>,
-) {
+    const xPos = event.touches[0].clientX;
+    const newPos = dragPoint.scrollLeft - (xPos - dragPoint.clientX);
+    console.log(`${newPos} old:${sliderRef.current!.scrollLeft}`);
     sliderRef.current!.scroll({
-        left: dragPoint.scrollLeft - dragPoint.clientX + x,
+        left: newPos,
         behavior: "auto",
     });
 }
+
 
 function useSlider(sliderRef: React.RefObject<HTMLDivElement>) {
     const currentPageIndex = usePageIndex(sliderRef);
@@ -75,7 +76,9 @@ function useSlider(sliderRef: React.RefObject<HTMLDivElement>) {
                 scrollLeft: sliderRef.current!.scrollLeft,
                 scrollTop: sliderRef.current!.scrollTop,
             };
-            let mouseMoveHandler = (e: MouseEvent) => scrollByMouseDragging(e, dragPoint, sliderRef);
+            let mouseMoveHandler = (e: MouseEvent) => {
+                scrollByMouseDragging(e, dragPoint, sliderRef);
+            }
             let removeAllListener = (_: MouseEvent) => {
                 console.log("removed");
                 sliderRef.current!.removeEventListener(
@@ -84,7 +87,9 @@ function useSlider(sliderRef: React.RefObject<HTMLDivElement>) {
                 );
                 document.removeEventListener("mouseup", removeAllListener);
                 sliderRef.current!.removeEventListener("mousedown", removeAllListener);
-            };
+                let closestPageIndex = Math.round(sliderRef.current!.scrollLeft / sliderRef.current!.clientWidth);
+                scrollToPageIndex(closestPageIndex, sliderRef.current!);
+            }
             sliderRef.current!.addEventListener("mousemove", mouseMoveHandler);
             document.addEventListener("mouseup", removeAllListener);
             sliderRef.current!.addEventListener("mousedown", removeAllListener);
@@ -98,7 +103,9 @@ function useSlider(sliderRef: React.RefObject<HTMLDivElement>) {
                 scrollLeft: sliderRef.current!.scrollLeft,
                 scrollTop: sliderRef.current!.scrollTop,
             };
-            let touchMoveHandler = (e: TouchEvent) => scrollByTouchDragging(e, dragPoint, sliderRef);
+            let touchMoveHandler = (e: TouchEvent) => {
+                scrollByTouchDragging(e, dragPoint, sliderRef);
+            }
             let removeAllListener = (_: TouchEvent) => {
                 console.log("removed");
                 sliderRef.current!.removeEventListener(
@@ -107,6 +114,8 @@ function useSlider(sliderRef: React.RefObject<HTMLDivElement>) {
                 );
                 document.removeEventListener("touchend", removeAllListener);
                 sliderRef.current!.removeEventListener("touchstart", removeAllListener);
+                let closestPageIndex = Math.round(sliderRef.current!.scrollLeft / sliderRef.current!.clientWidth);
+                scrollToPageIndex(closestPageIndex, sliderRef.current!);
             };
             sliderRef.current!.addEventListener("touchmove", touchMoveHandler);
             document.addEventListener("touchend", removeAllListener);

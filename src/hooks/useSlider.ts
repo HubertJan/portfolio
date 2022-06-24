@@ -7,7 +7,6 @@ function calculateCurrentPage(scrollableContainer: HTMLDivElement)
 }
 
 function scrollToPageIndex(pageIndex: number, ref: HTMLDivElement) {
-    console.log("yo");
     ref.scrollTo({
         left: ref.clientWidth * (pageIndex),
         behavior: "smooth",

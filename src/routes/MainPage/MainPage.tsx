@@ -29,34 +29,39 @@ export const MainPage: React.FC<{}> = () => {
             backgroundImage={backgroundImage}
             withBackgroundOverlay={true}
         >
-            <NavigationBar>
-                <NavigationMenuTitle>hubertJan.dev</NavigationMenuTitle>
-                <NavigationMenuPageLink isCurrentPage={pageIndex === 0}
-                    onClick={() => { scrollToPageIndex(0) }}>
-                    Über Mich
-                </NavigationMenuPageLink>
-                <NavigationMenuPageLink isCurrentPage={pageIndex === 1}
-                    onClick={() => { scrollToPageIndex(1) }}>
-                    Skills
-                </NavigationMenuPageLink>
-                <NavigationMenuPageLink isCurrentPage={pageIndex === 2}
-                    onClick={() => { scrollToPageIndex(2) }}>
-                    Projekte
-                </NavigationMenuPageLink>
-                <NavigationMenuPageLink isCurrentPage={pageIndex === 3}
-                    onClick={() => { scrollToPageIndex(3) }}>
-                    Kontakt
-                </NavigationMenuPageLink>
-            </NavigationBar>
+            {<div className={styles.navigationBar}>
+                <NavigationBar>
+                    <NavigationMenuTitle>hubertJan.dev</NavigationMenuTitle>
+                    <NavigationMenuPageLink isCurrentPage={pageIndex === 0}
+                        onClick={() => { scrollToPageIndex(0) }}>
+                        Über Mich
+                    </NavigationMenuPageLink>
+                    <NavigationMenuPageLink isCurrentPage={pageIndex === 1}
+                        onClick={() => { scrollToPageIndex(1) }}>
+                        Skills
+                    </NavigationMenuPageLink>
+                    <NavigationMenuPageLink isCurrentPage={pageIndex === 2}
+                        onClick={() => { scrollToPageIndex(2) }}>
+                        Projekte
+                    </NavigationMenuPageLink>
+                    <NavigationMenuPageLink isCurrentPage={pageIndex === 3}
+                        onClick={() => { scrollToPageIndex(3) }}>
+                        Kontakt
+                    </NavigationMenuPageLink>
+                </NavigationBar>
+            </div>
+            }
             <SliderList
                 sliderRef={sliderRef}
             >
                 <div className={styles.aboutMeSlide}>
                     <RoundedEdgesContainer>
-                        <h2 className={styles.titleText}>Hubert Jan Tomaszczak</h2>
-                        <p className={styles.text}>Ich bin ein <span className={styles.primaryTextBackgroundColor}>Anwendungsentwickler</span> aus Deutschland.
-                        </p>
-                        <img src={germanyMap} className={styles.germanyMap} alt="Germany" />
+                        <div className={styles.aboutMeContent}>
+                            <h2 className={styles.titleText}>Hubert Jan Tomaszczak</h2>
+                            <p className={styles.text}>Ich bin ein <span className={styles.primaryTextBackgroundColor}>Anwendungsentwickler</span> aus Deutschland.
+                            </p>
+                            <img src={germanyMap} className={styles.germanyMap} alt="Germany" />
+                        </div>
                     </RoundedEdgesContainer>
                     <div className={styles.aboutMeColumn}>
                         <RoundedEdgesContainer >

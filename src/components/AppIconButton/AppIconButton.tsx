@@ -12,7 +12,6 @@ export const AppIconButton: React.FC<{
     backgroundColor = "black",
     iconImage,
 }) => {
-    console.log(javascriptIcon);
         return (
             <div className={styles.content}>
                 <div className={styles.icon} 

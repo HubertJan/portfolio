@@ -20,6 +20,10 @@
     min-width: 300px;
     gap: 32px; } }
 
+@media screen and (max-width: 1000px) {
+  .navigationBar {
+    display: none; } }
+
 .appIconSlide {
   height: 100%;
   display: flex;
@@ -37,17 +41,39 @@
 
 .aboutMeColumn {
   display: flex;
+  flex-direction: column; }
+
+@media screen {
+  .aboutMeColumn {
+    gap: 16px; } }
+
+@media screen and (max-width: 1000px) {
+  .aboutMeColumn {
+    gap: 8px; } }
+
+.aboutMeContent {
+  display: flex;
   flex-direction: column;
-  gap: 16px; }
+  justify-content: space-between; }
 
 .germanyMap {
   object-fit: scale-down;
   object-position: top center;
-  margin-top: 16px;
-  margin-bottom: -32px;
   max-width: 100%;
   height: auto;
   display: block; }
+
+@media screen {
+  .germanyMap {
+    width: 100%;
+    margin-top: 16px;
+    margin-bottom: -32px; } }
+
+@media screen and (max-width: 1000px) {
+  .germanyMap {
+    height: 50%;
+    margin-top: 16px;
+    margin-bottom: -16px; } }
 
 .titleText {
   color: white;

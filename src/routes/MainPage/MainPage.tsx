@@ -16,10 +16,13 @@ import { NavigationMenuTitle } from "src/components/NavigationMenuTitle/Navigati
 import { NavigationMenuPageLink } from "src/components/NavigationMenuPageLink/NavigationMenuPageLink";
 import { useRef } from "react";
 import useSlider from "src/hooks/useSlider";
+import { RoundedMainPageIconButton } from "src/components/RoundedMainPageIconButton/RoundedMainPageIconButton";
+import chatIcon from '../../assets/chat.svg';
+import emailIcon from '../../assets/email.svg';
 
 export const MainPage: React.FC<{}> = () => {
     const sliderRef = useRef<HTMLDivElement>(null);
-    const {pageIndex, scrollToPageIndex} = useSlider(sliderRef);
+    const { pageIndex, scrollToPageIndex } = useSlider(sliderRef);
 
     return (
         <FillScreenContainer
@@ -46,7 +49,7 @@ export const MainPage: React.FC<{}> = () => {
                 </NavigationMenuPageLink>
             </NavigationBar>
             <SliderList
-            sliderRef={sliderRef}
+                sliderRef={sliderRef}
             >
                 <div className={styles.aboutMeSlide}>
                     <RoundedEdgesContainer>
@@ -104,8 +107,16 @@ export const MainPage: React.FC<{}> = () => {
                         <AppIconButton title={"Itspylearning"}
                             backgroundImage={javascriptIcon}
                         />
-
                     </div>
+                </div>
+                <div className={styles.contactSlide}>
+                    <h2 className={styles.titleText}>Sag Hallo</h2>
+                    <RoundedMainPageIconButton
+                        labelText={"Schreib mir direkt."}
+                        iconImage={chatIcon} />
+                    <RoundedMainPageIconButton
+                        labelText={"hallo@hubertJan.dev"}
+                        iconImage={emailIcon} />
                 </div>
             </SliderList>
         </FillScreenContainer>

@@ -44,10 +44,7 @@ function scrollByMouseDragging(event: MouseEvent,
     dragPoint: ScrollDragPointInterface,
     sliderRef: React.RefObject<HTMLDivElement>,
 ) {
-    sliderRef.current!.scroll({
-        left: dragPoint.scrollLeft - dragPoint.clientX +event.clientX,
-        behavior: "auto",
-    });
+     scrollByDragging(event.clientX, event.clientY, dragPoint, sliderRef);
 }
 
 function scrollByTouchDragging(event: TouchEvent,
@@ -56,13 +53,22 @@ function scrollByTouchDragging(event: TouchEvent,
 ) {
     const xPos = event.touches[0].clientX;
     const newPos = dragPoint.scrollLeft - (xPos - dragPoint.clientX);
-    console.log(`${newPos} old:${sliderRef.current!.scrollLeft}`);
     sliderRef.current!.scroll({
         left: newPos,
         behavior: "auto",
     });
 }
 
+function scrollByDragging(x: number, y: number,
+    dragPoint: ScrollDragPointInterface,
+    sliderRef: React.RefObject<HTMLDivElement>,
+) {
+
+    sliderRef.current!.scroll({
+        left: dragPoint.scrollLeft - dragPoint.clientX + x,
+        behavior: "auto",
+    });
+}
 
 function useSlider(sliderRef: React.RefObject<HTMLDivElement>) {
     const currentPageIndex = usePageIndex(sliderRef);
@@ -76,6 +82,17 @@ function useSlider(sliderRef: React.RefObject<HTMLDivElement>) {
                 scrollLeft: sliderRef.current!.scrollLeft,
                 scrollTop: sliderRef.current!.scrollTop,
             };
+            let lastScrollPos = sliderRef.current!.scrollLeft;
+            let lastScrollPosTimeStamp = new Date();
+            let scrollSpeed = 0;
+            let speedMeasure = setInterval(() => {
+                let currentTime = new Date();
+                let currentScrollPos = sliderRef.current!.scrollLeft;
+                let timeDifference = currentTime.getMilliseconds() - lastScrollPosTimeStamp.getMilliseconds();
+                let posDifference = currentScrollPos - lastScrollPos;
+                scrollSpeed = posDifference / timeDifference;
+                console.log(`scrollSpeed: ${scrollSpeed}`);
+            }, 100);
             let mouseMoveHandler = (e: MouseEvent) => {
                 scrollByMouseDragging(e, dragPoint, sliderRef);
             }
@@ -87,8 +104,22 @@ function useSlider(sliderRef: React.RefObject<HTMLDivElement>) {
                 );
                 document.removeEventListener("mouseup", removeAllListener);
                 sliderRef.current!.removeEventListener("mousedown", removeAllListener);
-                let closestPageIndex = Math.round(sliderRef.current!.scrollLeft / sliderRef.current!.clientWidth);
-                scrollToPageIndex(closestPageIndex, sliderRef.current!);
+                let momentum = setInterval(()=>{
+                    if(Math.abs(scrollSpeed) < 0.01){
+                        console.log("yo");
+                        let closestPageIndex = Math.round(sliderRef.current!.scrollLeft / sliderRef.current!.clientWidth);
+                        scrollToPageIndex(closestPageIndex, sliderRef.current!);
+                        clearTimeout(momentum);
+                        return;
+                    }
+                    sliderRef.current!.scrollBy({
+                        left: scrollSpeed * 10,
+                        behavior: "auto",
+                    });
+                    scrollSpeed *= 0.9
+                    console.log(`scrollSpeed ${scrollSpeed.toFixed(4)}`);
+                }, 1);
+                clearTimeout(speedMeasure);
             }
             sliderRef.current!.addEventListener("mousemove", mouseMoveHandler);
             document.addEventListener("mouseup", removeAllListener);
@@ -103,6 +134,17 @@ function useSlider(sliderRef: React.RefObject<HTMLDivElement>) {
                 scrollLeft: sliderRef.current!.scrollLeft,
                 scrollTop: sliderRef.current!.scrollTop,
             };
+            let lastScrollPos = sliderRef.current!.scrollLeft;
+            let lastScrollPosTimeStamp = new Date();
+            let scrollSpeed = 0;
+            let speedMeasure = setInterval(() => {
+                let currentTime = new Date();
+                let currentScrollPos = sliderRef.current!.scrollLeft;
+                let timeDifference = currentTime.getMilliseconds() - lastScrollPosTimeStamp.getMilliseconds();
+                let posDifference = currentScrollPos - lastScrollPos;
+                scrollSpeed = posDifference / timeDifference;
+                console.log(`scrollSpeed: ${scrollSpeed}`);
+            }, 1);
             let touchMoveHandler = (e: TouchEvent) => {
                 scrollByTouchDragging(e, dragPoint, sliderRef);
             }
@@ -112,10 +154,25 @@ function useSlider(sliderRef: React.RefObject<HTMLDivElement>) {
                     "touchmove",
                     touchMoveHandler
                 );
+
                 document.removeEventListener("touchend", removeAllListener);
                 sliderRef.current!.removeEventListener("touchstart", removeAllListener);
-                let closestPageIndex = Math.round(sliderRef.current!.scrollLeft / sliderRef.current!.clientWidth);
-                scrollToPageIndex(closestPageIndex, sliderRef.current!);
+                let momentum = setInterval(()=>{
+                    if(Math.abs(parseFloat(scrollSpeed.toFixed(4))) < 0.1){
+                        console.log("yo");
+                        let closestPageIndex = Math.round(sliderRef.current!.scrollLeft / sliderRef.current!.clientWidth);
+                        scrollToPageIndex(closestPageIndex, sliderRef.current!);
+                        clearTimeout(momentum);
+                        return;
+                    }
+                    sliderRef.current!.scrollBy({
+                        left: scrollSpeed * 10,
+                        behavior: "auto",
+                    });
+                    scrollSpeed *= 0.95
+                    console.log(`scrollSpeed ${scrollSpeed.toFixed(4)}`);
+                }, 1);
+                clearTimeout(speedMeasure);
             };
             sliderRef.current!.addEventListener("touchmove", touchMoveHandler);
             document.addEventListener("touchend", removeAllListener);

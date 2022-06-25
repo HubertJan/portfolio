@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 function calculateCurrentPage(scrollableContainer: HTMLDivElement)
     : number {
 
-    return Math.floor(scrollableContainer.scrollLeft / scrollableContainer.clientWidth);
+    return Math.round(scrollableContainer.scrollLeft / scrollableContainer.clientWidth);
 }
 
 function scrollToPageIndex(pageIndex: number, ref: HTMLDivElement) {
@@ -44,141 +44,95 @@ function scrollByMouseDragging(event: MouseEvent,
     dragPoint: ScrollDragPointInterface,
     sliderRef: React.RefObject<HTMLDivElement>,
 ) {
-     scrollByDragging(event.clientX, event.clientY, dragPoint, sliderRef);
+    scrollByDragging(event.clientX, event.clientY, dragPoint, sliderRef);
 }
 
 function scrollByTouchDragging(event: TouchEvent,
     dragPoint: ScrollDragPointInterface,
     sliderRef: React.RefObject<HTMLDivElement>,
 ) {
-    const xPos = event.touches[0].clientX;
-    const newPos = dragPoint.scrollLeft - (xPos - dragPoint.clientX);
-    sliderRef.current!.scroll({
-        left: newPos,
-        behavior: "auto",
-    });
+    scrollByDragging(event.touches[0].clientX, event.touches[0].clientY, dragPoint, sliderRef);
 }
 
 function scrollByDragging(x: number, y: number,
     dragPoint: ScrollDragPointInterface,
     sliderRef: React.RefObject<HTMLDivElement>,
 ) {
-
+    const newPos = dragPoint.scrollLeft - (x - dragPoint.clientX);
     sliderRef.current!.scroll({
-        left: dragPoint.scrollLeft - dragPoint.clientX + x,
+        left: newPos,
         behavior: "auto",
     });
+}
+
+enum InputDevice {
+    mouse,
+    touch
+}
+
+function addDragSliderEventHandler(
+    sliderRef: React.RefObject<HTMLDivElement>, device: InputDevice,) {
+    const startEvent = device === InputDevice.mouse ? "mousedown" : "touchstart";
+    const moveEvent = device === InputDevice.mouse ? "mousemove" : "touchmove";
+    const stopEvent = device === InputDevice.mouse ? "mouseup" : "touchend";
+    sliderRef.current?.addEventListener(startEvent, (event) => {
+        let dragPoint = {
+            clientX: event instanceof TouchEvent ? event.touches[0].clientX : event.clientX,
+            clientY: event instanceof TouchEvent ? event.touches[0].clientY : event.clientY,
+            scrollLeft: sliderRef.current!.scrollLeft,
+            scrollTop: sliderRef.current!.scrollTop,
+        };
+        let lastScrollPos = sliderRef.current!.scrollLeft;
+        let lastScrollPosTimeStamp = new Date();
+        let scrollSpeed = 0;
+        let speedMeasure = setInterval(() => {
+            let currentTime = new Date();
+            let currentScrollPos = sliderRef.current!.scrollLeft;
+            let timeDifference = currentTime.getMilliseconds() - lastScrollPosTimeStamp.getMilliseconds();
+            let posDifference = currentScrollPos - lastScrollPos;
+            scrollSpeed = posDifference * 100000000000 / timeDifference;
+            lastScrollPos = sliderRef.current!.scrollLeft;
+            lastScrollPosTimeStamp = new Date();
+        }, 10);
+        let moveHandler = event instanceof TouchEvent ? (e: TouchEvent) => {
+            scrollByTouchDragging(e, dragPoint, sliderRef);
+        } : (e: MouseEvent) => {
+            scrollByMouseDragging(e, dragPoint, sliderRef);
+        }
+        let removeAllListener = (_: MouseEvent | TouchEvent) => {
+            console.log("removed");
+            sliderRef.current!.removeEventListener(
+                moveEvent,
+                moveHandler as any, // Type always fits
+            );
+            document.removeEventListener(stopEvent, removeAllListener);
+            sliderRef.current!.removeEventListener(stopEvent, removeAllListener);
+            let currentPageIndex = calculateCurrentPage(sliderRef.current!);
+            if (Math.abs(scrollSpeed) > 0) {
+                let nextPageIndex = scrollSpeed > 0 ? calculateCurrentPage(sliderRef.current!)! + 1 : currentPageIndex! - 1;
+                scrollToPageIndex(nextPageIndex, sliderRef.current!);
+            } else {
+                console.log(`Speed ${scrollSpeed*1000}`);
+                scrollToPageIndex(currentPageIndex, sliderRef.current!);
+            }
+            clearTimeout(speedMeasure);
+        }
+        sliderRef.current!.addEventListener(
+            moveEvent,
+            moveHandler as any // Type always fits
+        );
+        document.addEventListener(stopEvent, removeAllListener);
+        sliderRef.current!.addEventListener(startEvent, removeAllListener);
+    },
+    );
 }
 
 function useSlider(sliderRef: React.RefObject<HTMLDivElement>) {
     const currentPageIndex = usePageIndex(sliderRef);
     useEffect(() => {
         console.log("First");
-        sliderRef.current?.addEventListener("mousedown", (event) => {
-            console.log("set point");
-            let dragPoint = {
-                clientX: event.clientX,
-                clientY: event.clientY,
-                scrollLeft: sliderRef.current!.scrollLeft,
-                scrollTop: sliderRef.current!.scrollTop,
-            };
-            let lastScrollPos = sliderRef.current!.scrollLeft;
-            let lastScrollPosTimeStamp = new Date();
-            let scrollSpeed = 0;
-            let speedMeasure = setInterval(() => {
-                let currentTime = new Date();
-                let currentScrollPos = sliderRef.current!.scrollLeft;
-                let timeDifference = currentTime.getMilliseconds() - lastScrollPosTimeStamp.getMilliseconds();
-                let posDifference = currentScrollPos - lastScrollPos;
-                scrollSpeed = posDifference / timeDifference;
-                console.log(`scrollSpeed: ${scrollSpeed}`);
-            }, 100);
-            let mouseMoveHandler = (e: MouseEvent) => {
-                scrollByMouseDragging(e, dragPoint, sliderRef);
-            }
-            let removeAllListener = (_: MouseEvent) => {
-                console.log("removed");
-                sliderRef.current!.removeEventListener(
-                    "mousemove",
-                    mouseMoveHandler
-                );
-                document.removeEventListener("mouseup", removeAllListener);
-                sliderRef.current!.removeEventListener("mousedown", removeAllListener);
-                let momentum = setInterval(()=>{
-                    if(Math.abs(scrollSpeed) < 0.01){
-                        console.log("yo");
-                        let closestPageIndex = Math.round(sliderRef.current!.scrollLeft / sliderRef.current!.clientWidth);
-                        scrollToPageIndex(closestPageIndex, sliderRef.current!);
-                        clearTimeout(momentum);
-                        return;
-                    }
-                    sliderRef.current!.scrollBy({
-                        left: scrollSpeed * 10,
-                        behavior: "auto",
-                    });
-                    scrollSpeed *= 0.9
-                    console.log(`scrollSpeed ${scrollSpeed.toFixed(4)}`);
-                }, 1);
-                clearTimeout(speedMeasure);
-            }
-            sliderRef.current!.addEventListener("mousemove", mouseMoveHandler);
-            document.addEventListener("mouseup", removeAllListener);
-            sliderRef.current!.addEventListener("mousedown", removeAllListener);
-        });
-
-        sliderRef.current?.addEventListener("touchstart", (event) => {
-            console.log("set point");
-            let dragPoint = {
-                clientX: event.touches[0].clientX,
-                clientY: event.touches[0].clientY,
-                scrollLeft: sliderRef.current!.scrollLeft,
-                scrollTop: sliderRef.current!.scrollTop,
-            };
-            let lastScrollPos = sliderRef.current!.scrollLeft;
-            let lastScrollPosTimeStamp = new Date();
-            let scrollSpeed = 0;
-            let speedMeasure = setInterval(() => {
-                let currentTime = new Date();
-                let currentScrollPos = sliderRef.current!.scrollLeft;
-                let timeDifference = currentTime.getMilliseconds() - lastScrollPosTimeStamp.getMilliseconds();
-                let posDifference = currentScrollPos - lastScrollPos;
-                scrollSpeed = posDifference / timeDifference;
-                console.log(`scrollSpeed: ${scrollSpeed}`);
-            }, 1);
-            let touchMoveHandler = (e: TouchEvent) => {
-                scrollByTouchDragging(e, dragPoint, sliderRef);
-            }
-            let removeAllListener = (_: TouchEvent) => {
-                console.log("removed");
-                sliderRef.current!.removeEventListener(
-                    "touchmove",
-                    touchMoveHandler
-                );
-
-                document.removeEventListener("touchend", removeAllListener);
-                sliderRef.current!.removeEventListener("touchstart", removeAllListener);
-                let momentum = setInterval(()=>{
-                    if(Math.abs(parseFloat(scrollSpeed.toFixed(4))) < 0.1){
-                        console.log("yo");
-                        let closestPageIndex = Math.round(sliderRef.current!.scrollLeft / sliderRef.current!.clientWidth);
-                        scrollToPageIndex(closestPageIndex, sliderRef.current!);
-                        clearTimeout(momentum);
-                        return;
-                    }
-                    sliderRef.current!.scrollBy({
-                        left: scrollSpeed * 10,
-                        behavior: "auto",
-                    });
-                    scrollSpeed *= 0.95
-                    console.log(`scrollSpeed ${scrollSpeed.toFixed(4)}`);
-                }, 1);
-                clearTimeout(speedMeasure);
-            };
-            sliderRef.current!.addEventListener("touchmove", touchMoveHandler);
-            document.addEventListener("touchend", removeAllListener);
-            sliderRef.current!.addEventListener("touchstart", removeAllListener);
-        });
-
+        addDragSliderEventHandler(sliderRef, InputDevice.mouse);
+        addDragSliderEventHandler(sliderRef, InputDevice.touch);
     }, []);
     return {
         pageIndex: currentPageIndex,

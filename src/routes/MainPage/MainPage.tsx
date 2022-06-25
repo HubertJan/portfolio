@@ -18,7 +18,7 @@ import { useRef } from "react";
 import { RoundedMainPageIconButton } from "src/components/RoundedMainPageIconButton/RoundedMainPageIconButton";
 import chatIcon from '../../assets/chat.svg';
 import emailIcon from '../../assets/email.svg';
-import { useSliderController } from "src/hooks/useSlider";
+import { useSliderController } from "src/hooks/useSliderController";
 
 export const MainPage: React.FC<{}> = () => {
 

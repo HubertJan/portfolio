@@ -1,7 +1,7 @@
 
 import React, { useRef } from "react";
 
-import { SliderControllerProviderInterface } from "src/hooks/useSlider";
+import { SliderControllerProviderInterface } from "src/hooks/useSliderController";
 import { CurrentPageIndicator } from "../CurrentPageIndicator/CurrentPageIndicator";
 import styles from "./SliderList.module.scss";
 

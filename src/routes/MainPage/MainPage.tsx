@@ -14,14 +14,16 @@ import germanyMap from 'src/assets/germany.svg';
 import { NavigationBar } from "src/components/NavigationBar/NavigationBar";
 import { NavigationMenuTitle } from "src/components/NavigationMenuTitle/NavigationMenuTitle";
 import { NavigationMenuPageLink } from "src/components/NavigationMenuPageLink/NavigationMenuPageLink";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { RoundedMainPageIconButton } from "src/components/RoundedMainPageIconButton/RoundedMainPageIconButton";
 import chatIcon from '../../assets/chat.svg';
 import emailIcon from '../../assets/email.svg';
 import { useSliderController } from "src/hooks/useSliderController";
+import { Overlay } from "src/components/Overlay/Overlay";
+import { FormContainer } from "src/components/FormContainer.tsx/FormContainer";
 
 export const MainPage: React.FC<{}> = () => {
-
+    const [isShowingOverlay, setIsShowingOverlay] = useState(false);
     const sliderController = useSliderController();
     const { pageIndex, scrollToPageIndex } = sliderController;
 
@@ -119,12 +121,24 @@ export const MainPage: React.FC<{}> = () => {
                     <h2 className={styles.titleText}>Sag Hallo</h2>
                     <RoundedMainPageIconButton
                         labelText={"Schreib mir direkt."}
-                        iconImage={chatIcon} />
+                        iconImage={chatIcon}
+                        onClick={() => {
+                            setIsShowingOverlay(true);
+                        }} />
                     <RoundedMainPageIconButton
                         labelText={"hallo@hubertJan.dev"}
                         iconImage={emailIcon} />
                 </div>
             </SliderList>
-        </FillScreenContainer>
+            <Overlay 
+            isShown={isShowingOverlay}
+            onBackgroundClick={(e) => {
+                if (e.target === e.currentTarget) {
+                    setIsShowingOverlay(false);
+                }
+            }}>
+            <FormContainer />
+            </Overlay>
+        </FillScreenContainer >
     );
 };

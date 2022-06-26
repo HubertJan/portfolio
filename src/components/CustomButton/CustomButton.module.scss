@@ -1,0 +1,21 @@
+.customButton {
+    --button-color: white;
+    align-self: center;
+    border: 4px solid var(--button-color);
+    border-radius: 8px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 24px;
+    padding: 16px;
+    background-color: var(--button-color);
+}
+
+.customButton:hover {
+    background-color: white;
+}
+
+.customButton:hover {
+    background-color: var(--secondary-color);
+    cursor: pointer;
+}

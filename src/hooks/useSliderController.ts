@@ -7,10 +7,10 @@ function calculateCurrentPage(scrollableContainer: HTMLDivElement)
     return Math.round(scrollableContainer.scrollLeft / scrollableContainer.clientWidth);
 }
 
-function scrollToPageIndex(pageIndex: number, ref: HTMLDivElement) {
+function scrollToPageIndex(pageIndex: number, ref: HTMLDivElement, behavior: ScrollBehavior = "smooth") {
     ref.scrollTo({
         left: ref.clientWidth * (pageIndex),
-        behavior: "smooth",
+        behavior: behavior,
     });
 }
 
@@ -112,7 +112,7 @@ function addDragSliderEventHandler(
                 let nextPageIndex = scrollSpeed > 0 ? calculateCurrentPage(sliderRef.current!)! + 1 : currentPageIndex! - 1;
                 scrollToPageIndex(nextPageIndex, sliderRef.current!);
             } else {
-                console.log(`Speed ${scrollSpeed*1000}`);
+                console.log(`Speed ${scrollSpeed * 1000}`);
                 scrollToPageIndex(currentPageIndex, sliderRef.current!);
             }
             clearTimeout(speedMeasure);
@@ -129,10 +129,23 @@ function addDragSliderEventHandler(
 
 function useSlider(sliderRef: React.RefObject<HTMLDivElement>) {
     const currentPageIndex = usePageIndex(sliderRef);
+    const [hasBeenResized, setHasBeenResized] = useState(false);
+    if (hasBeenResized) {
+        setHasBeenResized(false);
+        currentPageIndex && scrollToPageIndex(currentPageIndex, sliderRef.current!, "auto");
+    }
     useEffect(() => {
-        console.log("First");
         addDragSliderEventHandler(sliderRef, InputDevice.mouse);
         addDragSliderEventHandler(sliderRef, InputDevice.touch);
+
+        const onResize = () => {
+            setHasBeenResized(true);
+        }
+        window.addEventListener("resize", onResize);
+
+        return () => {
+            window.removeEventListener("resize", onResize);
+        }
     }, []);
     return {
         pageIndex: currentPageIndex,
@@ -142,6 +155,7 @@ function useSlider(sliderRef: React.RefObject<HTMLDivElement>) {
             }
     };
 }
+
 
 export interface SliderControllerProviderInterface {
     pageIndex: number | undefined;

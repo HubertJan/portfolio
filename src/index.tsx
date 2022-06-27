@@ -2,10 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
+import { setup } from "goober";
+
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { HomePage } from './routes/HomePage/HomePage';
 import { MainPage } from './routes/MainPage/MainPage';
+
+setup(React.createElement);
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

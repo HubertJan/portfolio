@@ -4,4 +4,46 @@
   --background-alt-color: #E8EFFF;
   --background-contrast-color: #434656;
   --secondary-color: #FFAD71;
-  --secondary-alt-color: #FF7188; }
+  --secondary-alt-color: #FF7188;
+  /* Fonts */
+  --body-font-size: 20px;
+  --body-font-weight: normal;
+  --body-line-height: 1.4;
+  --text-font-size: 16px;
+  --text-font-weight: normal;
+  --text-line-height: 1.4;
+  --small-text-font-size: 14px;
+  --small-text-font-weight: normal;
+  --small-text-line-height: 1.4;
+  --subtitle-heading-font-size: 20px;
+  --subtitle-heading-font-weight: 700;
+  --subtitle-heading-line-height: 1.4;
+  --heading-font-size: 46px;
+  --heading-font-weight: 700;
+  --heading-line-height: 1.4;
+  --heading2-font-size: 38px;
+  --heading2-font-weight: 700;
+  --heading2-line-height: 1.4;
+  --subheading2-font-size: 38px;
+  --subheading2-font-weight: normal;
+  --subheading2-line-height: 1.4;
+  --heading3-font-size: 28px;
+  --heading3-font-weight: 700;
+  --heading3-line-height: 1.4;
+  --lone-subheading-font-size: 32px;
+  --lone-subheading-font-weight: normal;
+  --lone-subheading-line-height: 1.4;
+  --subheading3-font-size: 28px;
+  --subheading3-font-weight: normal;
+  --subheading3-line-height: 1.4;
+  --button-font-size: 14px;
+  --button-font-weight: 700;
+  --button-line-height: 1.4; }
+
+@media screen and (max-width: 1000px) {
+  :root {
+    --body-font-size: 14px;
+    --heading2-font-size: 24px;
+    --section-title-font-size: 21px;
+    --heading3-font-size: 24px;
+    --subheading3-font-size: 24px; } }

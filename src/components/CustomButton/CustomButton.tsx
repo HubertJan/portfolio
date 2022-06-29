@@ -1,11 +1,14 @@
 import { styled } from "goober";
+import { text } from "stream/consumers";
 import styles from "./CustomButton.module.scss";
 
-const StyledButton = styled('button')<{
+const StyledButton = styled('button') <{
     buttonColor: string;
+    textColor: string;
 }>`
     align-self: center;
     border: 4px solid ${(props) => props.buttonColor};
+    color: ${(props) => props.textColor};
     border-radius: 8px;
     font-style: normal;
     font-weight: 400;
@@ -13,11 +16,13 @@ const StyledButton = styled('button')<{
     line-height: 24px;
     padding: 16px;
     background-color: ${(props) => props.buttonColor};
-
+    
     &:hover {
         background-color: var(--secondary-color);
+        border-color: var(--secondary-color);
         cursor: pointer;
     }
+
 `;
 
 export const CustomButton: React.FC<{
@@ -26,10 +31,13 @@ export const CustomButton: React.FC<{
     textColor?: string,
     buttonColor?: string,
 }> = (
-    { onClick, label = "", buttonColor = "" }
+    { onClick, label = "", buttonColor = "var(--primary-color)", textColor = "var(--background-color)" }
 ) => {
         return (
-            <StyledButton buttonColor={label == "" ? "var(--primary-color)" : label} onClick={onClick}>
+            <StyledButton
+                buttonColor={buttonColor}
+                onClick={onClick}
+                textColor={textColor}>
                 {label}
             </StyledButton>
         );

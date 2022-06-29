@@ -7,7 +7,7 @@ import reactjsIcon from "src/assets/reactjs.png";
 import { FillScreenContainer } from "src/components/FillScreenContainer/FillScreenContainer";
 
 import backgroundImage from "src/assets/galaxy.jpg";
-import { SliderList } from "src/components/SliderList/SliderList";
+import { SliderList } from "src/routes/DesktopPage/components/SliderList/SliderList";
 import { NavigationBar } from "src/components/NavigationBar/NavigationBar";
 import { NavigationMenuTitle } from "src/components/NavigationMenuTitle/NavigationMenuTitle";
 import { useSliderController } from "src/hooks/useSliderController";

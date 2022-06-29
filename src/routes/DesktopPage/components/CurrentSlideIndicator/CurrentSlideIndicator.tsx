@@ -1,7 +1,7 @@
 import styles from "./CurrentPageIndicator.module.scss";
 
 
-export const CurrentPageIndicator: React.FC<{
+export const CurrentSlideIndicator: React.FC<{
     currentIndex: number, pageCount: number,
     onIndicatorClick?: (currentIndex: number) => void
 }>

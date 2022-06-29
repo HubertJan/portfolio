@@ -1,5 +1,5 @@
 import { Heading2Text, SubHeading3Text } from "src/styles/fonts";
-import { DesktopContainer } from "../components/DesktopContainer";
+import { StandardContainer } from "../../../components/StandardContainer";
 import { StandardSlide } from "../components/StandardSlide";
 
 import chatIcon from 'src/assets/chat.svg';
@@ -9,9 +9,9 @@ import { TextButton } from "src/components/TextButton";
 import { useTheme } from "src";
 import { Overlay } from "src/components/Overlay/Overlay";
 import { useState } from "react";
-import { FormContainer } from "src/components/FormContainer.tsx/FormContainer";
+import { ContactForm } from "src/components/ContactForm/ContactForm";
 
-const CallToActionContainer = styled(DesktopContainer)`
+const CallToActionContainer = styled(StandardContainer)`
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -82,7 +82,7 @@ export const ContactSlide: React.FC<{}> = () => {
                         setIsShowingOverlay(false);
                     }
                 }}>
-                <FormContainer />
+                <ContactForm />
             </Overlay>
         </StandardSlide>
     );

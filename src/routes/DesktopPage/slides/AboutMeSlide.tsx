@@ -3,7 +3,7 @@ import { Heading2Text, SubHeading3Text } from "src/styles/fonts";
 
 import germanyMap from 'src/assets/germany.svg';
 import { SecondaryColorSpan } from "src/styles/color";
-import { DesktopContainer } from "../components/DesktopContainer";
+import { StandardContainer } from "../../../components/StandardContainer";
 
 const Content = styled('div')`
     height: 100%;
@@ -25,7 +25,7 @@ const Content = styled('div')`
     }
 `;
 
-const NameAndMapContainer = styled(DesktopContainer)`
+const NameAndMapContainer = styled(StandardContainer)`
     gap: 16px;
     @media screen and (min-width: 1000px) {
         flex-grow: 1;
@@ -47,7 +47,7 @@ const GermanyMap = styled('img')`
     }
 `;
 
-const SlogenContainer = styled(DesktopContainer)`
+const SlogenContainer = styled(StandardContainer)`
       flex-shrink: 3;
 
 `;

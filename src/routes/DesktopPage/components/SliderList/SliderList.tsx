@@ -2,7 +2,7 @@
 import React, { useRef } from "react";
 
 import { SliderControllerProviderInterface } from "src/hooks/useSliderController";
-import { CurrentPageIndicator } from "../CurrentPageIndicator/CurrentPageIndicator";
+import { CurrentSlideIndicator } from "../CurrentSlideIndicator/CurrentSlideIndicator";
 import styles from "./SliderList.module.scss";
 
 
@@ -24,7 +24,7 @@ export const SliderList: React.FC<{ sliderController: SliderControllerProviderIn
                     {wrapppedChildren}
                 </div>
                 <div className={styles.indicator}>
-                    <CurrentPageIndicator
+                    <CurrentSlideIndicator
                         currentIndex={pageIndex !== undefined ? pageIndex : 0} pageCount={slideCount}
                         onIndicatorClick={(index) => {
                             scrollToPageIndex(index);

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FillScreenContainer } from "src/components/FillScreenContainer/FillScreenContainer";
 
-import { StartNotificationStyledBanner } from "../../components/StartNotificationStyledBanner/StartNotificationStyledBanner";
+import { NotificationStyledBanner } from "./components/NotificationStyledBanner/NotificationStyledBanner";
 
 import styles from './HomePage.module.scss';
 import backgroundImage from "src/assets/background_image.jpg";
@@ -25,7 +25,7 @@ export const HomePage: React.FC<{}> = () => {
         >
             <div className={styles.portfolioPage}>
                 <div className={styles.banner}>
-                    <StartNotificationStyledBanner />
+                    <NotificationStyledBanner />
                 </div>
                 <div>
                     <button onClick={() => {

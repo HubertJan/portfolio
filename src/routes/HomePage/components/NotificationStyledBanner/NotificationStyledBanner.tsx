@@ -3,7 +3,7 @@ import styles from './StartNotificationStyledBanner.module.scss';
 import icon from '../../assets/heart.svg';
 import "src/variables.css";
 
-export const StartNotificationStyledBanner: React.FC<{}> = () => {
+export const NotificationStyledBanner: React.FC<{}> = () => {
     return (
         <div className={styles.startNotificationStyledBanner}>
             <div className={styles.headerText}>

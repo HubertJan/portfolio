@@ -11,9 +11,12 @@ declare module 'goober' {
         colors: {
             primary: string;
             secondary: string;
+            secondaryAlt: string;
             background: string;
             onBackground: string;
             onPrimary: string;
+            contrast: string;
+            constrastAlt: string;
         };
         fonts: {
             body: FontStyle,

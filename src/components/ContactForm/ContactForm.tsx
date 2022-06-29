@@ -1,15 +1,14 @@
 import { CustomButton } from "../CustomButton/CustomButton";
 import { FormTextArea } from "../FormTextArea/FormTextArea";
 import { FormTextField } from "../FormTextField/FormTextField";
-import { RoundedEdgesContainer } from "../RoundedEdgesContainer/RoundedEdgesContainer";
+import { StandardContainer } from "../StandardContainer";
 import styles from "./FormContainer.module.scss";
 
-export const FormContainer: React.FC<{
-    children?: React.ReactNode,
-}> = ({ children }) => {
+export const ContactForm: React.FC<{
+}> = () => {
     return (
         <div className={styles.contactContainer}>
-            <RoundedEdgesContainer >
+            <StandardContainer >
                 <div className={styles.formContent}>
                     <div className={styles.formTitle}>
                         <div>icon</div>
@@ -27,9 +26,9 @@ export const FormContainer: React.FC<{
                         label="Nachricht"
                         placeHolder="Ich möchte mit dir arbeiten."
                     />
-                    <CustomButton label="Kontaktieren"/>
+                    <CustomButton label="Kontaktieren" />
                 </div>
-            </RoundedEdgesContainer>
+            </StandardContainer>
         </div>
     );
 }

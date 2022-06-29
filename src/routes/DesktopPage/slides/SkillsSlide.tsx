@@ -8,7 +8,7 @@ import { AppIconButton, AppIconRow, AppIconRows } from "../components/AppIconBut
 import { Heading2Text } from "src/styles/fonts";
 import { StandardSlide } from "../components/StandardSlide";
 import { Overlay } from "src/components/Overlay/Overlay";
-import { FormContainer } from "src/components/FormContainer.tsx/FormContainer";
+import { ContactForm } from "src/components/ContactForm/ContactForm";
 import { useState } from "react";
 
 

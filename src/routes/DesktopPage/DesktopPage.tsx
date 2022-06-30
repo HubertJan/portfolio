@@ -1,9 +1,4 @@
-import { AppIconButton } from "src/components/AppIconButton/AppIconButton";
 import styles from "./MainPage.module.scss";
-import javascriptIcon from "src/assets/javascript.png";
-import flutterIcon from "src/assets/flutter.png";
-import pythonIcon from "src/assets/python.png";
-import reactjsIcon from "src/assets/reactjs.png";
 import { FillScreenContainer } from "src/components/FillScreenContainer/FillScreenContainer";
 
 import backgroundImage from "src/assets/galaxy.jpg";

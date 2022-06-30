@@ -1,7 +1,6 @@
 import React from "react";
 import styles from './StartNotificationStyledBanner.module.scss';
-import icon from '../../assets/heart.svg';
-import "src/variables.css";
+import icon from 'src/assets/heart.svg';
 
 export const NotificationStyledBanner: React.FC<{}> = () => {
     return (

@@ -1,3 +1,4 @@
+import { BodyText } from "src/styles/fonts";
 import styles from "./FormTextField.module.scss";
 
 
@@ -6,7 +7,7 @@ export const FormTextField: React.FC<{ label?: string, placeHolder?: string }> =
 ) => {
     return (
         <div className={styles.field}>
-            <label>{label}</label>
+            <label><BodyText>{label}</BodyText></label>
             <input type="text"
                 className={styles.formInput}
                 placeholder={placeHolder}

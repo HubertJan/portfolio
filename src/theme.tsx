@@ -30,9 +30,9 @@ export const theme: DefaultTheme = {
       lineHeight: 'var(--heading2-font-height)',
     },
     subHeading2: {
-      fontSize: 'var(--subHeading2-font-size)',
-      fontWeight: 'var(--subHeading2-font-weight)',
-      lineHeight: 'var(--subHeading2-font-height)',
+      fontSize: 'var(--subheading2-font-size)',
+      fontWeight: 'var(--subheading2-font-weight)',
+      lineHeight: 'var(--subheading2-font-height)',
     },
     heading3: {
       fontSize: 'var(--heading3-font-size)',

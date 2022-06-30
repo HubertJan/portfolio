@@ -1,19 +1,43 @@
+import { styled } from "goober";
+import chatIcon from 'src/assets/chat.svg';
+import { Heading2Text, Heading3Text, SubHeading2Text, SubHeading3Text } from "src/styles/fonts";
 import { CustomButton } from "../CustomButton/CustomButton";
 import { FormTextArea } from "../FormTextArea/FormTextArea";
 import { FormTextField } from "../FormTextField/FormTextField";
 import { StandardContainer } from "../StandardContainer";
-import styles from "./FormContainer.module.scss";
+import { TextButton } from "../TextButton";
+
+const FormContent = styled('div') <{
+}>`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+`;
+
+const TitleRow = styled('div') <{
+}>`
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 32px;
+`;
+
+const Icon = styled('img')`
+    width: 49px;
+    height: 49px;
+`;
 
 export const ContactForm: React.FC<{
 }> = () => {
     return (
-        <div className={styles.contactContainer}>
             <StandardContainer >
-                <div className={styles.formContent}>
-                    <div className={styles.formTitle}>
-                        <div>icon</div>
-                        <h1 className={styles.formTitleText}>Schreibt mir direkt.</h1>
-                    </div>
+                <FormContent>
+                    <TitleRow>
+                        <Icon src={chatIcon} />
+                        <SubHeading3Text>Schreibt mir direkt.</SubHeading3Text>
+                    </TitleRow>
                     <FormTextField
                         label="Name"
                         placeHolder="Max Mustermann"
@@ -26,9 +50,9 @@ export const ContactForm: React.FC<{
                         label="Nachricht"
                         placeHolder="Ich möchte mit dir arbeiten."
                     />
-                    <CustomButton label="Kontaktieren" />
-                </div>
+                    <TextButton label="Kontaktieren"
+                    backgroundColor="red" />
+                </FormContent>
             </StandardContainer>
-        </div>
     );
 }

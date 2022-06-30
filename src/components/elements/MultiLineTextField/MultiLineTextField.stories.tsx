@@ -1,5 +1,5 @@
 import { ComponentMeta } from "@storybook/react";
-import { LabeledTextField } from "./LabeledTextField";
+import { MultiLineTextField } from "./MultiLineTextField";
 
 
 
@@ -8,13 +8,13 @@ export default {
     * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
     * to learn how to generate automatic titles
     */
-    title: 'LabeledTextField',
-    component: LabeledTextField,
-} as ComponentMeta<typeof LabeledTextField>;
+    title: 'MultiLineTextField',
+    component: MultiLineTextField,
+} as ComponentMeta<typeof MultiLineTextField>;
 
 
 export const Primary = () => {
     return (
-        <LabeledTextField label="Name" placeHolder="Obi-Wan" />
+        <MultiLineTextField />
     )
 };

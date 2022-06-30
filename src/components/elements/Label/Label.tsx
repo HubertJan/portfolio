@@ -4,7 +4,7 @@ const StyledLabel = styled('label')`
     font-style: normal;
     font-weight: 400;
     font-size: ${((props) => props.theme.fonts.normalText.fontSize)};
-    line-height: 26px;
+    line-height: ${((props) => props.theme.fonts.normalText.lineHeight)};
     margin-bottom: 4px;
 `;
 

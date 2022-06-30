@@ -1,5 +1,6 @@
 import { styled } from "goober";
 import chatIcon from 'src/assets/chat.svg';
+import { PrimaryButton } from "src/components/elements/Button/Button";
 import { MultiLineTextField } from "src/components/elements/MultiLineTextField/MultiLineTextField";
 import { StandardContainer } from "src/components/elements/StandardContainer/StandardContainer";
 import { TextField } from "src/components/elements/TextField/TextField";
@@ -48,8 +49,10 @@ export const ContactForm: React.FC<{
                 <Labeled label="Nachricht">
                     <MultiLineTextField placeHolder="Ich möchte mit dir arbeiten." />
                 </Labeled>
-                <TextButton label="Kontaktieren"
-                    backgroundColor="red" />
+                <div>
+                    <PrimaryButton label="Kontaktieren"
+                    />
+                </div>
             </FormContent>
         </StandardContainer>
     );

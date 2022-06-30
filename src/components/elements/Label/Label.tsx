@@ -5,7 +5,7 @@ const StyledLabel = styled('label')`
     font-weight: 400;
     font-size: ${((props) => props.theme.fonts.normalText.fontSize)};
     line-height: ${((props) => props.theme.fonts.normalText.lineHeight)};
-    margin-bottom: 4px;
+    margin-bottom: 8px;
 `;
 
 export const Label: React.FC<{ text: string }> = (

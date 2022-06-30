@@ -2,7 +2,7 @@ import { DefaultTheme, styled } from "goober";
 import { useTheme } from "src";
 import { ButtonText } from "src/styles/fonts";
 
-interface ButtonStyling {
+export interface ButtonStyling {
     color?: string,
     hoverColor?: string;
     hoverBackgroundColor?: string;
@@ -43,14 +43,19 @@ interface TextButtonInterface extends ButtonStyling {
     onClick?: () => void,
 }
 
-export function getPrimaryStylingBy(theme: DefaultTheme): ButtonStyling{
+export function getPrimaryStylingBy(theme: DefaultTheme): ButtonStyling {
     return {
         color: theme.colors.onPrimary,
         hoverColor: theme.colors.background,
         hoverBackgroundColor: theme.colors.primaryVariants[50],
-        backgroundColor:theme.colors.primary,
+        backgroundColor: theme.colors.primary,
         shouldHover: true,
     };
+}
+
+export function usePrimaryButtonStyling(): ButtonStyling {
+    const theme = useTheme();
+    return getPrimaryStylingBy(theme);
 }
 
 export const Button: React.FC<
@@ -69,4 +74,12 @@ export const Button: React.FC<
             <ButtonText>{label}</ButtonText>
         </StyledButton>
     );
+}
+
+export const PrimaryButton: React.FC<{ label: string }> = (
+    { label }
+) => {
+    const theme = useTheme();
+    const style = getPrimaryStylingBy(theme);
+    return <Button {...style} label={label} />
 }

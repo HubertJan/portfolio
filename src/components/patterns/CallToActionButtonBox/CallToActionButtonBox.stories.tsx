@@ -20,7 +20,7 @@ export const Primary = () => {
             label="E-Mail kopieren"
             icon={emailIcon}
             altIcon="Email"
-    onClick={() => {}}
-            />
+            onClick={() => { }}
+        />
     )
 };

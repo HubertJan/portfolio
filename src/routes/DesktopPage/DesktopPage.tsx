@@ -1,16 +1,16 @@
 import styles from "./MainPage.module.scss";
-import { FillScreenContainer } from "src/components/FillScreenContainer/FillScreenContainer";
 
 import backgroundImage from "src/assets/galaxy.jpg";
-import { SliderList } from "src/routes/DesktopPage/components/SliderList/SliderList";
-import { NavigationBar } from "src/components/NavigationBar/NavigationBar";
-import { NavigationMenuTitle } from "src/components/NavigationMenuTitle/NavigationMenuTitle";
+import { SliderList } from "src/components/blocks/SliderList/SliderList";
 import { useSliderController } from "src/hooks/useSliderController";
 import { AboutMeSlide } from "./slides/AboutMeSlide";
 import { SkillsSlide } from "./slides/SkillsSlide";
 import { ProjectsSlide } from "./slides/ProjectsSlide";
 import { ContactSlide } from "./slides/ContactSlide";
-import { NavigationButton } from "./components/NavigationButton";
+import { NavigationButton } from "../../components/elements/NavigationButton";
+import { FillScreenContainer } from "src/components/elements/FillScreenContainer/FillScreenContainer";
+import { NavigationMenuTitle } from "src/components/elements/NavigationMenuTitle/NavigationMenuTitle";
+import { NavigationBar } from "src/components/elements/NavigationBar/NavigationBar";
 
 
 export const DesktopPage: React.FC<{}> = () => {

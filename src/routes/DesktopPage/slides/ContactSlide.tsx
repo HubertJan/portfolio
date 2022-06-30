@@ -1,15 +1,15 @@
 import { Heading2Text, SubHeading3Text } from "src/styles/fonts";
-import { StandardContainer } from "../../../components/StandardContainer";
-import { StandardSlide } from "../components/StandardSlide";
+import { StandardSlide } from "../../../components/elements/StandardSlide";
 
 import chatIcon from 'src/assets/chat.svg';
 import emailIcon from 'src/assets/email.svg';
 import { styled } from "goober";
-import { TextButton } from "src/components/TextButton";
+import { TextButton } from "src/components/elements/TextButton";
 import { useTheme } from "src";
-import { Overlay } from "src/components/Overlay/Overlay";
 import { useState } from "react";
-import { ContactForm } from "src/components/ContactForm/ContactForm";
+import { ContactForm } from "src/components/blocks/ContactForm/ContactForm";
+import { Overlay } from "src/components/elements/Overlay/Overlay";
+import { StandardContainer } from "src/components/elements/StandardContainer/StandardContainer";
 
 const CallToActionContainer = styled(StandardContainer)`
     display: flex;

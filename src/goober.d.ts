@@ -6,10 +6,16 @@ interface FontStyle {
     lineHeight: string;
 }
 
+interface ColorVariants {
+    500: string;
+    50: string;
+}
+
 declare module 'goober' {
     export interface DefaultTheme {
         colors: {
             primary: string;
+            primaryVariants: ColorVariants;
             secondary: string;
             secondaryAlt: string;
             background: string;

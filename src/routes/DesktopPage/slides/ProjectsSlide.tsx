@@ -1,10 +1,10 @@
 import { styled } from "goober";
 
 import javascriptIcon from "src/assets/javascript.png";
+import { AppIconButton, AppIconRow } from "src/components/elements/AppIconButton";
+import { StandardSlide } from "src/components/elements/StandardSlide";
 
-import { AppIconButton, AppIconRow } from "../components/AppIconButton";
 import { Heading2Text } from "src/styles/fonts";
-import { StandardSlide } from "../components/StandardSlide";
 
 
 export const ProjectsSlide: React.FC<{}> = () => {

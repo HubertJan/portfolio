@@ -3,7 +3,7 @@ import { Heading2Text, SubHeading3Text } from "src/styles/fonts";
 
 import germanyMap from 'src/assets/germany.svg';
 import { SecondaryColorSpan } from "src/styles/color";
-import { StandardContainer } from "../../../components/StandardContainer";
+import { StandardContainer } from "src/components/elements/StandardContainer/StandardContainer";
 
 const Content = styled('div')`
     height: 100%;

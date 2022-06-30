@@ -4,12 +4,9 @@ import pythonIcon from "src/assets/python.png";
 import reactjsIcon from "src/assets/reactjs.png";
 import flutterIcon from "src/assets/flutter.png";
 
-import { AppIconButton, AppIconRow, AppIconRows } from "../components/AppIconButton";
+import { AppIconButton, AppIconRow, AppIconRows } from "../../../components/elements/AppIconButton";
 import { Heading2Text } from "src/styles/fonts";
-import { StandardSlide } from "../components/StandardSlide";
-import { Overlay } from "src/components/Overlay/Overlay";
-import { ContactForm } from "src/components/ContactForm/ContactForm";
-import { useState } from "react";
+import { StandardSlide } from "../../../components/elements/StandardSlide";
 
 
 const AppIconSlide = styled('div')`

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FillScreenContainer } from "src/components/FillScreenContainer/FillScreenContainer";
 
-import { NotificationStyledBanner } from "./components/NotificationStyledBanner/NotificationStyledBanner";
 
 import styles from './HomePage.module.scss';
 import backgroundImage from "src/assets/background_image.jpg";
+import { FillScreenContainer } from "src/components/elements/FillScreenContainer/FillScreenContainer";
+import { NotificationStyledBanner } from "src/components/patterns/NotificationStyledBanner/NotificationStyledBanner";
 
 function getWindowDimensions() {
     const { innerWidth: width, innerHeight: height } = window;

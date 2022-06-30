@@ -1,11 +1,10 @@
 import { styled } from "goober";
 import chatIcon from 'src/assets/chat.svg';
-import { Heading2Text, Heading3Text, SubHeading2Text, SubHeading3Text } from "src/styles/fonts";
-import { CustomButton } from "../CustomButton/CustomButton";
-import { FormTextArea } from "../FormTextArea/FormTextArea";
-import { FormTextField } from "../FormTextField/FormTextField";
-import { StandardContainer } from "../StandardContainer";
-import { TextButton } from "../TextButton";
+import { StandardContainer } from "src/components/elements/StandardContainer/StandardContainer";
+import { FormTextArea } from "src/components/patterns/FormTextArea/FormTextArea";
+import { FormTextField } from "src/components/patterns/FormTextField/FormTextField";
+import { SubHeading3Text } from "src/styles/fonts";
+import { TextButton } from "../../elements/TextButton";
 
 const FormContent = styled('div') <{
 }>`

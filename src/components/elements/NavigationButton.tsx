@@ -1,5 +1,5 @@
 import { useTheme } from "src";
-import { TextButton } from "src/components/TextButton";
+import { TextButton } from "./TextButton";
 
 export const NavigationButton: React.FC<{
     label: string,

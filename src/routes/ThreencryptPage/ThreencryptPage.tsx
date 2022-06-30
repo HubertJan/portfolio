@@ -1,7 +1,6 @@
-import { NavigationBar } from "src/components/NavigationBar/NavigationBar";
-
 import { styled } from "goober";
 import { useNavigate } from "react-router-dom";
+import { NavigationBar } from "src/components/elements/NavigationBar/NavigationBar";
 
 const NavigationBackButton = styled('button')`
     align-self: center;

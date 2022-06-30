@@ -1,8 +1,8 @@
 
 import React, { useRef } from "react";
+import { CurrentSlideIndicator } from "src/components/elements/CurrentSlideIndicator/CurrentSlideIndicator";
 
 import { SliderControllerProviderInterface } from "src/hooks/useSliderController";
-import { CurrentSlideIndicator } from "../CurrentSlideIndicator/CurrentSlideIndicator";
 import styles from "./SliderList.module.scss";
 
 

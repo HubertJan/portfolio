@@ -116,7 +116,7 @@ export const ProjectHeader: React.FC<{
         return (
             <HeaderPart backgroundColor={backgroundColor}>
                 <HeaderSection>
-                    <SubTitleHeading>PROJECT</SubTitleHeading>
+                    <SubTitleHeading>PROJEKT</SubTitleHeading>
                     <MainDescription>
                         <HeadingText>
                             {title}
@@ -126,7 +126,9 @@ export const ProjectHeader: React.FC<{
                     <ItemsRow>
                         <StyledColumn>
                             <SubTitleHeading>Genutzte Technologien</SubTitleHeading>
-                            <Row> {tags.map((tagName) => <Tag label={tagName} backgroundColor="rgba(255,255,255,0.8)" color="#14C1D5" />)}</Row>
+                            <Row> 
+                                {tags.map((tagName) => <Tag label={tagName} backgroundColor="rgba(255,255,255,0.8)" color={backgroundColor} />)}
+                            </Row>
                         </StyledColumn>
                         <ButtonRow>
                             {buttons.map((e) => e)}

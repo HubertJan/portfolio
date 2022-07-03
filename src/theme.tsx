@@ -17,57 +17,57 @@ export const theme: DefaultTheme = {
     body: {
       fontSize: 'var(--body-font-size)',
       fontWeight: 'var(--body-font-weight)',
-      lineHeight: 'var(--body-font-height)',
+      lineHeight: 'var(--body-line-height)',
     },
     heading: {
       fontSize: 'var(--heading-font-size)',
       fontWeight: 'var(--heading-font-weight)',
-      lineHeight: 'var(--heading-font-height)',
+      lineHeight: 'var(--heading-line-height)',
     },
     heading2: {
       fontSize: 'var(--heading2-font-size)',
       fontWeight: 'var(--heading2-font-weight)',
-      lineHeight: 'var(--heading2-font-height)',
+      lineHeight: 'var(--heading2-line-height)',
     },
     subHeading2: {
       fontSize: 'var(--subheading2-font-size)',
       fontWeight: 'var(--subheading2-font-weight)',
-      lineHeight: 'var(--subheading2-font-height)',
+      lineHeight: 'var(--subheading2-line-height)',
     },
     heading3: {
       fontSize: 'var(--heading3-font-size)',
       fontWeight: 'var(--heading3-font-weight)',
-      lineHeight: 'var(--heading3-font-height)',
+      lineHeight: 'var(--heading3-line-height)',
     },
     subHeading3: {
       fontSize: 'var(--subheading3-font-size)',
       fontWeight: 'var(--subheading3-font-weight)',
-      lineHeight: 'var(--subheading3-font-height)',
+      lineHeight: 'var(--subheading3-line-height)',
     },
     button: {
       fontSize: 'var(--button-font-size)',
       fontWeight: 'var(--button-font-weight)',
-      lineHeight: 'var(--button-font-height)',
+      lineHeight: 'var(--button-line-height)',
     },
     loneSubHeading: {
       fontSize: 'var(--lone-subheading-font-size)',
       fontWeight: 'var(--lone-subheading-font-weight)',
-      lineHeight: 'var(--lone-subheading-font-height)',
+      lineHeight: 'var(--lone-subheading-line-height)',
     },
     subTitleHeading: {
       fontSize: 'var(--subtitle-heading-font-size)',
       fontWeight: 'var(--subtitle-heading-font-weight)',
-      lineHeight: 'var(--subtitle-heading-font-height)',
+      lineHeight: 'var(--subtitle-heading-line-height)',
     },
     normalText: {
       fontSize: 'var(--text-font-size)',
       fontWeight: 'var(--text-font-weight)',
-      lineHeight: 'var(--text-font-height)',
+      lineHeight: 'var(--text-line-height)',
     },
     smallText: {
       fontSize: 'var(--small-text-font-size)',
       fontWeight: 'var(--small-text-font-weight)',
-      lineHeight: 'var(--small-text-font-height)',
+      lineHeight: 'var(--small-text-line-height)',
     },
   }
 };

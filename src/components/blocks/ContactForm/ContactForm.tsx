@@ -4,8 +4,8 @@ import { PrimaryButton } from "src/components/elements/Button/Button";
 import { MultiLineTextField } from "src/components/elements/MultiLineTextField/MultiLineTextField";
 import { StandardContainer } from "src/components/elements/StandardContainer/StandardContainer";
 import { TextField } from "src/components/elements/TextField/TextField";
-import { Labeled } from "src/components/patterns/Labeled/Labeled";
-import LabeledTextFieldStories from "src/components/patterns/Labeled/Labeled.stories";
+import { FieldLabeled } from "src/components/patterns/FieldLabeled/FieldLabeled";
+import LabeledTextFieldStories from "src/components/patterns/FieldLabeled/FieldLabeled.stories";
 import { SubHeading3Text } from "src/styles/fonts";
 import { TextButton } from "../../elements/TextButton";
 
@@ -40,15 +40,15 @@ export const ContactForm: React.FC<{
                     <Icon src={chatIcon} />
                     <SubHeading3Text>Schreibt mir direkt.</SubHeading3Text>
                 </TitleRow>
-                <Labeled label="Name">
+                <FieldLabeled label="Name">
                     <TextField placeHolder="Max Mustermann" />
-                </Labeled>
-                <Labeled label="Email">
+                </FieldLabeled>
+                <FieldLabeled label="Email">
                     <TextField placeHolder="max@mustermann.de" />
-                </Labeled>
-                <Labeled label="Nachricht">
+                </FieldLabeled>
+                <FieldLabeled label="Nachricht">
                     <MultiLineTextField placeHolder="Ich möchte mit dir arbeiten." />
-                </Labeled>
+                </FieldLabeled>
                 <div>
                     <PrimaryButton label="Kontaktieren"
                     />

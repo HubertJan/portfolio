@@ -1,7 +1,7 @@
 import { ComponentMeta } from "@storybook/react";
 import { MultiLineTextField } from "src/components/elements/MultiLineTextField/MultiLineTextField";
 import { TextField } from "src/components/elements/TextField/TextField";
-import { Labeled } from "./Labeled";
+import { FieldLabeled } from "./FieldLabeled";
 
 
 
@@ -10,26 +10,26 @@ export default {
     * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
     * to learn how to generate automatic titles
     */
-    title: 'Labeled',
-    component: Labeled,
-} as ComponentMeta<typeof Labeled>;
+    title: 'FieldLabeled',
+    component: FieldLabeled,
+} as ComponentMeta<typeof FieldLabeled>;
 
 
 export const LabeledTextField = () => {
     return (
-        <Labeled label="Name">
+        <FieldLabeled label="Name">
             <TextField
                 placeHolder="Obi-Wan" />
-        </Labeled>
+        </FieldLabeled>
     )
 };
 
 export const LabeledMultiLineTextField = () => {
     return (
-        <Labeled label="Name">
+        <FieldLabeled label="Name">
             <MultiLineTextField 
                 placeHolder="Obi-Wan" />
-        </Labeled>
+        </FieldLabeled>
     )
 };
 

@@ -8,7 +8,7 @@ const StyledLabel = styled('label')`
     margin-bottom: 8px;
 `;
 
-export const Label: React.FC<{ text: string }> = (
+export const FieldLabel: React.FC<{ text: string }> = (
     { text }
 ) => {
     return (

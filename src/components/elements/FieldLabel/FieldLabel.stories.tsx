@@ -1,6 +1,5 @@
 import { ComponentMeta } from "@storybook/react";
-import { Label } from "./Label";
-
+import { FieldLabel } from "./FieldLabel";
 
 
 export default {
@@ -8,13 +7,13 @@ export default {
     * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
     * to learn how to generate automatic titles
     */
-    title: 'Label',
-    component: Label,
-} as ComponentMeta<typeof Label>;
+    title: 'FieldLabel',
+    component: FieldLabel,
+} as ComponentMeta<typeof FieldLabel>;
 
 
 export const Primary = () => {
     return (
-        <Label text="hi" />
+        <FieldLabel text="hi" />
     )
 };

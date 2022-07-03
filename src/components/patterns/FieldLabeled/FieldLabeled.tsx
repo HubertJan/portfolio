@@ -1,5 +1,5 @@
 import { styled } from "goober";
-import { Label } from "src/components/elements/Label/Label";
+import { FieldLabel } from "src/components/elements/FieldLabel/FieldLabel";
 
 const Box = styled('div')`
     display: flex;
@@ -11,12 +11,12 @@ interface LabeledProps {
     children?: React.ReactNode,
 }
 
-export const Labeled: React.FC<LabeledProps> = (
+export const FieldLabeled: React.FC<LabeledProps> = (
     { label, children }
 ) => {
     return (
         <Box>
-            <Label text={label} />
+            <FieldLabel text={label} />
             {children}
         </Box>
     );

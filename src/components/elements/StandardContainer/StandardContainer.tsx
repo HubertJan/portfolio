@@ -1,11 +1,14 @@
 import { styled } from "goober";
 
-export interface StandardContainerProps {
+export interface StandardContainerProps extends React.HTMLAttributes<HTMLDivElement> {
     hasRoundedEdges?: boolean,
     backgroundColor?: string,
 };
 
-export const StandardContainer = styled("div") <StandardContainerProps>`
+export const StandardContainer = styled((
+    { hasRoundedEdges, backgroundColor, ...rest }
+        : StandardContainerProps) =>
+    <div {...rest} />)`
     color:  ${(props) => props.theme.colors.onBackground};
     background:  ${(props) =>
         props.backgroundColor ?? props.theme.colors.background

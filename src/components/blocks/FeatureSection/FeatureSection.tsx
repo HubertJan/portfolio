@@ -1,16 +1,9 @@
 import { styled } from "goober";
 import { ReactElement } from "react";
 import { useTheme } from "src";
+import { Section } from "src/components/elements/Section/Section";
 import { StandardContainer } from "src/components/elements/StandardContainer/StandardContainer";
 import { BodyText, Heading3Text, SubTitleHeading } from "src/styles/fonts";
-
-const Section = styled("div")`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 32px;
-    background-color: ${(props) => props.theme.colors.background};
-`;
 
 const Container = styled(StandardContainer)`
     display: inline-flex;
@@ -69,14 +62,15 @@ export const FeatureSection: React.FC<{
     paragraphs: ReactElement<typeof FeatureParagraph>[]
 }> = ({ paragraphs }) => {
     const theme = useTheme();
-    return (<Section>
-        <Container backgroundColor={theme.colors.onBackground}>
-            <Heading>
-                Funktion
-            </Heading>
-            <Features>
-                {paragraphs.map((paragraph) => paragraph)}
-            </Features>
-        </Container>
-    </Section>);
+    return (
+        <Section>
+            <Container backgroundColor={theme.colors.onBackground}>
+                <Heading>
+                    Funktion
+                </Heading>
+                <Features>
+                    {paragraphs.map((paragraph) => paragraph)}
+                </Features>
+            </Container>
+        </Section>);
 }

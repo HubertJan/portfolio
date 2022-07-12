@@ -9,6 +9,9 @@ const Container = styled(StandardContainer)`
     display: inline-flex;
     flex-direction: column;
     align-items: center;
+    width: 1000px;
+    margin-top: 128px;
+    margin-bottom: 128px;
 `;
 
 const Heading = styled(Heading3Text)`
@@ -24,14 +27,21 @@ const Features = styled("div")`
     flex-direction: row;
     gap: 32px;
     justify-content: center;
+
+    @media screen and (max-width: 1000px) {
+        flex-direction: column;
+
+    }
 `;
 
 const Feature = styled("div")`
     display: flex;
     flex-direction: column;
     color: ${(props) => props.theme.colors.background};
-    width: 300px;
     gap: 8px;
+    @media screen and (max-width: 1000px) {
+        width: auto;
+    }
 `;
 
 const Icon = styled("img")`
@@ -46,7 +56,6 @@ export const FeatureParagraph: React.FC<{
     altIcon: string,
 }> = ({ title, description, icon, altIcon
 }) => {
-
         return (
             <Feature>
                 <Icon src={icon} alt={altIcon} />

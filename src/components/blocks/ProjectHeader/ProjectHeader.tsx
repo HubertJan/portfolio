@@ -95,14 +95,16 @@ const Row = styled('div')`
     gap: 8px;
 `;
 
-export const ProjectHeader: React.FC<{
+export interface ProjectHeaderProps {
     title: string,
     description: string,
     backgroundColor: string,
     color: string,
     tags: string[],
     buttons: React.ReactNode[],
-}> = ({
+}
+
+export const ProjectHeader: React.FC<ProjectHeaderProps> = ({
     title,
     description,
     backgroundColor,

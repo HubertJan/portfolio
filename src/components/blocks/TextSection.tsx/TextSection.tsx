@@ -5,9 +5,14 @@ import { BodyText, Heading2Text } from "src/styles/fonts";
 import { theme } from "src/theme";
 
 export const Content = styled("div")`
-
-    width: 800px;
+    margin-top: 128px;
+    margin-bottom: 128px;
+    max-width: 1000px;
     color: ${(props) => theme.colors.background};
+`;
+
+const Heading2TextWithSpaceBelow = styled(Heading2Text)`
+    margin-bottom: 16px;
 `;
 
 export const TextSection: React.FC<{
@@ -18,7 +23,7 @@ export const TextSection: React.FC<{
     return (
         <Section backgroundColor={theme.colors.onBackground}>
             <Content>
-                <Heading2Text>{title}</Heading2Text>
+                <Heading2TextWithSpaceBelow>{title}</Heading2TextWithSpaceBelow>
                 <BodyText>{text}</BodyText>
             </Content>
         </Section>

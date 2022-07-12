@@ -1,10 +1,12 @@
 import { styled } from "goober";
+import { ReactElement } from "react";
 import { useTheme } from "src";
-import { Button } from "src/components/elements/Button/Button";
+import { FeatureParagraph, FeatureSection } from "src/components/blocks/FeatureSection/FeatureSection";
+import { ImagesSection } from "src/components/blocks/ImagesSection/ImagesSection";
+import { ProjectHeaderProps } from "src/components/blocks/ProjectHeader/ProjectHeader";
 import { NavigationBar } from "src/components/elements/NavigationBar/NavigationBar";
-import { Tag } from "src/components/elements/Tag/Tag";
-import { Heading2Text, HeadingText, SubHeading2Text, SubTitleHeading } from "src/styles/fonts";
-
+import emailIcon from 'src/assets/email.svg';
+import { TextSection } from "src/components/blocks/TextSection.tsx/TextSection";
 
 const Page = styled('div')`
     display: flex;
@@ -13,39 +15,47 @@ const Page = styled('div')`
 `;
 
 
-export const PortfolioProjectTemplate: React.FC<{}> = (
-) => {
-    const theme = useTheme();
 
-    return (
-        <Page>
-            <NavigationBar>
-                Zurück
-            </NavigationBar>
-{/*             <HeaderPart>
-                <HeaderSection>
-                    <SubTitleHeading>PROJECT</SubTitleHeading>
-                    <MainDescription>
-                        <HeadingText>
-                            3ncrypt
-                        </HeadingText>
-                        <Description>Ver- und Entschlüsselungs App für Android und iOS</Description>
-                    </MainDescription>
-                    <ItemsRow>
-                        <Tag label={"Flutter"} backgroundColor="rgba(255,255,255,0.8)" color="#14C1D5" />
-                        <ButtonRow>
-                            <Button label="Github"
-                                hoverBackgroundColor={theme.colors.primaryVariants[50]}
-                                hoverColor={theme.colors.background}
-                            />
-                            <Button label="Live Demo"
-                                hoverBackgroundColor={theme.colors.primaryVariants[50]}
-                                hoverColor={theme.colors.background}
-                            />
-                        </ButtonRow>
-                    </ItemsRow>
-                </HeaderSection>
-            </HeaderPart> */}
-        </Page>
-    );
-}
+export const PortfolioProjectTemplate: React.FC<{
+    projectHeader: ReactElement<ProjectHeaderProps>,
+    productImageUrls: string[],
+}> = (
+    {
+        projectHeader,
+        productImageUrls
+    }
+) => {
+        const theme = useTheme();
+
+        return (
+            <Page>
+                <NavigationBar>
+                    Zurück
+                </NavigationBar>
+                {projectHeader}
+                <ImagesSection
+                    imageUrls={productImageUrls}
+                />
+                <TextSection
+                    title="Motivation"
+                    text="Ursprünglich wurde 3ncrypt als Teil eines Schuleprojekts entwickelt. Die Aufgabe war es ein Tool zu entwickeln, zum Verschlüsseln von Text mithilfe von verschiedenen Algorithmen.
+                    Nach Fertigstellung des Projekts wurde die App nocheinmal erweitert und als vollständige Tool im Google Play Store veröffentlicht."
+                />
+                <FeatureSection
+                    paragraphs={[<FeatureParagraph
+                        title="12 Algorithmen"
+                        description="Du kannst in wenigen Sekunden direkt in der N26 App anfragen, ob ein Überziehungskredit für dich zur Verfügung steht. Erhalte bis zu 10.000 € und verwalte deinen Kredit direkt in der App – so kannst du jederzeit einsehen, wie viel du aktuell nutzt und was die täglichen Gebühren sind."
+                        icon={emailIcon}
+                        altIcon="email"
+                    />,
+                    <FeatureParagraph
+                        title="12 Algorithmen"
+                        description="Du kannst in wenigen Sekunden direkt in der N26 App anfragen, ob ein Überziehungskredit für dich zur Verfügung steht. Erhalte bis zu 10.000 € und verwalte deinen Kredit direkt in der App – so kannst du jederzeit einsehen, wie viel du aktuell nutzt und was die täglichen Gebühren sind."
+                        icon={emailIcon}
+                        altIcon="email"
+                    />
+                    ]}
+                />
+            </Page>
+        );
+    }

@@ -5,6 +5,10 @@ const Content = styled("div")`
     display: inline-block;
 
     padding: 16px;
+    @media screen and (max-width: 1000px) {
+        padding: 8px;
+    }
+
     &:hover{
         background-color: rgba(0,0,0,0.4);
     }

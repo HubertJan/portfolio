@@ -5,4 +5,7 @@ export const AppIconRows = styled('div')`
     flex-direction: column;
     align-items: flex-start;
     gap: 32px;
+    @media screen and (max-width: 1000px) {
+        gap: 0px;
+    }
 `;

@@ -18,8 +18,6 @@ export const StandardContainer = styled((
     @media screen {
         padding: 32px 32px;
     }
-    @media screen and (max-width: 1000px) {
-        padding: 16px 16px;
-    }
+
     display: inline-block;
 `;

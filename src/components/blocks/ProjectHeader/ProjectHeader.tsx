@@ -10,6 +10,8 @@ const HeaderPart = styled('div') <{ backgroundColor: string }>`
     display: flex;
     width: 100%;
     justify-content: center;
+    padding-top: 64px;
+    padding-bottom: 64px;
 `;
 
 const HeaderSection = styled('div')`
@@ -56,9 +58,9 @@ const Description = styled(SubHeading2Text)`
 
     }
 
-    @media screen and (max-width: 400px){
+/*     @media screen and (max-width: 400px){
         word-break: break-all;
-    }
+    } */
 `;
 
 const ItemsRow = styled("div")`

@@ -9,7 +9,7 @@ const Container = styled(StandardContainer)`
     display: inline-flex;
     flex-direction: column;
     align-items: center;
-    width: 1000px;
+    max-width: 1000px;
     margin-top: 128px;
     margin-bottom: 128px;
 `;

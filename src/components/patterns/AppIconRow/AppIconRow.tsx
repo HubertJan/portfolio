@@ -9,6 +9,6 @@ export const AppIconRow = styled('div')`
         gap: 32px;
     }
     @media screen and (max-width: 1000px) {
-        gap: 16px;
+        gap: 0px;
     }
 `;

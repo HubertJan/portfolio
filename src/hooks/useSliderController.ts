@@ -1,4 +1,5 @@
 import { time } from "console";
+import { off } from "process";
 import React, { useEffect, useRef, useState } from "react";
 
 function calculateCurrentPage(scrollableContainer: HTMLDivElement)
@@ -8,6 +9,7 @@ function calculateCurrentPage(scrollableContainer: HTMLDivElement)
 }
 
 function scrollToPageIndex(pageIndex: number, ref: HTMLDivElement, behavior: ScrollBehavior = "smooth") {
+    console.log(`scroll to page ${pageIndex}, value: ${ref.clientWidth * (pageIndex)}`);
     ref.scrollTo({
         left: ref.clientWidth * (pageIndex),
         behavior: behavior,
@@ -70,13 +72,16 @@ enum InputDevice {
     touch
 }
 
-function addDragSliderEventHandler(
-    sliderRef: React.RefObject<HTMLDivElement>, device: InputDevice,) {
-    const startEvent = device === InputDevice.mouse ? "mousedown" : "touchstart";
-    const moveEvent = device === InputDevice.mouse ? "mousemove" : "touchmove";
-    const stopEvent = device === InputDevice.mouse ? "mouseup" : "touchend";
-    sliderRef.current?.addEventListener(startEvent, (event) => {
-        let dragPoint = {
+
+function slideByDragEventStart(
+    sliderRef: React.RefObject<HTMLDivElement>,
+    startEvent: "mousedown" | "touchstart",
+    moveEvent: "mousemove" | "touchmove",
+    stopEvent: "mouseup" | "touchend",
+    minimumScrollSpeedToScrollToNextPage: number
+) {
+    return (event: MouseEvent | TouchEvent) => {
+        const dragPoint = {
             clientX: event instanceof TouchEvent ? event.touches[0].clientX : event.clientX,
             clientY: event instanceof TouchEvent ? event.touches[0].clientY : event.clientY,
             scrollLeft: sliderRef.current!.scrollLeft,
@@ -85,7 +90,7 @@ function addDragSliderEventHandler(
         let lastScrollPos = sliderRef.current!.scrollLeft;
         let lastScrollPosTimeStamp = new Date();
         let scrollSpeed = 0;
-        let speedMeasure = setInterval(() => {
+        const speedMeasure = setInterval(() => {
             let currentTime = new Date();
             let currentScrollPos = sliderRef.current!.scrollLeft;
             let timeDifference = currentTime.getMilliseconds() - lastScrollPosTimeStamp.getMilliseconds();
@@ -94,25 +99,23 @@ function addDragSliderEventHandler(
             lastScrollPos = sliderRef.current!.scrollLeft;
             lastScrollPosTimeStamp = new Date();
         }, 10);
-        let moveHandler = event instanceof TouchEvent ? (e: TouchEvent) => {
+        const moveHandler = event instanceof TouchEvent ? (e: TouchEvent) => {
             scrollByTouchDragging(e, dragPoint, sliderRef);
         } : (e: MouseEvent) => {
             scrollByMouseDragging(e, dragPoint, sliderRef);
         }
-        let removeAllListener = (_: MouseEvent | TouchEvent) => {
-            console.log("removed");
+        const removeAllListener = (_: MouseEvent | TouchEvent) => {
             sliderRef.current!.removeEventListener(
                 moveEvent,
                 moveHandler as any, // Type always fits
             );
             document.removeEventListener(stopEvent, removeAllListener);
-            sliderRef.current!.removeEventListener(stopEvent, removeAllListener);
-            let currentPageIndex = calculateCurrentPage(sliderRef.current!);
-            if (Math.abs(scrollSpeed) > 0) {
-                let nextPageIndex = scrollSpeed > 0 ? calculateCurrentPage(sliderRef.current!)! + 1 : currentPageIndex! - 1;
+            sliderRef.current!.removeEventListener(startEvent, removeAllListener);
+            const currentPageIndex = calculateCurrentPage(sliderRef.current!);
+            if (Math.abs(scrollSpeed) > minimumScrollSpeedToScrollToNextPage) {
+                const nextPageIndex = scrollSpeed > 0 ? calculateCurrentPage(sliderRef.current!)! + 1 : currentPageIndex! - 1;
                 scrollToPageIndex(nextPageIndex, sliderRef.current!);
             } else {
-                console.log(`Speed ${scrollSpeed * 1000}`);
                 scrollToPageIndex(currentPageIndex, sliderRef.current!);
             }
             clearTimeout(speedMeasure);
@@ -121,10 +124,21 @@ function addDragSliderEventHandler(
             moveEvent,
             moveHandler as any // Type always fits
         );
+
         document.addEventListener(stopEvent, removeAllListener);
         sliderRef.current!.addEventListener(startEvent, removeAllListener);
-    },
-    );
+    };
+}
+
+function addDragSliderEventHandler(
+    sliderRef: React.RefObject<HTMLDivElement>, device: InputDevice,) {
+    const isMouse = device === InputDevice.mouse;
+    const startEventName = isMouse ? "mousedown" : "touchstart";
+    const moveEventName = isMouse ? "mousemove" : "touchmove";
+    const stopEventName = isMouse ? "mouseup" : "touchend";
+    const minimumScrollSpeedForScrollToNextPage = isMouse ? 100000000000 : 0;
+    const startEvent = slideByDragEventStart(sliderRef, startEventName, moveEventName, stopEventName, minimumScrollSpeedForScrollToNextPage);
+    sliderRef.current?.addEventListener(startEventName, startEvent);
 }
 
 function useSlider(sliderRef: React.RefObject<HTMLDivElement>) {
@@ -161,11 +175,23 @@ export interface SliderControllerProviderInterface {
     pageIndex: number | undefined;
     scrollToPageIndex: (pageIndex: number) => void;
     sliderRef: React.RefObject<HTMLDivElement>;
+    isScrolling: boolean;
 }
 
 
 export function useSliderController(): SliderControllerProviderInterface {
     const sliderRef = useRef<HTMLDivElement>(null);
     const { pageIndex, scrollToPageIndex } = useSlider(sliderRef);
-    return { pageIndex: pageIndex, scrollToPageIndex: scrollToPageIndex, sliderRef: sliderRef };
+    const container = sliderRef.current;
+    let isScrolling = false;
+    if (container !== null) {
+        const difference = (container.scrollLeft % container.clientWidth) / container.clientWidth;
+        isScrolling = difference > 0.01 && difference < 0.99;
+    }
+    return {
+        pageIndex: pageIndex,
+        scrollToPageIndex: scrollToPageIndex,
+        sliderRef: sliderRef,
+        isScrolling: isScrolling,
+    };
 }

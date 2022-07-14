@@ -15,7 +15,7 @@ import { NavigationBar } from "src/components/elements/NavigationBar/NavigationB
 
 export const DesktopPage: React.FC<{}> = () => {
     const sliderController = useSliderController();
-    const { pageIndex, scrollToPageIndex } = sliderController;
+    const { pageIndex, scrollToPageIndex, isScrolling } = sliderController;
 
     return (
         <FillScreenContainer
@@ -52,8 +52,8 @@ export const DesktopPage: React.FC<{}> = () => {
                 sliderController={sliderController}
             >
                 <AboutMeSlide />
-                <SkillsSlide />
-                <ProjectsSlide />
+                <SkillsSlide isScrolling={isScrolling}/>
+                <ProjectsSlide isScrolling={isScrolling} />
                 <ContactSlide />
             </SliderList>
         </FillScreenContainer >

@@ -11,8 +11,14 @@ import { AppIconRows } from "src/components/patterns/AppIconRows/AppIconRows";
 import { AppIconRow } from "src/components/patterns/AppIconRow/AppIconRow";
 import { useNavigate } from "react-router-dom";
 
-export const SkillsSlide: React.FC<{}> = () => {
+export const SkillsSlide: React.FC<{ isScrolling?: boolean }> = ({ isScrolling = false }) => {
     const navigate = useNavigate();
+    const navigateTo = (route: string) => {
+        if (isScrolling) {
+            return;
+        }
+        navigate(route);
+    }
     return (
         <StandardSlide>
             <Heading2Text>Meine Skills</Heading2Text>
@@ -21,8 +27,8 @@ export const SkillsSlide: React.FC<{}> = () => {
                     <DesktopAppButton title={"Python"}
                         iconImage={pythonIcon}
                         backgroundColor={"#FFDA4E"}
-                        onClick={()=>{
-                            navigate("/threencrypt") 
+                        onClick={() => {
+                            navigateTo("/threencrypt")
                         }}
                     />
                     <DesktopAppButton title={"Flutter"}

@@ -5,8 +5,8 @@ import { Column } from "src/components/elements/Column/Column";
 import { Tag } from "src/components/elements/Tag/Tag";
 import { HeadingText, SubHeading2Text, SubTitleHeading } from "src/styles/fonts";
 
-const HeaderPart = styled('div') <{ backgroundColor: string }>`
-    background-color: ${(props) => props.backgroundColor};
+const HeaderPart = styled('div') <{ backgroundColorStyle: string }>`
+    background-color: ${(props) => props.backgroundColorStyle};
     display: flex;
     width: 100%;
     justify-content: center;
@@ -43,10 +43,16 @@ const MainDescription = styled('div')`
     align-items: center;
     padding-top: 64px;
     padding-bottom: 64px;
+    gap: 16px;
 
     @media screen and (max-width: 1000px) {
         flex-direction: column;
+    }
+`;
 
+const Title = styled(HeadingText)`
+    @media screen and (max-width: 1000px) {
+        text-align: center;
     }
 `;
 
@@ -55,7 +61,6 @@ const Description = styled(SubHeading2Text)`
 
     @media screen and (max-width: 1000px) {
         text-align: center;
-
     }
 
 /*     @media screen and (max-width: 400px){
@@ -110,35 +115,32 @@ export const ProjectHeader: React.FC<ProjectHeaderProps> = ({
     title,
     description,
     backgroundColor,
-    color,
     tags,
     buttons,
 }
 ) => {
-        const theme = useTheme();
-
-        return (
-            <HeaderPart backgroundColor={backgroundColor}>
-                <HeaderSection>
-                    <SubTitleHeading>PROJEKT</SubTitleHeading>
-                    <MainDescription>
-                        <HeadingText>
-                            {title}
-                        </HeadingText>
-                        <Description>{description}</Description>
-                    </MainDescription>
-                    <ItemsRow>
-                        <StyledColumn>
-                            <SubTitleHeading>Genutzte Technologien</SubTitleHeading>
-                            <Row> 
-                                {tags.map((tagName) => <Tag label={tagName} backgroundColor="rgba(255,255,255,0.8)" color={backgroundColor} />)}
-                            </Row>
-                        </StyledColumn>
-                        <ButtonRow>
-                            {buttons.map((e) => e)}
-                        </ButtonRow>
-                    </ItemsRow>
-                </HeaderSection>
-            </HeaderPart>
-        );
-    };
+    return (
+        <HeaderPart backgroundColorStyle={backgroundColor}>
+            <HeaderSection>
+                <SubTitleHeading>PROJEKT</SubTitleHeading>
+                <MainDescription>
+                    <Title>
+                        {title}
+                    </Title>
+                    <Description>{description}</Description>
+                </MainDescription>
+                <ItemsRow>
+                    <StyledColumn>
+                        <SubTitleHeading>Genutzte Technologien</SubTitleHeading>
+                        <Row>
+                            {tags.map((tagName) => <Tag label={tagName} backgroundColor="rgba(255,255,255,0.8)" color={backgroundColor} />)}
+                        </Row>
+                    </StyledColumn>
+                    <ButtonRow>
+                        {buttons.map((e) => e)}
+                    </ButtonRow>
+                </ItemsRow>
+            </HeaderSection>
+        </HeaderPart>
+    );
+};

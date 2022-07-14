@@ -10,12 +10,16 @@ import { HomePage } from './routes/HomePage/HomePage';
 import { DesktopPage } from './routes/DesktopPage/DesktopPage';
 import { ThreencryptPage } from './routes/ThreencryptPage/ThreencryptPage';
 import { theme } from './theme';
+import { shouldForwardProp } from 'goober/should-forward-prop';
+import { VisualSortPage } from './routes/VisualSortPage/VisualSortPage';
 
 
 const ThemeContext = createContext(theme);
 export const useTheme = () => useContext(ThemeContext);
 
-setup(React.createElement, undefined, useTheme);
+setup(React.createElement, undefined, useTheme, shouldForwardProp((prop) => {
+  return !prop.endsWith("Style");
+}))
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -26,6 +30,7 @@ root.render(
       <Route path="/" element={<HomePage />} />
       <Route path="/main" element={<DesktopPage />} />
       <Route path="/threencrypt" element={<ThreencryptPage />} />
+      <Route path="/visualSort" element={<VisualSortPage />} />
     </Routes>
   </Router>
 );

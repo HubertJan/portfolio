@@ -10,26 +10,26 @@ interface ButtonStyling {
 }
 
 const Button = styled("div") <{
-    color?: string,
-    hoverColor?: string;
-    hoverBackgroundColor?: string;
-    backgroundColor?: string;
-    shouldHover: boolean
+    colorStyle?: string,
+    hoverColorStyle?: string;
+    hoverBackgroundColorStyle?: string;
+    backgroundColorStyle?: string;
+    shouldHoverStyle: boolean
 }>`
     padding: 8px 16px;
-    color:  ${(props) => props.color ?? props.theme.colors.onBackground};
-    ${(props) => props.backgroundColor === undefined ? "" :
+    color:  ${(props) => props.colorStyle ?? props.theme.colors.onBackground};
+    ${(props) => props.backgroundColorStyle === undefined ? "" :
     `
-    background: ${props.backgroundColor};
+    background: ${props.backgroundColorStyle};
     border-radius: 32px;
      `
     }
 
-    ${(props) => props.shouldHover ? `
+    ${(props) => props.shouldHoverStyle ? `
     &:hover {
-        background-color: ${props.hoverBackgroundColor ?? props.theme.colors.background};
+        background-color: ${props.hoverBackgroundColorStyle ?? props.theme.colors.background};
         border-radius: 32px;
-        color:  ${props.hoverColor ?? props.theme.colors.onBackground};
+        color:  ${props.hoverColorStyle ?? props.theme.colors.onBackground};
         cursor: pointer;
     }
     ` : ""
@@ -47,11 +47,11 @@ export const TextButton: React.FC<
     return (
         <Button
             onClick={onClick}
-            color={color}
-            hoverColor={hoverColor}
-            backgroundColor={backgroundColor}
-            hoverBackgroundColor={hoverBackgroundColor}
-            shouldHover={shouldHover}
+            colorStyle={color}
+            hoverColorStyle={hoverColor}
+            backgroundColorStyle={backgroundColor}
+            hoverBackgroundColorStyle={hoverBackgroundColor}
+            shouldHoverStyle={shouldHover}
         >
             <ButtonText>{label}</ButtonText>
         </Button>

@@ -11,10 +11,10 @@ export const CurrentSlideIndicator: React.FC<{
         let indicators = [];
         for (let pageIndex = 0; pageIndex < pageCount; pageIndex++) {
             if (pageIndex === currentIndex) {
-                indicators.push(<div className={styles.currentSlideIndicator}></div>);
+                indicators.push(<div className={styles.currentSlideIndicator} key={`current-${pageIndex}`}></div>);
                 continue;
             }
-            indicators.push((<div onClick={() => {onIndicatorClick(pageIndex)}} className={styles.someIndicator}></div>));
+            indicators.push((<div key={`normal-${pageIndex}`} onClick={() => {onIndicatorClick(pageIndex)}} className={styles.someIndicator}></div>));
         }
         return (<div className={styles.indicators}>
             {

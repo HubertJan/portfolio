@@ -17,7 +17,7 @@ const CallToActionContainer = styled(StandardContainer)`
     align-items: center;
     justify-content: space-between;
     gap: 16px;
-    width: 100%;
+    width: 90%;
     @media screen {
         gap: 8px;
     }

@@ -4,35 +4,32 @@ import pythonIcon from "src/assets/python.png";
 import reactjsIcon from "src/assets/reactjs.png";
 import flutterIcon from "src/assets/flutter.png";
 
-import { AppIconButton, AppIconRow, AppIconRows } from "../../../components/elements/AppIconButton";
 import { Heading2Text } from "src/styles/fonts";
 import { StandardSlide } from "../../../components/elements/StandardSlide";
-
-
-const AppIconSlide = styled('div')`
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-`;
+import { DesktopAppButton } from "src/components/elements/DesktopAppButton/DesktopAppButton";
+import { AppIconRows } from "src/components/patterns/AppIconRows/AppIconRows";
+import { AppIconRow } from "src/components/patterns/AppIconRow/AppIconRow";
+import { useNavigate } from "react-router-dom";
 
 export const SkillsSlide: React.FC<{}> = () => {
+    const navigate = useNavigate();
     return (
         <StandardSlide>
-            <Heading2Text>Meine Projekte</Heading2Text>
+            <Heading2Text>Meine Skills</Heading2Text>
             <AppIconRows>
                 <AppIconRow>
-                    <AppIconButton title={"Python"}
+                    <DesktopAppButton title={"Python"}
                         iconImage={pythonIcon}
                         backgroundColor={"#FFDA4E"}
+                        onClick={()=>{
+                            navigate("/threencrypt") 
+                        }}
                     />
-                    <AppIconButton title={"Flutter"}
+                    <DesktopAppButton title={"Flutter"}
                         backgroundColor={"var(--background-contrast-color)"}
                         iconImage={flutterIcon}
                     />
-                    <AppIconButton title={"React"}
+                    <DesktopAppButton title={"React"}
                         iconImage={reactjsIcon}
                         backgroundColor={"#20232a"}
                     />

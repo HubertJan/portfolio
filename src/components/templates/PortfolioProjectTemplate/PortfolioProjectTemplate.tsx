@@ -7,6 +7,7 @@ import { ProjectHeaderProps } from "src/components/blocks/ProjectHeader/ProjectH
 import { NavigationBar } from "src/components/elements/NavigationBar/NavigationBar";
 import emailIcon from 'src/assets/email.svg';
 import { TextSection } from "src/components/blocks/TextSection.tsx/TextSection";
+import { useNavigate } from "react-router-dom";
 
 const Page = styled('div')`
     display: flex;
@@ -25,12 +26,11 @@ export const PortfolioProjectTemplate: React.FC<{
         productImageUrls
     }
 ) => {
-        const theme = useTheme();
-
+        const navigate = useNavigate();
         return (
             <Page>
                 <NavigationBar>
-                    Zurück
+                    <a onClick={() => { navigate(-1) }}>Schließen</a>
                 </NavigationBar>
                 {projectHeader}
                 <ImagesSection

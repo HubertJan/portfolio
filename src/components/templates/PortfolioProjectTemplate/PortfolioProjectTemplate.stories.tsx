@@ -16,6 +16,7 @@ export const Primary = () => {
   const theme = useTheme();
   return (
     <PortfolioProjectTemplate
+    behindNavigationBarColor={theme.colors.primaryVariants[500]}
       projectHeader={
         <ProjectHeader
           title="3ncrypt"

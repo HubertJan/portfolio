@@ -8,11 +8,17 @@ function calculateCurrentPage(scrollableContainer: HTMLDivElement)
     return Math.round(scrollableContainer.scrollLeft / scrollableContainer.clientWidth);
 }
 
-function scrollToPageIndex(pageIndex: number, ref: HTMLDivElement, behavior: ScrollBehavior = "smooth") {
-    console.log(`scroll to page ${pageIndex}, value: ${ref.clientWidth * (pageIndex)}`);
+function scrollToPageIndex(pageIndex: number, ref: HTMLDivElement) {
     ref.scrollTo({
         left: ref.clientWidth * (pageIndex),
-        behavior: behavior,
+        behavior: "smooth",
+    });
+}
+
+function scrollToPageIndexWithoutDelay(pageIndex: number, ref: HTMLDivElement) {
+    ref.scrollTo({
+        left: ref.clientWidth * (pageIndex),
+        behavior: "auto",
     });
 }
 
@@ -146,7 +152,7 @@ function useSlider(sliderRef: React.RefObject<HTMLDivElement>) {
     const [hasBeenResized, setHasBeenResized] = useState(false);
     if (hasBeenResized) {
         setHasBeenResized(false);
-        currentPageIndex && scrollToPageIndex(currentPageIndex, sliderRef.current!, "auto");
+        currentPageIndex && scrollToPageIndex(currentPageIndex, sliderRef.current!);
     }
     useEffect(() => {
         addDragSliderEventHandler(sliderRef, InputDevice.mouse);
@@ -166,7 +172,10 @@ function useSlider(sliderRef: React.RefObject<HTMLDivElement>) {
         scrollToPageIndex:
             (pageIndex: number) => {
                 sliderRef.current != null && scrollToPageIndex(pageIndex, sliderRef.current);
-            }
+            },
+        setPageIndex: (pageIndex: number) => {
+            sliderRef.current != null && scrollToPageIndexWithoutDelay(pageIndex, sliderRef.current);
+        },
     };
 }
 
@@ -176,12 +185,13 @@ export interface SliderControllerProviderInterface {
     scrollToPageIndex: (pageIndex: number) => void;
     sliderRef: React.RefObject<HTMLDivElement>;
     isScrolling: boolean;
+    setPageIndex: (pageIndex: number) => void;
 }
 
 
 export function useSliderController(): SliderControllerProviderInterface {
     const sliderRef = useRef<HTMLDivElement>(null);
-    const { pageIndex, scrollToPageIndex } = useSlider(sliderRef);
+    const { pageIndex, scrollToPageIndex, setPageIndex } = useSlider(sliderRef);
     const container = sliderRef.current;
     let isScrolling = false;
     if (container !== null) {
@@ -193,5 +203,6 @@ export function useSliderController(): SliderControllerProviderInterface {
         scrollToPageIndex: scrollToPageIndex,
         sliderRef: sliderRef,
         isScrolling: isScrolling,
+        setPageIndex: setPageIndex,
     };
 }

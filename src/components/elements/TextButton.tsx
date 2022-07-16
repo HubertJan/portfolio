@@ -38,7 +38,7 @@ const Button = styled("div") <{
 
 interface TextButtonInterface extends ButtonStyling {
     label: string,
-    onClick?: () => void,
+    onClick?: React.MouseEventHandler<HTMLDivElement> | undefined,
 }
 
 export const TextButton: React.FC<

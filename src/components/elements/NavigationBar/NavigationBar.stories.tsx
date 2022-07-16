@@ -11,6 +11,7 @@ export default {
 export const Primary = () => {
     return (
         <NavigationBar
+        backgroundColor="transparent"
         />
     )
 };

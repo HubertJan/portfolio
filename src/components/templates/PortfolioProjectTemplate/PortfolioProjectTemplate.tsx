@@ -8,6 +8,7 @@ import { NavigationBar } from "src/components/elements/NavigationBar/NavigationB
 import emailIcon from 'src/assets/email.svg';
 import { TextSection } from "src/components/blocks/TextSection.tsx/TextSection";
 import { useNavigate } from "react-router-dom";
+import { TextButton } from "src/components/elements/TextButton";
 
 const Page = styled('div')`
     display: flex;
@@ -20,17 +21,24 @@ const Page = styled('div')`
 export const PortfolioProjectTemplate: React.FC<{
     projectHeader: ReactElement<ProjectHeaderProps>,
     productImageUrls: string[],
+    behindNavigationBarColor: string,
 }> = (
     {
         projectHeader,
-        productImageUrls
+        productImageUrls,
+        behindNavigationBarColor,
     }
 ) => {
         const navigate = useNavigate();
         return (
             <Page>
-                <NavigationBar>
-                    <a onClick={() => { navigate(-1) }}>Schließen</a>
+                <NavigationBar
+                backgroundColor={behindNavigationBarColor}
+                >
+                    <TextButton 
+                    label="Schließen"
+                    hoverColor="grey"
+                    onClick={() => { navigate(-1) }} />
                 </NavigationBar>
                 {projectHeader}
                 <ImagesSection

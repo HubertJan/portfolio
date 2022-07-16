@@ -10,6 +10,8 @@ import { useState } from "react";
 import { ContactForm } from "src/components/blocks/ContactForm/ContactForm";
 import { Overlay } from "src/components/elements/Overlay/Overlay";
 import { StandardContainer } from "src/components/elements/StandardContainer/StandardContainer";
+import copy from 'copy-to-clipboard';
+ 
 
 const CallToActionContainer = styled(StandardContainer)`
     display: flex;
@@ -46,6 +48,8 @@ const LabelContent = styled("div")`
 
 export const ContactSlide: React.FC<{}> = () => {
     const [isShowingOverlay, setIsShowingOverlay] = useState(false);
+    const [hasCopiedEmail, setHasCopiedEmail] = useState(false);
+
     const themeContext = useTheme();
     return (
         <StandardSlide>
@@ -58,7 +62,7 @@ export const ContactSlide: React.FC<{}> = () => {
                     </SubHeading3Text>
                 </LabelContent>
                 <TextButton backgroundColor={themeContext.colors.secondary}
-                    label="E-Mail kopieren"
+                    label="Schreiben"
                     hoverBackgroundColor={themeContext.colors.primary}
                     onClick={() => setIsShowingOverlay(true)}
                 />
@@ -70,9 +74,27 @@ export const ContactSlide: React.FC<{}> = () => {
                         hallo@hubertJan.dev
                     </SubHeading3Text>
                 </LabelContent>
-                <TextButton backgroundColor={themeContext.colors.secondary}
-                    label="E-Mail kopieren"
-                    hoverBackgroundColor={themeContext.colors.primary}
+                <TextButton
+                    shouldHover={!hasCopiedEmail}
+                    backgroundColor={
+                        hasCopiedEmail ?
+                            themeContext.colors.background :
+                            themeContext.colors.secondaryAlt}
+                    label={hasCopiedEmail ? "Kopiert" : "E-Mail kopieren"}
+                    hoverBackgroundColor={
+                        hasCopiedEmail
+                            ? themeContext.colors.background :
+                            themeContext.colors.primary
+                    }
+                    onClick={hasCopiedEmail ? () => { } :
+                        (e) => {
+                            copy('hallo@hubertJan.dev');
+                            setHasCopiedEmail(true);
+                            setTimeout(() => {
+                                setHasCopiedEmail(false);
+                            }, 1000);
+                        }
+                    }
                 />
             </CallToActionContainer>
             <Overlay

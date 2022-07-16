@@ -102,27 +102,27 @@ const Row = styled('div')`
     gap: 8px;
 `;
 
-export interface ProjectHeaderProps {
-    title: string,
-    description: string,
-    backgroundColor: string,
-    color: string,
-    tags: string[],
-    buttons: React.ReactNode[],
+
+
+export interface CustomHeaderProps extends ProjectHeaderProps {
+    tagsTitle: string,
+    subTitle: string
 }
 
-export const ProjectHeader: React.FC<ProjectHeaderProps> = ({
+export const CustomHeader: React.FC<CustomHeaderProps> = ({
     title,
+    subTitle,
     description,
     backgroundColor,
-    tags,
-    buttons,
+    tagsTitle,
+    tags = [],
+    buttons = [],
 }
 ) => {
     return (
         <HeaderPart backgroundColorStyle={backgroundColor}>
             <HeaderSection>
-                <SubTitleHeading>PROJEKT</SubTitleHeading>
+                <SubTitleHeading>{subTitle}</SubTitleHeading>
                 <MainDescription>
                     <Title>
                         {title}
@@ -130,17 +130,40 @@ export const ProjectHeader: React.FC<ProjectHeaderProps> = ({
                     <Description>{description}</Description>
                 </MainDescription>
                 <ItemsRow>
-                    <StyledColumn>
-                        <SubTitleHeading>Genutzte Technologien</SubTitleHeading>
-                        <Row>
-                            {tags.map((tagName) => <Tag label={tagName} backgroundColor="rgba(255,255,255,0.8)" color={backgroundColor} />)}
-                        </Row>
-                    </StyledColumn>
-                    <ButtonRow>
-                        {buttons.map((e) => e)}
-                    </ButtonRow>
+                    {
+                        tags.length !== 0 ?
+                            <StyledColumn>
+                                <SubTitleHeading>{tagsTitle}</SubTitleHeading>
+                                <Row>
+                                    {tags.map((tagName) => <Tag label={tagName} backgroundColor="rgba(255,255,255,0.8)" color={backgroundColor} />)}
+                                </Row>
+                            </StyledColumn> : null
+                    }
+                    {
+                        buttons.length !== 0 ?
+                            <ButtonRow>
+                                {buttons.map((e) => e)}
+                            </ButtonRow> : null
+                    }
                 </ItemsRow>
             </HeaderSection>
         </HeaderPart>
     );
+};
+
+export interface ProjectHeaderProps {
+    title: string,
+    description: string,
+    backgroundColor: string,
+    color: string,
+    tags?: string[],
+    buttons?: React.ReactNode[],
+}
+
+export const ProjectHeader: React.FC<ProjectHeaderProps> = (props
+) => {
+    return (<CustomHeader
+        subTitle="PROJEKT"
+        tagsTitle="Genutzte Technologien" {...props}
+    />);
 };

@@ -12,6 +12,7 @@ import { ThreencryptPage } from './routes/ThreencryptPage/ThreencryptPage';
 import { theme } from './theme';
 import { shouldForwardProp } from 'goober/should-forward-prop';
 import { VisualSortPage } from './routes/VisualSortPage/VisualSortPage';
+import { FlutterPage } from './routes/FlutterPage/FlutterPage';
 
 
 const ThemeContext = createContext(theme);
@@ -31,6 +32,8 @@ root.render(
       <Route path="/main" element={<DesktopPage />} />
       <Route path="/threencrypt" element={<ThreencryptPage />} />
       <Route path="/visualSort" element={<VisualSortPage />} />
+      <Route path="/main/:currentPageId" element={<DesktopPage />} />
+      <Route path="/flutter" element={<FlutterPage />} />
     </Routes>
   </Router>
 );

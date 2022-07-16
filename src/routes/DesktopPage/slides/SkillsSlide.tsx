@@ -28,12 +28,15 @@ export const SkillsSlide: React.FC<{ isScrolling?: boolean }> = ({ isScrolling =
                         iconImage={pythonIcon}
                         backgroundColor={"#FFDA4E"}
                         onClick={() => {
-                            navigateTo("/threencrypt")
+                            navigateTo("/flutter")
                         }}
                     />
                     <DesktopAppButton title={"Flutter"}
                         backgroundColor={"var(--background-contrast-color)"}
                         iconImage={flutterIcon}
+                        onClick={() => {
+                            navigateTo("/flutter")
+                        }}
                     />
                     <DesktopAppButton title={"React"}
                         iconImage={reactjsIcon}

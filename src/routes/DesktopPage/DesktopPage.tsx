@@ -11,11 +11,29 @@ import { NavigationButton } from "../../components/elements/NavigationButton";
 import { FillScreenContainer } from "src/components/elements/FillScreenContainer/FillScreenContainer";
 import { NavigationMenuTitle } from "src/components/elements/NavigationMenuTitle/NavigationMenuTitle";
 import { NavigationBar } from "src/components/elements/NavigationBar/NavigationBar";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 
 export const DesktopPage: React.FC<{}> = () => {
     const sliderController = useSliderController();
-    const { pageIndex, scrollToPageIndex, isScrolling } = sliderController;
+    const { pageIndex, scrollToPageIndex, setPageIndex, isScrolling } = sliderController;
+    const { currentPageId } = useParams();
+
+    useEffect(() => {
+        if (currentPageId === undefined) {
+            return;
+        }
+        const currentIdAsNumber = parseInt(currentPageId);
+        console.log("yo");
+        setPageIndex(currentIdAsNumber);
+    }, []);
+
+    const currentPageIndex = (pageIndex === undefined && currentPageId !== undefined) ? parseInt(currentPageId) : pageIndex;
+
+    useEffect(() => {
+        window.history.pushState('', '', `/main/${pageIndex}`)
+    }, [pageIndex]);
 
     return (
         <FillScreenContainer
@@ -23,25 +41,27 @@ export const DesktopPage: React.FC<{}> = () => {
             withBackgroundOverlay={true}
         >
             {<div className={styles.navigationBar}>
-                <NavigationBar>
+                <NavigationBar
+                backgroundColor="black"
+                >
                     <NavigationMenuTitle>hubertJan.dev</NavigationMenuTitle>
                     <NavigationButton
-                        currentPageIndex={pageIndex ?? 0}
+                        currentPageIndex={currentPageIndex ?? 0}
                         buttonPageIndex={0}
                         scrollToPageIndex={scrollToPageIndex}
                         label="Über Mich" />
                     <NavigationButton
-                        currentPageIndex={pageIndex ?? 0}
+                        currentPageIndex={currentPageIndex ?? 0}
                         buttonPageIndex={1}
                         scrollToPageIndex={scrollToPageIndex}
                         label="Skills" />
                     <NavigationButton
-                        currentPageIndex={pageIndex ?? 0}
+                        currentPageIndex={currentPageIndex ?? 0}
                         buttonPageIndex={2}
                         scrollToPageIndex={scrollToPageIndex}
                         label="Projekte" />
                     <NavigationButton
-                        currentPageIndex={pageIndex ?? 0}
+                        currentPageIndex={currentPageIndex ?? 0}
                         buttonPageIndex={3}
                         scrollToPageIndex={scrollToPageIndex}
                         label="Kontakt" />
@@ -52,7 +72,7 @@ export const DesktopPage: React.FC<{}> = () => {
                 sliderController={sliderController}
             >
                 <AboutMeSlide />
-                <SkillsSlide isScrolling={isScrolling}/>
+                <SkillsSlide isScrolling={isScrolling} />
                 <ProjectsSlide isScrolling={isScrolling} />
                 <ContactSlide />
             </SliderList>

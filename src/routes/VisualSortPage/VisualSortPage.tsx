@@ -12,6 +12,7 @@ export const VisualSortPage: React.FC<{}> = () => {
   const theme = useTheme();
   return (
     <PortfolioProjectTemplate
+    behindNavigationBarColor={"#2196F3"}
       projectHeader={
         <ProjectHeader
           title="VisualSort Complete"

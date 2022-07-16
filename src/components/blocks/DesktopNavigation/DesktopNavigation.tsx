@@ -13,7 +13,9 @@ export const DesktopNavigation: React.FC<{
     scrollToPageIndex
 }) => {
         return (
-            <NavigationBar>
+            <NavigationBar
+            backgroundColor="black"
+            >
                 <NavigationMenuTitle>hubertJan.dev</NavigationMenuTitle>
                 {pageNames.map((name, index) => {
                     return (<NavigationButton

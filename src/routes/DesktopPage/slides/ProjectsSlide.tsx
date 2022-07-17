@@ -3,6 +3,10 @@ import { styled } from "goober";
 import javascriptIcon from "src/assets/javascript.png";
 import threencrypt from "src/assets/3ncrypt.png";
 import vssort from "src/assets/VSSort.png";
+import pychess from "src/assets/pychess.png";
+import hubertJan from "src/assets/hubertJan.png";
+import itspy from "src/assets/itspy.png";
+import morningChess from "src/assets/morningChess.png";
 import { DesktopAppButton } from "src/components/elements/DesktopAppButton/DesktopAppButton";
 import { StandardSlide } from "src/components/elements/StandardSlide";
 import { AppIconRow } from "src/components/patterns/AppIconRow/AppIconRow";
@@ -32,8 +36,12 @@ export const ProjectsSlide: React.FC<{ isScrolling?: boolean }> = ({ isScrolling
                             navigateTo("/threencrypt")
                         }}
                     />
-                    <DesktopAppButton title={"3ncrypt"}
-                        backgroundImage={javascriptIcon}
+                    <DesktopAppButton title={"MorningChess"}
+                        backgroundImage={"#121212"}
+                        iconImage={morningChess}
+                        onClick={() => {
+                            navigateTo("/morningChess")
+                        }}
                     />
                     <DesktopAppButton title={`VisualSort`}
                         iconImage={vssort}
@@ -44,14 +52,26 @@ export const ProjectsSlide: React.FC<{ isScrolling?: boolean }> = ({ isScrolling
                     />
                 </AppIconRow>
                 <AppIconRow>
-                    <DesktopAppButton title={"PyChess"}
-                        backgroundImage={javascriptIcon}
-                    />
                     <DesktopAppButton title={"hubertJan.dev"}
-                        backgroundImage={javascriptIcon}
+                        backgroundColor="#434656"
+                        iconImage={hubertJan}
+                        onClick={() => {
+                            navigateTo("/hubertJanDev")
+                        }}
                     />
                     <DesktopAppButton title={"Itspylearning"}
-                        backgroundImage={javascriptIcon}
+                        backgroundColor={"#D86D1F"}
+                        iconImage={itspy}
+                        onClick={() => {
+                            navigateTo("/itspylearning")
+                        }}
+                    />
+                    <DesktopAppButton title={"aChess"}
+                        backgroundColor={"#F5F5F5"}
+                        iconImage={pychess}
+                        onClick={() => {
+                            navigateTo("/aChess")
+                        }}
                     />
                 </AppIconRow>
             </AppIconRows>

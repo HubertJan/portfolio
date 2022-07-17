@@ -9,20 +9,20 @@ import { Button } from "src/components/elements/Button/Button";
 import { PortfolioProjectTemplate } from "src/components/templates/PortfolioProjectTemplate/PortfolioProjectTemplate";
 import { SkillTemplate } from "src/components/templates/SkillTemplate/SkillTemplate";
 
-export const FlutterPage: React.FC<{}> = () => {
+export const PythonPage: React.FC<{}> = () => {
   const theme = useTheme();
   return (
     <SkillTemplate
-      behindNavigationBarColor={"#2196F3"}
+      behindNavigationBarColor={"#dfb209"}
       skillHeader={
         <CustomHeader
           subTitle="SKILL"
-          title="Flutter"
-          description="Die UI-Framework der Zukunft"
-          backgroundColor={"#2196F3"}
+          title="Python"
+          description="Scriptsprache für alle Fälle"
+          backgroundColor={"#dfb209"}
           color={theme.colors.onPrimary}
         />}
-      experienceText="Flutter gehört zu meinen Lieblingsframeworks. Ich habe bereits über 5 Jahre Erfahrung mit Flutter. Angefangen habe ich mit einigen Tutorials, ein Kurs und der Dokumentation. Heutzutage ist es meine erste Wahl sowohl bei Android als auch Windows Anwendungen."
+      experienceText="Zuerst genutzt habe ich Python nicht wegen ihrer einfachen Syntax, sondern aus einen banaleren Grund. Python kann alles und jeder nutzt es. Ich nutzte bereits Python seit vier Jahren und Pythons größter Vorteil war immer, die vielen Packages und die vielen Menschen, die Python nutzen. Dadurch lassen sich viele sehr verschiedene Aufgaben oft am schnellsten und einfachsten lösen."
     />
   );
 }

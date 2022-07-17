@@ -13,6 +13,13 @@ import { theme } from './theme';
 import { shouldForwardProp } from 'goober/should-forward-prop';
 import { VisualSortPage } from './routes/VisualSortPage/VisualSortPage';
 import { FlutterPage } from './routes/FlutterPage/FlutterPage';
+import { GlobalStyles } from './GlobalStyles';
+import { PythonPage } from './routes/PythonPage/PythonPage';
+import { ReactPage } from './routes/ReactPage/ReactPage';
+import { AChessPage } from './routes/AChessPage/AChessPage';
+import { HubertJanDevPage } from './routes/HubertJanDevPage/HubertJanDevPage';
+import { ItspylearningPage } from './routes/ItspylearningPage/ItspylearningPage';
+import { MorningChessPage } from './routes/MorningChessPage/MorningChessPage';
 
 
 const ThemeContext = createContext(theme);
@@ -27,6 +34,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <Router>
+    <GlobalStyles />
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/main" element={<DesktopPage />} />
@@ -34,6 +42,13 @@ root.render(
       <Route path="/visualSort" element={<VisualSortPage />} />
       <Route path="/main/:currentPageId" element={<DesktopPage />} />
       <Route path="/flutter" element={<FlutterPage />} />
+      <Route path="/python" element={<PythonPage />} />
+      <Route path="/react" element={<ReactPage />} />
+      <Route path="/aChess" element={<AChessPage />} />
+      <Route path="/hubertJanDev" element={<HubertJanDevPage />} />
+      <Route path="/itspylearning" element={<ItspylearningPage />} />
+      <Route path="/morningChess" element={<MorningChessPage />} />
+      
     </Routes>
   </Router>
 );

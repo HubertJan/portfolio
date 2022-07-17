@@ -1,41 +1,38 @@
 import { useTheme } from "src";
-import { FeatureParagraph } from "src/components/blocks/FeatureSection/FeatureSection";
-import { ProjectHeader } from "src/components/blocks/CustomHeader/CustomHeader";
+import { CustomHeader, ProjectHeader } from "src/components/blocks/CustomHeader/CustomHeader";
+
 import emailIcon from 'src/assets/email.svg';
+import screenshot1 from "src/assets/AChessScreenshots/1.png";
+import screenshot2 from "src/assets/AChessScreenshots/2.png";
+import screenshot3 from "src/assets/AChessScreenshots/3.png";
+import screenshot4 from "src/assets/AChessScreenshots/4.png";
 import { Button } from "src/components/elements/Button/Button";
 import { PortfolioProjectTemplate } from "src/components/templates/PortfolioProjectTemplate/PortfolioProjectTemplate";
+import { FeatureParagraph } from "src/components/blocks/FeatureSection/FeatureSection";
 
-export const ThreencryptPage: React.FC<{}> = () => {
+export const ItspylearningPage: React.FC<{}> = () => {
   const theme = useTheme();
   return (
     <PortfolioProjectTemplate
-      behindNavigationBarColor={theme.colors.primary}
+    behindNavigationBarColor={"#2196F3"}
       projectHeader={
         <ProjectHeader
-          title="3ncrypt"
-          description="Ver- und Entschlüsselungs App für Android und iOS"
-          tags={["Flutter", "Dart"]}
-          color="#14C1D5"
-          backgroundColor={theme.colors.onPrimary}
+          title="ItspyLearning"
+          description="Eine API für die Schule Plattform itsLearning."
+          tags={["Python", ]}
+          backgroundColor={"#D86D1F"}
+          color={theme.colors.onPrimary}
           buttons={
             [<Button label="Github"
-              color="#14C1D5"
               hoverBackgroundColor={theme.colors.primaryVariants[50]}
               hoverColor={theme.colors.background}
             />,
-            <Button label="Live Demo"
-              color="#14C1D5"
-              hoverBackgroundColor={theme.colors.primaryVariants[50]}
-              hoverColor={theme.colors.background}
-            />]
+          ]
           }
         />}
       productImageUrls={
         [
-          'http://placeimg.com/1200/800/nature',
-          'http://placeimg.com/800/1200/nature',
-          'http://placeimg.com/1920/1080/nature',
-          'http://placeimg.com/1500/500/nature',
+
         ]
       }
       featureParagraphs={[
@@ -51,7 +48,7 @@ export const ThreencryptPage: React.FC<{}> = () => {
           icon={emailIcon}
           altIcon="email"
         />,]}
-        motivationText="Als Teil des Kryptografiethemas im Unterricht sollte eine Verschlüsselungsanwendung erstellt werden. Der Prototype für 3ncrypt entstand dabei und wurde später in der Freizeit dann zu einer Android App mit mehr Funktionen erweitert."
+        motivationText="itsLearning wurde viel auf meiner ehemaligen Schule genutzt, allerdings fehlt es ihr an einer guten API. Die Web API war nur unzureichend Dokumentiert. Da wir, als Teil eines Schuleservers eine gute API brauchten, entschied ich mich, eine einfache Schnittstelle zu erstellen. itspylearning ist die einfachste möglichkeit, um die itslearning API zu nutzen."
     />
   );
 }

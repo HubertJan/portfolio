@@ -9,20 +9,20 @@ import { Button } from "src/components/elements/Button/Button";
 import { PortfolioProjectTemplate } from "src/components/templates/PortfolioProjectTemplate/PortfolioProjectTemplate";
 import { SkillTemplate } from "src/components/templates/SkillTemplate/SkillTemplate";
 
-export const FlutterPage: React.FC<{}> = () => {
+export const ReactPage: React.FC<{}> = () => {
   const theme = useTheme();
   return (
     <SkillTemplate
-      behindNavigationBarColor={"#2196F3"}
+      behindNavigationBarColor={"##61DBFB"}
       skillHeader={
         <CustomHeader
           subTitle="SKILL"
-          title="Flutter"
-          description="Die UI-Framework der Zukunft"
-          backgroundColor={"#2196F3"}
-          color={theme.colors.onPrimary}
+          title="React"
+          description="Webseiten besser erstellen"
+          backgroundColor={"#61DBFB"}
+          color={"	#20232a"}
         />}
-      experienceText="Flutter gehört zu meinen Lieblingsframeworks. Ich habe bereits über 5 Jahre Erfahrung mit Flutter. Angefangen habe ich mit einigen Tutorials, ein Kurs und der Dokumentation. Heutzutage ist es meine erste Wahl sowohl bei Android als auch Windows Anwendungen."
+      experienceText="Ich muss zugeben, ich habe nicht die meiste Erfahrung mit React. Allerdings dafür habe ich umso mehr Erfahrung mit der Sprache hinter React: Javascript und viel wichtiger Typescript. Denn JavaScript ist meine erste Programmieresprache, die ich vor 7 Jahren gelernt habe. Zuerst genutzt habe ich JavaScript um einfache Browserspiele zu entwickeln. Heutzutage nutzte ich JavaScript, und häufiger TypeScript, um bessere Webseite zu entwickeln, wie auch diese hier :)"
     />
   );
 }

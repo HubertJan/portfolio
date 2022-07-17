@@ -14,10 +14,10 @@ const HeaderPart = styled('div') <{ backgroundColorStyle: string }>`
     padding-bottom: 64px;
 `;
 
-const HeaderSection = styled('div')`
+const HeaderSection = styled('div') <{ borderColorStyle: string, colorStyle: string }>`
     flex-grow: 1;
     border-width: 8px;
-    border-color: white;
+    border-color: ${(props) => props.borderColorStyle};
     border-radius: 32px;
     border-style: solid;
     max-width: 1000px;
@@ -26,7 +26,7 @@ const HeaderSection = styled('div')`
     align-items: stretch;
     justify-content: stretch;
     margin: 32px;
-    color: ${(props) => props.theme.colors.onPrimary};
+    color: ${(props) => props.colorStyle};
     padding: 32px;
 
     @media screen and (max-width: 1000px) {
@@ -85,7 +85,8 @@ const ButtonRow = styled("div")`
     flex-direction: row;
     align-items: center;
     @media screen and (max-width: 1000px) {
-        justify-content: space-between;
+
+        justify-content: center;
     }
 `;
 
@@ -105,23 +106,27 @@ const Row = styled('div')`
 
 
 export interface CustomHeaderProps extends ProjectHeaderProps {
-    tagsTitle: string,
-    subTitle: string
+    tagsTitle?: string,
+    subTitle?: string
 }
 
 export const CustomHeader: React.FC<CustomHeaderProps> = ({
-    title,
+    title = "",
     subTitle,
     description,
+    color,
     backgroundColor,
-    tagsTitle,
+    tagsTitle = "",
     tags = [],
     buttons = [],
 }
 ) => {
     return (
         <HeaderPart backgroundColorStyle={backgroundColor}>
-            <HeaderSection>
+            <HeaderSection
+            borderColorStyle={color}
+            colorStyle={color}
+            >
                 <SubTitleHeading>{subTitle}</SubTitleHeading>
                 <MainDescription>
                     <Title>
@@ -135,7 +140,8 @@ export const CustomHeader: React.FC<CustomHeaderProps> = ({
                             <StyledColumn>
                                 <SubTitleHeading>{tagsTitle}</SubTitleHeading>
                                 <Row>
-                                    {tags.map((tagName) => <Tag label={tagName} backgroundColor="rgba(255,255,255,0.8)" color={backgroundColor} />)}
+                                    {tags.map((tagName) => <Tag label={tagName} backgroundColor={color}
+                                    color={backgroundColor} />)}
                                 </Row>
                             </StyledColumn> : null
                     }

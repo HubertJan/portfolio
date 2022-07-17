@@ -1,7 +1,7 @@
 import { styled } from "goober";
 import { ReactElement } from "react";
 import { FeatureParagraph, FeatureSection } from "src/components/blocks/FeatureSection/FeatureSection";
-import { ProjectHeaderProps } from "src/components/blocks/ProjectHeader/ProjectHeader";
+import { ProjectHeaderProps } from "src/components/blocks/CustomHeader/CustomHeader";
 import { NavigationBar } from "src/components/elements/NavigationBar/NavigationBar";
 import emailIcon from 'src/assets/email.svg';
 import { TextSection } from "src/components/blocks/TextSection.tsx/TextSection";
@@ -19,10 +19,12 @@ const Page = styled('div')`
 export const SkillTemplate: React.FC<{
     skillHeader: ReactElement<ProjectHeaderProps>,
     behindNavigationBarColor: string,
+    experienceText: string,
 }> = (
     {
         skillHeader: projectHeader,
         behindNavigationBarColor,
+        experienceText
     }
 ) => {
         const navigate = useNavigate();
@@ -39,8 +41,7 @@ export const SkillTemplate: React.FC<{
                 {projectHeader}
                 <TextSection
                     title="Erfahrungen"
-                    text="Ursprünglich wurde 3ncrypt als Teil eines Schuleprojekts entwickelt. Die Aufgabe war es ein Tool zu entwickeln, zum Verschlüsseln von Text mithilfe von verschiedenen Algorithmen.
-                    Nach Fertigstellung des Projekts wurde die App nocheinmal erweitert und als vollständige Tool im Google Play Store veröffentlicht."
+                    text={experienceText}
                 />
                 <FeatureSection
                     paragraphs={[<FeatureParagraph

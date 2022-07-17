@@ -1,7 +1,7 @@
 import { ComponentMeta } from "@storybook/react";
 import { useTheme } from "src";
 import { Button } from "src/components/elements/Button/Button";
-import { ProjectHeader } from "./ProjectHeader";
+import { ProjectHeader } from "./CustomHeader";
 
 
 export default {

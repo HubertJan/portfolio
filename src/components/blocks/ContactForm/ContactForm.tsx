@@ -1,4 +1,5 @@
 import { styled } from "goober";
+import { ReactComponent as ChatIcon } from 'src/assets/chat.svg';
 import chatIcon from 'src/assets/chat.svg';
 import { PrimaryButton } from "src/components/elements/Button/Button";
 import { MultiLineTextField } from "src/components/elements/MultiLineTextField/MultiLineTextField";
@@ -9,24 +10,29 @@ import LabeledTextFieldStories from "src/components/patterns/FieldLabeled/FieldL
 import { SubHeading3Text } from "src/styles/fonts";
 import { TextButton } from "../../elements/TextButton";
 
+const FormContainer = styled(StandardContainer)`
+    max-width: 1000px;
+    width: inherit;
+    margin: 16px;
+`;
+
 const FormContent = styled('div') <{
 }>`
-    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 16px;
+    align-items: stretch;
 `;
 
 const TitleRow = styled('div') <{
 }>`
-    width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 32px;
 `;
 
-const Icon = styled('img')`
+const Icon = styled(ChatIcon)`
     width: 49px;
     height: 49px;
 `;
@@ -34,10 +40,10 @@ const Icon = styled('img')`
 export const ContactForm: React.FC<{
 }> = () => {
     return (
-        <StandardContainer >
+        <FormContainer >
             <FormContent>
                 <TitleRow>
-                    <Icon src={chatIcon} />
+                    <Icon/>
                     <SubHeading3Text>Schreibt mir direkt.</SubHeading3Text>
                 </TitleRow>
                 <FieldLabeled label="Name">
@@ -54,6 +60,6 @@ export const ContactForm: React.FC<{
                     />
                 </div>
             </FormContent>
-        </StandardContainer>
+        </FormContainer>
     );
 }

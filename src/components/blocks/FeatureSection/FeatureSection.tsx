@@ -1,5 +1,5 @@
 import { styled } from "goober";
-import { ReactElement } from "react";
+import { ComponentType, FunctionComponent, ReactElement, SVGProps } from "react";
 import { useTheme } from "src";
 import { Section } from "src/components/elements/Section/Section";
 import { StandardContainer } from "src/components/elements/StandardContainer/StandardContainer";
@@ -21,12 +21,21 @@ const Heading = styled(Heading3Text)`
     max-width: 300px;
 `;
 
+
+const FeaturesRows = styled("div")`
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    width: 100%;
+`;
+
 const Features = styled("div")`
     align-self: center;
     display: inline-flex;
     flex-direction: row;
     gap: 32px;
     justify-content: center;
+    width: 100%;
 
     @media screen and (max-width: 1000px) {
         flex-direction: column;
@@ -42,9 +51,11 @@ const Feature = styled("div")`
     @media screen and (max-width: 1000px) {
         width: auto;
     }
+    flex-basis: 0px;
+    flex-grow: 1;
 `;
 
-const Icon = styled("img")`
+const CustomIcon = styled("svg")`
     width: 48px;
     height: 48px;
 `;
@@ -52,13 +63,14 @@ const Icon = styled("img")`
 export const FeatureParagraph: React.FC<{
     title: string,
     description: string,
-    icon: string,
-    altIcon: string,
-}> = ({ title, description, icon, altIcon
+    renderIcon: (props: SVGProps<SVGSVGElement>) => ReactElement<SVGSVGElement>;
+}> = ({ title, description, renderIcon
 }) => {
+        const theme = useTheme();
+
         return (
             <Feature>
-                <Icon src={icon} alt={altIcon} />
+                {renderIcon({ fill: theme.colors.primary })}
                 <SubTitleHeading>{title}</SubTitleHeading>
                 <BodyText>
                     {description}
@@ -68,18 +80,37 @@ export const FeatureParagraph: React.FC<{
     };
 
 export const FeatureSection: React.FC<{
-    paragraphs: ReactElement<typeof FeatureParagraph>[]
+    paragraphs: ReactElement<typeof FeatureParagraph>[],
 }> = ({ paragraphs }) => {
     const theme = useTheme();
+    const rows: ReactElement<typeof FeatureParagraph>[][] = [];
+    let row: ReactElement<typeof FeatureParagraph>[] = [];
+    const rowLength = paragraphs.length % 3 === 0 ? 3 : paragraphs.length % 2 === 0 ? 2 : 3;
+    paragraphs.forEach((paragraph) => {
+        row.push(paragraph);
+        if (row.length === rowLength) {
+            rows.push(row);
+            row = [];
+        }
+    });
+    if (row.length !== 0) {
+        rows.push(row);
+    }
     return (
         <Section>
             <Container backgroundColor={theme.colors.onBackground}>
                 <Heading>
                     Funktion
                 </Heading>
-                <Features>
-                    {paragraphs.map((paragraph) => paragraph)}
-                </Features>
+                <FeaturesRows>
+                    {
+                        rows.map((paragraphs) =>
+                            <Features>
+                                {paragraphs.map((paragraph) => paragraph)}
+                            </Features>
+                        )
+                    }
+                </FeaturesRows>
             </Container>
         </Section>);
 }

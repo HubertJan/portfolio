@@ -3,7 +3,7 @@ import { ReactElement } from "react";
 import { FeatureParagraph, FeatureSection } from "src/components/blocks/FeatureSection/FeatureSection";
 import { ProjectHeaderProps } from "src/components/blocks/CustomHeader/CustomHeader";
 import { NavigationBar } from "src/components/elements/NavigationBar/NavigationBar";
-import emailIcon from 'src/assets/email.svg';
+import { ReactComponent as EmailIcon } from 'src/assets/email.svg';
 import { TextSection } from "src/components/blocks/TextSection.tsx/TextSection";
 import { useNavigate } from "react-router-dom";
 import { TextButton } from "src/components/elements/TextButton";
@@ -31,12 +31,12 @@ export const SkillTemplate: React.FC<{
         return (
             <Page>
                 <NavigationBar
-                backgroundColor={behindNavigationBarColor}
+                    backgroundColor={behindNavigationBarColor}
                 >
-                    <TextButton 
-                    label="Schließen"
-                    hoverColor="grey"
-                    onClick={() => { navigate(-1) }} />
+                    <TextButton
+                        label="Schließen"
+                        hoverColor="grey"
+                        onClick={() => { navigate(-1) }} />
                 </NavigationBar>
                 {projectHeader}
                 <TextSection
@@ -47,14 +47,14 @@ export const SkillTemplate: React.FC<{
                     paragraphs={[<FeatureParagraph
                         title="12 Algorithmen"
                         description="Du kannst in wenigen Sekunden direkt in der N26 App anfragen, ob ein Überziehungskredit für dich zur Verfügung steht. Erhalte bis zu 10.000 € und verwalte deinen Kredit direkt in der App – so kannst du jederzeit einsehen, wie viel du aktuell nutzt und was die täglichen Gebühren sind."
-                        icon={emailIcon}
-                        altIcon="email"
+                        renderIcon={(props) => <EmailIcon {...props} />}
+
                     />,
                     <FeatureParagraph
                         title="12 Algorithmen"
                         description="Du kannst in wenigen Sekunden direkt in der N26 App anfragen, ob ein Überziehungskredit für dich zur Verfügung steht. Erhalte bis zu 10.000 € und verwalte deinen Kredit direkt in der App – so kannst du jederzeit einsehen, wie viel du aktuell nutzt und was die täglichen Gebühren sind."
-                        icon={emailIcon}
-                        altIcon="email"
+                        renderIcon={(props) => <EmailIcon {...props} />}
+
                     />
                     ]}
                 />

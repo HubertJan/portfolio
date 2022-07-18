@@ -41,19 +41,18 @@ const LabelContent = styled("div")`
 
 export const CallToActionButtonBox: React.FC<{
     icon: string,
-    altIcon: string,
     label: string,
     onClick: () => void,
     buttonStyling?: ButtonStyling
 }> = (
-    { icon, altIcon, label, buttonStyling }
+    { icon,  label, buttonStyling }
 ) => {
         const primaryStyling = usePrimaryButtonStyling();
         buttonStyling = buttonStyling ?? primaryStyling;
         return (
             <CallToActionContainer>
                 <LabelContent>
-                    <img src={icon} alt={altIcon} />
+                    <img src={icon} alt="icon"/>
                     <SubHeading3Text>
                         hallo@hubertJan.dev
                     </SubHeading3Text>

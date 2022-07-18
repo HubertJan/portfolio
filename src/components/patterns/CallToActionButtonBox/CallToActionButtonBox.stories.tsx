@@ -19,7 +19,7 @@ export const Primary = () => {
         <CallToActionButtonBox
             label="E-Mail kopieren"
             icon={emailIcon}
-            altIcon="Email"
+       
             onClick={() => { }}
         />
     )

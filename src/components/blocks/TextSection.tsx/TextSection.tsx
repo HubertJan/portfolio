@@ -8,12 +8,15 @@ export const Content = styled("div")`
     margin-top: 128px;
     margin-bottom: 128px;
     max-width: 1000px;
+    width: 100%;
     color: ${(props) => theme.colors.background};
 `;
 
 const Heading2TextWithSpaceBelow = styled(Heading2Text)`
     margin-bottom: 16px;
+
 `;
+
 
 export const TextSection: React.FC<{
     title: string,

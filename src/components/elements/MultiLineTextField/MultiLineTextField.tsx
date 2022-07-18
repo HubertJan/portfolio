@@ -9,16 +9,18 @@ const Input = styled('textarea')`
     border-radius: 16px;
     border-color: transparent;
     padding: 16px;
+    resize: none;
 `;
 
 export interface MultiLineTextFieldProps { placeHolder?: string, height?: string };
 
 export const MultiLineTextField: React.FC<MultiLineTextFieldProps> = (
-    { placeHolder = "", height = "250px" }
+    { placeHolder = "" }
 ) => {
     return (
         <Input
             placeholder={placeHolder}
+            rows={8}
         />
 
     );

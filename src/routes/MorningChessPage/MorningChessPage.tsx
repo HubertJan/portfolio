@@ -1,7 +1,7 @@
 import { useTheme } from "src";
 import { CustomHeader, ProjectHeader } from "src/components/blocks/CustomHeader/CustomHeader";
 
-import emailIcon from 'src/assets/email.svg';
+import { ReactComponent as EmailIcon } from 'src/assets/email.svg';
 import screenshot1 from "src/assets/AChessScreenshots/1.png";
 import screenshot2 from "src/assets/AChessScreenshots/2.png";
 import screenshot3 from "src/assets/AChessScreenshots/3.png";
@@ -41,17 +41,30 @@ export const MorningChessPage: React.FC<{}> = () => {
       }
       featureParagraphs={[
         <FeatureParagraph
-          title="12 Algorithmen"
-          description="Du kannst in wenigen Sekunden direkt in der N26 App anfragen, ob ein Überziehungskredit für dich zur Verfügung steht. Erhalte bis zu 10.000 € und verwalte deinen Kredit direkt in der App – so kannst du jederzeit einsehen, wie viel du aktuell nutzt und was die täglichen Gebühren sind."
-          icon={emailIcon}
-          altIcon="email"
+          title="Ein Puzzle zum aufwecken"
+          description="Stelle dein Wecker, der dich erst in Ruhe lässt, sobald du ein Schachpuzzle gelöst hast."
+          renderIcon={(props)=> <EmailIcon {...props} />}
+     
         />,
         <FeatureParagraph
-          title="12 Algorithmen"
-          description="Du kannst in wenigen Sekunden direkt in der N26 App anfragen, ob ein Überziehungskredit für dich zur Verfügung steht. Erhalte bis zu 10.000 € und verwalte deinen Kredit direkt in der App – so kannst du jederzeit einsehen, wie viel du aktuell nutzt und was die täglichen Gebühren sind."
-          icon={emailIcon}
-          altIcon="email"
-        />,]}
+          title="Einstellbare Puzzles"
+          description="Stelle deine eigenes Puzzle Profil ein mit bestimmten Puzzlethemen und Schwierigkeitsgrad."
+          renderIcon={(props)=> <EmailIcon {...props} />}
+     
+        />,
+        <FeatureParagraph
+          title="So viele Puzzles und so viel Zeit wie du willst"
+          description="Du kannst entscheiden, wie viel Puzzle du lösen willst und wie viel Zeit du haben sollst.."
+          renderIcon={(props)=> <EmailIcon {...props} />}
+     
+        />,
+        <FeatureParagraph
+          title="Freie Klingeltonwahl"
+          description="Wähle frei zwischen eingebauten Klingeltönen."
+          renderIcon={(props)=> <EmailIcon {...props} />}
+     
+        />,
+      ]}
       motivationText="Als ich eines Tages."
     />
   );

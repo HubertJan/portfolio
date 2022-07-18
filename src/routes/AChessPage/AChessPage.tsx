@@ -1,7 +1,10 @@
 import { useTheme } from "src";
-import { CustomHeader, ProjectHeader } from "src/components/blocks/CustomHeader/CustomHeader";
+import { ProjectHeader } from "src/components/blocks/CustomHeader/CustomHeader";
 
-import emailIcon from 'src/assets/email.svg';
+import { ReactComponent as LogIcon } from 'src/assets/icons/log.svg';
+import { ReactComponent as ManualIcon } from 'src/assets/icons/manual.svg';
+import { ReactComponent as MultiplayerIcon } from 'src/assets/icons/multiplayer.svg';
+import { ReactComponent as TimeIcon } from 'src/assets/icons/time.svg';
 import screenshot1 from "src/assets/AChessScreenshots/1.png";
 import screenshot2 from "src/assets/AChessScreenshots/2.png";
 import screenshot3 from "src/assets/AChessScreenshots/3.png";
@@ -14,7 +17,7 @@ export const AChessPage: React.FC<{}> = () => {
   const theme = useTheme();
   return (
     <PortfolioProjectTemplate
-    behindNavigationBarColor={"#2196F3"}
+      behindNavigationBarColor={"#2196F3"}
       projectHeader={
         <ProjectHeader
           title="aChess"
@@ -27,7 +30,7 @@ export const AChessPage: React.FC<{}> = () => {
               hoverBackgroundColor={theme.colors.primaryVariants[50]}
               hoverColor={theme.colors.background}
             />,
-          ]
+            ]
           }
         />}
       productImageUrls={
@@ -40,18 +43,27 @@ export const AChessPage: React.FC<{}> = () => {
       }
       featureParagraphs={[
         <FeatureParagraph
-          title="12 Algorithmen"
-          description="Du kannst in wenigen Sekunden direkt in der N26 App anfragen, ob ein Überziehungskredit für dich zur Verfügung steht. Erhalte bis zu 10.000 € und verwalte deinen Kredit direkt in der App – so kannst du jederzeit einsehen, wie viel du aktuell nutzt und was die täglichen Gebühren sind."
-          icon={emailIcon}
-          altIcon="email"
+          title="Verschiedene Zeitlimits"
+          description="Es ist möglich sowohl 1 min, 10 min, aber auch 60 min Matches zu spielen."
+          renderIcon={(props) => <TimeIcon {...props} />}
         />,
         <FeatureParagraph
-          title="12 Algorithmen"
-          description="Du kannst in wenigen Sekunden direkt in der N26 App anfragen, ob ein Überziehungskredit für dich zur Verfügung steht. Erhalte bis zu 10.000 € und verwalte deinen Kredit direkt in der App – so kannst du jederzeit einsehen, wie viel du aktuell nutzt und was die täglichen Gebühren sind."
-          icon={emailIcon}
-          altIcon="email"
-        />,]}
-        motivationText="aChess ist als ein Schuleprojekt entstanden, wobei die Aufgabe es war ein Brettspiel umzusetzen. Tkinter wurde für die Umsetzung genutzt, da diese Teil der Anforderung war. Auch wenn Tkinter klar nicht für so eine Aufgabe gedacht war, konnte ich und mein Partner eine schöne Version von Schach erstellen."
+          title="Log über vergangene Spiele"
+          description="Alle Ergebnisse von allen Spielen werden abgespeichert und können abgerufen werden."
+          renderIcon={(props) => <LogIcon {...props} />}
+        />,
+        <FeatureParagraph
+          title="Anleitung"
+          description="Wer Schach nicht kennt, kann die Regeln nachlesen."
+          renderIcon={(props) => <ManualIcon {...props} />}
+        />,
+        <FeatureParagraph
+          title="2 Spieler Modus"
+          description="Man kann zu zweit gegeneinander spielen."
+          renderIcon={(props) => <MultiplayerIcon {...props} />}
+        />,
+      ]}
+      motivationText="aChess ist als ein Schuleprojekt entstanden, wobei die Aufgabe es war ein Brettspiel umzusetzen. Tkinter wurde für die Umsetzung genutzt, da diese Teil der Anforderung war. Auch wenn Tkinter klar nicht für so eine Aufgabe gedacht war, konnte ich und mein Partner eine schöne Version von Schach erstellen."
     />
   );
 }

@@ -16,7 +16,7 @@ export default {
 
 export const Primary = () => {
     return (
-        <NotificationStyledBanner />
+        <NotificationStyledBanner shouldFade={false} />
     )
 };
 

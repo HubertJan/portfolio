@@ -104,15 +104,16 @@ export const FeatureParagraph: React.FC<{
 
 
 export const FeatureSection: React.FC<{
+    title: string,
     paragraphs: ReactElement<typeof FeatureParagraph>[],
-}> = ({ paragraphs }) => {
+}> = ({ paragraphs, title }) => {
     const theme = useTheme();
 
     return (
         <Section>
             <Container backgroundColor={theme.colors.onBackground}>
                 <Heading>
-                    Funktion
+                    {title}
                 </Heading>
                 {createFeatureRowsByFeatureParagraphs({
                     paragraphs: paragraphs

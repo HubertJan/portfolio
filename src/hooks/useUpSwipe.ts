@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { addDragListeners } from "src/helper/addDragListeners";
+import { addDragListenersAndReturnRemover } from "src/helper/addDragListenersAndReturnRemover";
 import { isMouseEvent } from "src/helper/isMouseEvent";
 
 function getYPos(event: MouseEvent | TouchEvent) {
@@ -12,16 +12,16 @@ export function useUpSwipe({ onStop }:
     const element = useRef<HTMLDivElement>(null);
     const [clickedMouseHeightInPercentage, setClickedMouseHeightInPercentage] = useState<null | number>(null);
     useEffect(() => {
-        addDragListeners({
-            element: element, onStartReturnOnMoveAndOnEnd: (event) => {
+        return addDragListenersAndReturnRemover({
+            element: element, onStartReturnOnMoveAndOnEnd: (event: MouseEvent | TouchEvent) => {
                 const startPointY = getYPos(event);
                 let currentPosY: number | undefined;
                 return {
-                    onMove: (e) => {
+                    onMove: (e: MouseEvent | TouchEvent) => {
                         currentPosY = getYPos(e) / startPointY;
                         setClickedMouseHeightInPercentage(getYPos(e) / startPointY);
                     },
-                    onStop: (e) => {
+                    onStop: (e: MouseEvent | TouchEvent) => {
                         currentPosY = isMouseEvent(e)
                             ? getYPos(e) / startPointY :
                             currentPosY!;
@@ -32,6 +32,7 @@ export function useUpSwipe({ onStop }:
             },
             isDetectionMoveAndEndForWholeWindow: true,
         });
+
     }
         , []);
     return {

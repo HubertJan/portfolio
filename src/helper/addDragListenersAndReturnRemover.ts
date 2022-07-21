@@ -9,7 +9,7 @@ interface addDragListenersProps {
         isDetectionMoveAndEndForWholeWindow?: boolean
 }
 
-export function addDragListeners(
+export function addDragListenersAndReturnRemover(
     { element,
         onStartReturnOnMoveAndOnEnd,
         isDetectionMoveAndEndForWholeWindow = false }: addDragListenersProps

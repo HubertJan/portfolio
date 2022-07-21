@@ -54,6 +54,7 @@ export const PortfolioProjectTemplate: React.FC<{
                     text={motivationText}
                 />
                 {featureParagraphs.length !== 0 ? <FeatureSection
+                title="Funktionen"
                     paragraphs={featureParagraphs}
                 /> : null}
 

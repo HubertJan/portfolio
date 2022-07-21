@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { isMouseEvent } from "src/helper/isMouseEvent";
 import { scrollByDraggingEvent, scrollToPageIndex, scrollToPageIndexWithoutDelay } from "src/helper/scrollElement";
 import { startMeasuringSpeed } from "src/helper/startMeasuringSpeed";
-import { addDragListeners } from "../helper/addDragListeners";
+import { addDragListenersAndReturnRemover } from "../helper/addDragListenersAndReturnRemover";
 import { useResize } from "./useResize";
 
 function calculateCurrentPage(scrollableContainer: HTMLDivElement)
@@ -96,7 +96,7 @@ export function useSliderController(): SliderControllerProviderInterface {
         currentPageIndex && scrollToPageIndex(currentPageIndex, sliderRef.current!);
     }
     useEffect(() => {
-        addDragListeners({
+        return addDragListenersAndReturnRemover({
             element: sliderRef,
             onStartReturnOnMoveAndOnEnd: createOnDragStart(sliderRef),
         });

@@ -1,16 +1,13 @@
-import { useTheme } from "src";
-import { CustomHeader, ProjectHeader } from "src/components/blocks/CustomHeader/CustomHeader";
+import { CustomHeader } from "src/components/blocks/CustomHeader/CustomHeader";
 
-import screenshot1 from "src/assets/VSCScreenshots/1.png";
-import screenshot2 from "src/assets/VSCScreenshots/2.png";
-import screenshot3 from "src/assets/VSCScreenshots/3.png";
-import screenshot4 from "src/assets/VSCScreenshots/4.png";
-import { Button } from "src/components/elements/Button/Button";
-import { PortfolioProjectTemplate } from "src/components/templates/PortfolioProjectTemplate/PortfolioProjectTemplate";
 import { SkillTemplate } from "src/components/templates/SkillTemplate/SkillTemplate";
+import { FeatureParagraph } from "src/components/blocks/FeatureSection/FeatureSection";
+
+import { ReactComponent as WebPageIcon } from 'src/assets/icons/webPage.svg';
+import { ReactComponent as WebAppIcon } from 'src/assets/icons/webApp.svg';
+import { ReactComponent as DesktopIcon } from 'src/assets/icons/desktop.svg';
 
 export const ReactPage: React.FC<{}> = () => {
-  const theme = useTheme();
   return (
     <SkillTemplate
       behindNavigationBarColor={"##61DBFB"}
@@ -22,7 +19,26 @@ export const ReactPage: React.FC<{}> = () => {
           backgroundColor={"#61DBFB"}
           color={"	#20232a"}
         />}
-      experienceText="Ich muss zugeben, ich habe nicht die meiste Erfahrung mit React. Allerdings dafür habe ich umso mehr Erfahrung mit der Sprache hinter React: Javascript und viel wichtiger Typescript. Denn JavaScript ist meine erste Programmieresprache, die ich vor 7 Jahren gelernt habe. Zuerst genutzt habe ich JavaScript um einfache Browserspiele zu entwickeln. Heutzutage nutzte ich JavaScript, und häufiger TypeScript, um bessere Webseite zu entwickeln, wie auch diese hier :)"
+      experienceText="JavaScript ist meine erste Programmieresprache, die ich gelernt habe. Genauer gesagt habe ich JavaScript angefangen zu lernen vor sieben Jahren. Zuerst genutzt habe ich JavaScript um einfache Browserspiele zu entwickeln. Heutzutage nutzte ich JavaScript, und häufiger TypeScript, um Webseiten zu erstellen. React ist dabei aktuell die Framework meiner Wahl, wobei auch diese Webseite auf React basiert :)"
+      featureParagraphs={[
+        <FeatureParagraph
+          title="Webseiten"
+          description="React ist das etablierte Framework zur Erstellung von Webseiten. Besonders Webseiten mit viel dynamischen Content profitieren von React."
+          renderIcon={(props) => <WebPageIcon {...props} />}
+        />
+        ,
+        <FeatureParagraph
+          title="Webanwendungen"
+          description="Auch Anwendungen lassen sich mithilfe von React einfach umsetzen. Denn React ist sehr dynamisch und bietet viele Bibliotheken dafür."
+          renderIcon={(props) => <WebAppIcon {...props} />}
+        />
+        ,
+        <FeatureParagraph
+          title="Desktop Anwendungen"
+          description="Mithilfe von Electron lassen sich Webanwendungen in vollständige Desktopanwendungen ummünzen. Damit lässt sich viel Zeit sparen, besonders wenn sowohl eine Web- als auch Desktopapp erstellt werden muss."
+          renderIcon={(props) => <DesktopIcon {...props} />}
+        />
+      ]}
     />
   );
 }

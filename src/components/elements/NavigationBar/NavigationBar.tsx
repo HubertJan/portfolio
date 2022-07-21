@@ -1,4 +1,5 @@
 import { styled } from "goober";
+import { SmallText } from "src/styles/fonts";
 
 const Background = styled("div") <{ backgroundColorStyle: string }>`
 background-color: ${(props) => props.backgroundColorStyle};
@@ -18,5 +19,8 @@ const Container = styled("div")`
 `;
 
 export const NavigationBar: React.FC<{ backgroundColor: string, children?: React.ReactNode }> = ({ backgroundColor, children }) => {
-    return (<Background backgroundColorStyle={backgroundColor}><Container>{children}</Container></Background>);
+    return (<Background backgroundColorStyle={backgroundColor}>
+        <Container>{children}</Container>
+
+    </Background>);
 }

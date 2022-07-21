@@ -12,13 +12,24 @@ import { FillScreenContainer } from "src/components/elements/FillScreenContainer
 import { NavigationMenuTitle } from "src/components/elements/NavigationMenuTitle/NavigationMenuTitle";
 import { NavigationBar } from "src/components/elements/NavigationBar/NavigationBar";
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { styled } from "goober";
+
+
+const ImpressumText = styled("div")`
+  position: fixed;
+  right: 8px;
+  bottom: 8px;
+  color: white;
+  text-align: center;
+`
 
 
 export const DesktopPage: React.FC<{}> = () => {
     const sliderController = useSliderController();
     const { pageIndex, scrollToPageIndex, setPageIndex, isScrolling } = sliderController;
     const { currentPageId } = useParams();
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (currentPageId === undefined) {
@@ -34,6 +45,7 @@ export const DesktopPage: React.FC<{}> = () => {
         window.history.pushState('', '', `/main/${pageIndex}`)
     }, [pageIndex]);
 
+    
     return (
         <FillScreenContainer
             backgroundImage={backgroundImage}
@@ -41,7 +53,7 @@ export const DesktopPage: React.FC<{}> = () => {
         >
             {<div className={styles.navigationBar}>
                 <NavigationBar
-                backgroundColor="black"
+                    backgroundColor="black"
                 >
                     <NavigationMenuTitle>hubertJan.dev</NavigationMenuTitle>
                     <NavigationButton
@@ -75,6 +87,8 @@ export const DesktopPage: React.FC<{}> = () => {
                 <ProjectsSlide isScrolling={isScrolling} />
                 <ContactSlide />
             </SliderList>
+            {pageIndex === 3 ? <ImpressumText onClick={()=>{navigate("/impressum")}}>Impressum</ImpressumText> : null}
         </FillScreenContainer >
+
     );
 };

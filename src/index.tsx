@@ -20,6 +20,7 @@ import { AChessPage } from './routes/AChessPage/AChessPage';
 import { HubertJanDevPage } from './routes/HubertJanDevPage/HubertJanDevPage';
 import { ItspylearningPage } from './routes/ItspylearningPage/ItspylearningPage';
 import { MorningChessPage } from './routes/MorningChessPage/MorningChessPage';
+import { ImpressumPage } from './routes/ImpressumPage/ImpressumPage';
 
 
 const ThemeContext = createContext(theme);
@@ -48,7 +49,7 @@ root.render(
       <Route path="/hubertJanDev" element={<HubertJanDevPage />} />
       <Route path="/itspylearning" element={<ItspylearningPage />} />
       <Route path="/morningChess" element={<MorningChessPage />} />
-      
+      <Route path="/impressum" element={<ImpressumPage />} />
     </Routes>
   </Router>
 );

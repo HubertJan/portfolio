@@ -46,8 +46,13 @@ const GermanyMap = styled('img')`
 
 const SlogenContainer = styled(StandardContainer)`
       flex-shrink: 3;
-
 `;
+
+const SecondBoxText = styled(SubHeading3Text)`
+    @media screen and (max-width: 500px) {
+        font-size: 18px;
+    }
+`
 
 export const AboutMeSlide: React.FC<{}> = () => {
 
@@ -59,9 +64,9 @@ export const AboutMeSlide: React.FC<{}> = () => {
             <GermanyMap src={germanyMap} alt="Germany" />
         </NameAndMapContainer>
         <SlogenContainer >
-            <SubHeading3Text>Ich programmiere und entwerfe
+            <SecondBoxText>Ich programmiere und entwerfe
                 Anwendungen mit einen Fokus auf <SecondaryColorSpan>verständlichen Code und Design
-                </SecondaryColorSpan>.</SubHeading3Text>
+                </SecondaryColorSpan>.</SecondBoxText>
         </SlogenContainer>
     </Content>);
 };

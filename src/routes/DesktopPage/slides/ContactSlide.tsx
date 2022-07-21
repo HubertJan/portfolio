@@ -1,4 +1,4 @@
-import { Heading2Text, SubHeading3Text } from "src/styles/fonts";
+import { BodyText, Heading2Text, SmallText, SubHeading3Text } from "src/styles/fonts";
 import { StandardSlide } from "../../../components/elements/StandardSlide";
 
 import chatIcon from 'src/assets/chat.svg';

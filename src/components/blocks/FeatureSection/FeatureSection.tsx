@@ -1,8 +1,10 @@
 import { styled } from "goober";
+import React from "react";
 import { ComponentType, FunctionComponent, ReactElement, SVGProps } from "react";
 import { useTheme } from "src";
 import { Section } from "src/components/elements/Section/Section";
 import { StandardContainer } from "src/components/elements/StandardContainer/StandardContainer";
+import { addKeyToReactElement } from "src/helper/addKeyToReactElement";
 import { BodyText, Heading3Text, SubTitleHeading } from "src/styles/fonts";
 
 const Container = styled(StandardContainer)`
@@ -29,7 +31,7 @@ const FeaturesRows = styled("div")`
     width: 100%;
 `;
 
-const Features = styled("div")`
+const FeatureRow = styled("div")`
     align-self: center;
     display: inline-flex;
     flex-direction: row;
@@ -43,7 +45,7 @@ const Features = styled("div")`
     }
 `;
 
-const Feature = styled("div")`
+const FeatureBox = styled("div")`
     display: flex;
     flex-direction: column;
     color: ${(props) => props.theme.colors.background};
@@ -55,10 +57,30 @@ const Feature = styled("div")`
     flex-grow: 1;
 `;
 
-const CustomIcon = styled("svg")`
-    width: 48px;
-    height: 48px;
-`;
+function createFeatureRowsByFeatureParagraphs({ paragraphs }: { paragraphs: ReactElement<typeof FeatureParagraph>[], }) {
+    const rows: ReactElement<typeof FeatureParagraph>[][] = [];
+    let row: ReactElement<typeof FeatureParagraph>[] = [];
+    const rowLength = paragraphs.length % 3 === 0 ? 3 : paragraphs.length % 2 === 0 ? 2 : 3;
+    paragraphs.forEach((paragraph, index) => {
+        row.push(addKeyToReactElement(paragraph, index.toString()));
+        if (row.length === rowLength) {
+            rows.push(row);
+            row = [];
+        }
+    });
+    if (row.length !== 0) {
+        rows.push(row);
+    }
+    return (<FeaturesRows>
+        {
+            rows.map((paragraphs, index) =>
+                <FeatureRow key={index}>
+                    {paragraphs.map((paragraph) => paragraph)}
+                </FeatureRow>
+            )
+        }
+    </FeaturesRows>);
+}
 
 export const FeatureParagraph: React.FC<{
     title: string,
@@ -69,48 +91,32 @@ export const FeatureParagraph: React.FC<{
         const theme = useTheme();
 
         return (
-            <Feature>
+            <FeatureBox>
                 {renderIcon({ fill: theme.colors.primary })}
                 <SubTitleHeading>{title}</SubTitleHeading>
                 <BodyText>
                     {description}
                 </BodyText>
-            </Feature>
+            </FeatureBox>
         );
     };
+
+
 
 export const FeatureSection: React.FC<{
     paragraphs: ReactElement<typeof FeatureParagraph>[],
 }> = ({ paragraphs }) => {
     const theme = useTheme();
-    const rows: ReactElement<typeof FeatureParagraph>[][] = [];
-    let row: ReactElement<typeof FeatureParagraph>[] = [];
-    const rowLength = paragraphs.length % 3 === 0 ? 3 : paragraphs.length % 2 === 0 ? 2 : 3;
-    paragraphs.forEach((paragraph) => {
-        row.push(paragraph);
-        if (row.length === rowLength) {
-            rows.push(row);
-            row = [];
-        }
-    });
-    if (row.length !== 0) {
-        rows.push(row);
-    }
+
     return (
         <Section>
             <Container backgroundColor={theme.colors.onBackground}>
                 <Heading>
                     Funktion
                 </Heading>
-                <FeaturesRows>
-                    {
-                        rows.map((paragraphs) =>
-                            <Features>
-                                {paragraphs.map((paragraph) => paragraph)}
-                            </Features>
-                        )
-                    }
-                </FeaturesRows>
+                {createFeatureRowsByFeatureParagraphs({
+                    paragraphs: paragraphs
+                })}
             </Container>
         </Section>);
 }

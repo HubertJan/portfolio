@@ -29,7 +29,7 @@ export const PortfolioProjectTemplate: React.FC<{
         projectHeader,
         productImageUrls,
         behindNavigationBarColor,
-        motivationText
+        motivationText,
     }
 ) => {
         const navigate = useNavigate();
@@ -41,7 +41,9 @@ export const PortfolioProjectTemplate: React.FC<{
                     <TextButton
                         label="Schließen"
                         hoverColor="grey"
-                        onClick={() => { navigate(-1) }} />
+                        onClick={() => { 
+                            navigate(-1) ;
+                        }} />
                 </NavigationBar>
                 {projectHeader}
                 {productImageUrls.length !== 0 ? <ImagesSection
@@ -51,9 +53,10 @@ export const PortfolioProjectTemplate: React.FC<{
                     title="Motivation"
                     text={motivationText}
                 />
-                <FeatureSection
+                {featureParagraphs.length !== 0 ? <FeatureSection
                     paragraphs={featureParagraphs}
-                />
+                /> : null}
+
             </Page>
         );
     }

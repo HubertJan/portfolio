@@ -1,10 +1,10 @@
 import { styled } from "goober";
 import { BodyText } from "src/styles/fonts";
 
-export const Box = styled("div") <{ backgroundColor: string, color: string }>`
+export const Box = styled("div") <{ backgroundColorStyle: string, color: string }>`
     padding: 12px;
     border-radius: 4px;
-    background-color: ${(props) => props.backgroundColor};
+    background-color: ${(props) => props.backgroundColorStyle};
     color:  ${(props) => props.color};
     border-color: transparent;
     width: fit-content;
@@ -16,5 +16,5 @@ export const Tag: React.FC<{
     backgroundColor: string,
     color: string,
 }> = ({ label, backgroundColor, color }) => {
-    return (<Box backgroundColor={backgroundColor} color={color} ><BodyText>{label}</BodyText></Box>);
+    return (<Box backgroundColorStyle={backgroundColor} color={color} ><BodyText>{label}</BodyText></Box>);
 }

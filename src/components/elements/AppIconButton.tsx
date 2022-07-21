@@ -11,15 +11,15 @@ const Content = styled("div")`
 `;
 
 const Icon = styled("div") <{
-    backgroundImage: string,
-    iconImage: string,
-    backgroundColor: string,
+    backgroundImageStyle: string,
+    iconImageStyle: string,
+    backgroundColorStyle: string,
 }>`
     border-radius: 25%;
     background-repeat: no-repeat;
     background-position: center;
-    background-image: url(${(props) => props.backgroundImage}), url( ${(props) => props.iconImage});
-    background-color: ${(props) => props.backgroundColor};
+    background-image: url(${(props) => props.backgroundImageStyle}), url( ${(props) => props.iconImageStyle});
+    background-color: ${(props) => props.backgroundColorStyle};
     @media screen {
         height: 80px;
         width: 80px;
@@ -71,9 +71,9 @@ export const AppIconButton: React.FC<{
         return (
             <Content>
                 <Icon
-                    backgroundImage={backgroundImage ?? ""}
-                    iconImage={iconImage ?? ""}
-                    backgroundColor={backgroundColor}
+                    backgroundImageStyle={backgroundImage ?? ""}
+                    iconImageStyle={iconImage ?? ""}
+                    backgroundColorStyle={backgroundColor}
                 />
                 <AppIconText>{title}</AppIconText>
             </Content>

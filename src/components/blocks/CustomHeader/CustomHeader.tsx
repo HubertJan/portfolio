@@ -3,6 +3,7 @@ import React from "react";
 import { useTheme } from "src";
 import { Column } from "src/components/elements/Column/Column";
 import { Tag } from "src/components/elements/Tag/Tag";
+import { addKeyToReactElement } from "src/helper/addKeyToReactElement";
 import { HeadingText, SubHeading2Text, SubTitleHeading } from "src/styles/fonts";
 
 const HeaderPart = styled('div') <{ backgroundColorStyle: string }>`
@@ -124,8 +125,8 @@ export const CustomHeader: React.FC<CustomHeaderProps> = ({
     return (
         <HeaderPart backgroundColorStyle={backgroundColor}>
             <HeaderSection
-            borderColorStyle={color}
-            colorStyle={color}
+                borderColorStyle={color}
+                colorStyle={color}
             >
                 <SubTitleHeading>{subTitle}</SubTitleHeading>
                 <MainDescription>
@@ -140,15 +141,21 @@ export const CustomHeader: React.FC<CustomHeaderProps> = ({
                             <StyledColumn>
                                 <SubTitleHeading>{tagsTitle}</SubTitleHeading>
                                 <Row>
-                                    {tags.map((tagName) => <Tag label={tagName} backgroundColor={color}
-                                    color={backgroundColor} />)}
+                                    {tags.map((tagName, index) => <Tag
+                                        label={tagName}
+                                        backgroundColor={color}
+                                        color={backgroundColor}
+                                        key={index}
+                                    />)}
                                 </Row>
                             </StyledColumn> : null
                     }
                     {
                         buttons.length !== 0 ?
                             <ButtonRow>
-                                {buttons.map((e) => e)}
+                                {buttons.map((element, index) => addKeyToReactElement(
+                                    element,
+                                    index.toString()))}
                             </ButtonRow> : null
                     }
                 </ItemsRow>
@@ -163,7 +170,7 @@ export interface ProjectHeaderProps {
     backgroundColor: string,
     color: string,
     tags?: string[],
-    buttons?: React.ReactNode[],
+    buttons?: React.ReactElement[],
 }
 
 export const ProjectHeader: React.FC<ProjectHeaderProps> = (props

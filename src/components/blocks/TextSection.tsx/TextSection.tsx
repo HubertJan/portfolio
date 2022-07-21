@@ -24,7 +24,7 @@ export const TextSection: React.FC<{
 }> = ({ title, text }) => {
     const theme = useTheme();
     return (
-        <Section backgroundColor={theme.colors.onBackground}>
+        <Section backgroundColorStyle={theme.colors.onBackground}>
             <Content>
                 <Heading2TextWithSpaceBelow>{title}</Heading2TextWithSpaceBelow>
                 <BodyText>{text}</BodyText>

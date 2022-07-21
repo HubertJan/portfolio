@@ -1,10 +1,11 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import styles from './StartNotificationStyledBanner.module.scss';
 import icon from 'src/assets/heart.svg';
 import { StandardContainer } from "src/components/elements/StandardContainer/StandardContainer";
 import { NormalText, SubHeading2Text, SubHeading3Text } from "src/styles/fonts";
 import { useTheme } from "src";
-import { keyframes, styled } from "goober";
+import { css, keyframes, styled } from "goober";
+import shouldForwardProp from "goober/should-forward-prop";
 
 const HeaderText = styled("div")`
     display: flex;
@@ -36,10 +37,11 @@ const SubMainText = styled(SubHeading2Text)`
     }
 `;
 
-const goingOffscreen = keyframes`
+function createGoingOffscreenKeyframes(startValueInPercentage: number) {
+    return keyframes`
     from {
         position: relative;
-        top: 0%;
+        top: ${-60 + 60 * startValueInPercentage}%;
         opacity: 1;
     }
 
@@ -49,8 +51,7 @@ const goingOffscreen = keyframes`
         opacity: 0;
     }
 `;
-
-
+}
 const Icon = styled("img")`
     width: 24px;
     height: 24px;
@@ -68,23 +69,40 @@ const Icon = styled("img")`
     }
 `;
 
-const NotificationBox = styled(StandardContainer) <{ shouldFadeStyle?: boolean }>`
+const NotificationBox = styled(StandardContainer) <{ fadeOptionsStyle: FadingOptions | null, fadeProgressStyle: number }>`
     display: flex;
     flex-direction: column;
 
-    ${(props) => props.shouldFadeStyle
-        ? `animation: ${goingOffscreen} 0.5s infinite;`
+    ${(props) => props.fadeOptionsStyle !== null ? "opacity: 0;" : ""}
+
+    ${(props) => props.fadeOptionsStyle !== null
+        ? `animation: ${createGoingOffscreenKeyframes(props.fadeOptionsStyle!.fadingStartValue)} ${props.fadeOptionsStyle!.timeInMs}ms normal;`
         : ""
     } 
+
+    ${(props) => props.fadeProgressStyle !== 1 ? `
+            position: relative;
+            top: ${-60 * props.fadeProgressStyle}%;
+            opacity: ${1 - 1 * props.fadeProgressStyle};
+    ` : ""
+    }
+
     @media screen and (max-width: 500px) {
         padding: 16px;
     }
 `;
 
-export const NotificationStyledBanner: React.FC<{ shouldFade: boolean }> = ({ shouldFade }) => {
+export interface FadingOptions {
+    fadingStartValue: number,
+    timeInMs: number,
+}
+
+export const NotificationStyledBanner: React.FC<{ fadingOptions?: FadingOptions, currentFadeProgress?: number }> = ({ fadingOptions = null, currentFadeProgress = 0 }) => {
     const theme = useTheme();
     return (
-        <NotificationBox hasRoundedEdges={false} shouldFadeStyle={shouldFade}>
+        <NotificationBox hasRoundedEdges={false}
+            fadeOptionsStyle={fadingOptions}
+            fadeProgressStyle={currentFadeProgress}>
             <HeaderText>
                 <Icon src={icon} alt="Heart Icon" />
                 Entwickler • Gerade

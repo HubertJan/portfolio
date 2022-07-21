@@ -25,7 +25,6 @@ export const DesktopPage: React.FC<{}> = () => {
             return;
         }
         const currentIdAsNumber = parseInt(currentPageId);
-        console.log("yo");
         setPageIndex(currentIdAsNumber);
     }, []);
 

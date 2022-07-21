@@ -59,7 +59,6 @@ function onEndDrag(
         const isMouse = isMouseEvent(event);
         const minimumScrollSpeedToScrollToNextPage = isMouse ? 100000000000 : 0;
         const scrollSpeed = getCurrentScrollSpeed();
-        console.log("yo");
         const currentPageIndex = calculateCurrentPage(sliderRef.current!);
         if (Math.abs(scrollSpeed) > minimumScrollSpeedToScrollToNextPage) {
             const nextPageIndex = scrollSpeed > 0 ? calculateCurrentPage(sliderRef.current!)! + 1 : currentPageIndex! - 1;

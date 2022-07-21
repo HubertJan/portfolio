@@ -41,10 +41,7 @@ const GermanyMap = styled('img')`
         margin-top: 16px;
         margin-bottom: -32px;
     }
-    @media screen and (max-width: 1000px) {
-        width: 70%;
-        margin-bottom: -16px;
-    }
+
 `;
 
 const SlogenContainer = styled(StandardContainer)`

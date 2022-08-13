@@ -63,7 +63,7 @@ export const AChessPage: React.FC<{}> = () => {
           renderIcon={(props) => <MultiplayerIcon {...props} />}
         />,
       ]}
-      motivationText="aChess ist als ein Schuleprojekt entstanden, wobei die Aufgabe es war ein Brettspiel umzusetzen. Tkinter wurde für die Umsetzung genutzt, da diese Teil der Anforderung war. Auch wenn Tkinter klar nicht für so eine Aufgabe gedacht war, konnte ich und mein Partner eine schöne Version von Schach erstellen."
+      backgroundText="aChess ist als ein Schuleprojekt entstanden, wobei die Aufgabe es war ein Brettspiel umzusetzen. Tkinter wurde für die Umsetzung genutzt, da diese Teil der Anforderung war. Bei der Entwicklung wurde auf eine strikte Trennung von Logik und UI geachtet, um den Code möglichst leserlich und flexibel zu halten."
     />
   );
 }

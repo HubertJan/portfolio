@@ -1,6 +1,6 @@
 import React, { createContext, useContext } from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import { setup } from "goober";
 
@@ -34,24 +34,23 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <Router>
-    <GlobalStyles />
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/main" element={<DesktopPage />} />
-      <Route path="/threencrypt" element={<ThreencryptPage />} />
-      <Route path="/visualSort" element={<VisualSortPage />} />
-      <Route path="/main/:currentPageId" element={<DesktopPage />} />
-      <Route path="/flutter" element={<FlutterPage />} />
-      <Route path="/python" element={<PythonPage />} />
-      <Route path="/react" element={<ReactPage />} />
-      <Route path="/aChess" element={<AChessPage />} />
-      <Route path="/hubertJanDev" element={<HubertJanDevPage />} />
-      <Route path="/itspylearning" element={<ItspylearningPage />} />
-      <Route path="/morningChess" element={<MorningChessPage />} />
-      <Route path="/impressum" element={<ImpressumPage />} />
-    </Routes>
-  </Router>
+    <BrowserRouter>
+      <GlobalStyles />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="main/:currentPageId" element={<DesktopPage />} />
+        <Route path="threencrypt" element={<ThreencryptPage />} />
+        <Route path="visualSort" element={<VisualSortPage />} />
+        <Route path="flutter" element={<FlutterPage />} />
+        <Route path="python" element={<PythonPage />} />
+        <Route path="react" element={<ReactPage />} />
+        <Route path="aChess" element={<AChessPage />} />
+        <Route path="hubertJanDev" element={<HubertJanDevPage />} />
+        <Route path="itspylearning" element={<ItspylearningPage />} />
+        <Route path="morningChess" element={<MorningChessPage />} />
+        <Route path="impressum" element={<ImpressumPage />} />
+      </Routes>
+    </BrowserRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -114,7 +114,7 @@ export const NotificationStyledBanner: React.FC<{ fadingOptions?: FadingOptions,
                     paddingRight: "8px",
                 }}>Hubert</span >
             </MainText>
-            <SubMainText>Ich bin ein App Developer.</SubMainText>
+            <SubMainText>Ich bin ein Entwickler.</SubMainText>
         </NotificationBox>
     );
 };

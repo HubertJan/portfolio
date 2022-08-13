@@ -28,8 +28,9 @@ const ImpressumText = styled("div")`
 export const DesktopPage: React.FC<{}> = () => {
     const sliderController = useSliderController();
     const { pageIndex, scrollToPageIndex, setPageIndex, isScrolling } = sliderController;
-    const { currentPageId } = useParams();
     const navigate = useNavigate();
+    const { currentPageId } = useParams();
+   
 
     useEffect(() => {
         if (currentPageId === undefined) {

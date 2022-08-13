@@ -19,7 +19,7 @@ export const ReactPage: React.FC<{}> = () => {
           backgroundColor={"#61DBFB"}
           color={"	#20232a"}
         />}
-      experienceText="JavaScript ist meine erste Programmieresprache, die ich gelernt habe. Genauer gesagt habe ich JavaScript angefangen zu lernen vor sieben Jahren. Zuerst genutzt habe ich JavaScript um einfache Browserspiele zu entwickeln. Heutzutage nutzte ich JavaScript, und häufiger TypeScript, um Webseiten zu erstellen. React ist dabei aktuell die Framework meiner Wahl, wobei auch diese Webseite auf React basiert :)"
+      experienceText="JavaScript ist meine erste Programmieresprache, die ich gelernt habe. Damit habe ich sieben Jahre Erfahrung in JS. Zuerst genutzt habe ich JavaScript um einfache Browserspiele zu entwickeln. Heutzutage nutzte ich JavaScript, und häufiger TypeScript, um Webseiten zu erstellen. React stellt dabei ein etablierter Standard dar, der dank seiner Flexibilität noch aktuell ist."
       featureParagraphs={[
         <FeatureParagraph
           title="Webseiten"

@@ -8,15 +8,17 @@
   gap: 16px;
   padding: 32px;
   max-width: 1200px; }
-  @media screen {
-    .aboutMeSlide {
-      flex-direction: row; } }
-  @media screen and (max-width: 1000px) {
-    .aboutMeSlide {
-      flex-direction: column;
-      max-width: 600px;
-      min-width: 20px;
-      gap: 32px; } }
+
+@media screen {
+  .aboutMeSlide {
+    flex-direction: row; } }
+
+@media screen and (max-width: 1000px) {
+  .aboutMeSlide {
+    flex-direction: column;
+    max-width: 600px;
+    min-width: 20px;
+    gap: 32px; } }
 
 @media screen and (max-width: 700px) {
   .navigationBar {
@@ -35,22 +37,26 @@
   flex-direction: row;
   align-items: flex-start;
   width: 100%; }
-  @media screen {
-    .iconRow {
-      gap: 32px; } }
-  @media screen and (max-width: 300px) {
-    .iconRow {
-      gap: 8px; } }
+
+@media screen {
+  .iconRow {
+    gap: 32px; } }
+
+@media screen and (max-width: 300px) {
+  .iconRow {
+    gap: 8px; } }
 
 .aboutMeColumn {
   display: flex;
   flex-direction: column; }
-  @media screen {
-    .aboutMeColumn {
-      gap: 16px; } }
-  @media screen and (max-width: 1000px) {
-    .aboutMeColumn {
-      gap: 8px; } }
+
+@media screen {
+  .aboutMeColumn {
+    gap: 16px; } }
+
+@media screen and (max-width: 1000px) {
+  .aboutMeColumn {
+    gap: 8px; } }
 
 .aboutMeContent {
   display: flex;
@@ -63,43 +69,51 @@
   max-width: 100%;
   height: auto;
   display: block; }
-  @media screen {
-    .germanyMap {
-      width: 100%;
-      margin-top: 16px;
-      margin-bottom: -32px; } }
-  @media screen and (max-width: 1000px) {
-    .germanyMap {
-      height: 50%;
-      margin-top: 16px;
-      margin-bottom: -16px; } }
+
+@media screen {
+  .germanyMap {
+    width: 100%;
+    margin-top: 16px;
+    margin-bottom: -32px; } }
+
+@media screen and (max-width: 1000px) {
+  .germanyMap {
+    height: 50%;
+    margin-top: 16px;
+    margin-bottom: -16px; } }
 
 .titleText {
   color: white;
   font-family: "Roboto";
   text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25); }
-  @media screen {
-    .titleText {
-      font-size: 21px; } }
-  @media screen and (min-width: 500px) {
-    .titleText {
-      font-size: 24px; } }
-  @media screen and (min-width: 1300px) {
-    .titleText {
-      font-size: 32px; } }
+
+@media screen {
+  .titleText {
+    font-size: 21px; } }
+
+@media screen and (min-width: 500px) {
+  .titleText {
+    font-size: 24px; } }
+
+@media screen and (min-width: 1300px) {
+  .titleText {
+    font-size: 32px; } }
 
 .text {
   color: white;
   text-align: left; }
-  @media screen {
-    .text {
-      font-size: 18px; } }
-  @media screen and (min-width: 500px) {
-    .text {
-      font-size: 21px; } }
-  @media screen and (min-width: 1300px) {
-    .text {
-      font-size: 28px; } }
+
+@media screen {
+  .text {
+    font-size: 18px; } }
+
+@media screen and (min-width: 500px) {
+  .text {
+    font-size: 21px; } }
+
+@media screen and (min-width: 1300px) {
+  .text {
+    font-size: 28px; } }
 
 .primaryTextBackgroundColor {
   padding: 4px 8px;

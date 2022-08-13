@@ -54,7 +54,7 @@ export const MorningChessPage: React.FC<{}> = () => {
         />,
         <FeatureParagraph
           title="So viele Puzzles und so viel Zeit wie du willst"
-          description="Du kannst entscheiden, wie viel Puzzle du lösen willst und wie viel Zeit du haben sollst.."
+          description="Du kannst entscheiden, wie viel Puzzle du lösen willst und wie viel Zeit du haben sollst."
           renderIcon={(props)=> <EmailIcon {...props} />}
      
         />,
@@ -65,7 +65,7 @@ export const MorningChessPage: React.FC<{}> = () => {
      
         />,
       ]}
-      motivationText="Als ich eines Tages."
+      backgroundText="MorningChess enstand aus der Idee eine interessante Wecker App zu erstellen. Dabei wurde eine Wecker App mit dem Lösen von sogenannten Schach Puzzle verbunden. Die Umsetzung war komplexer als andere Projekte, da hier  der Zugriff auf Betriebsystemfunktionen notwendig war, um zum Beispiel einen Wecker stellen zu können. Aber auch die Umsetzung des Schachspiel selbst war komplexer als die meisten anderen UIs."
     />
   );
 }

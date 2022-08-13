@@ -22,14 +22,14 @@ export const PortfolioProjectTemplate: React.FC<{
     productImageUrls: string[],
     behindNavigationBarColor: string,
     featureParagraphs: ReactElement<typeof FeatureParagraph>[],
-    motivationText: string,
+    backgroundText: string,
 }> = (
     {
         featureParagraphs,
         projectHeader,
         productImageUrls,
         behindNavigationBarColor,
-        motivationText,
+        backgroundText: backgroundText,
     }
 ) => {
         const navigate = useNavigate();
@@ -50,8 +50,8 @@ export const PortfolioProjectTemplate: React.FC<{
                     imageUrls={productImageUrls}
                 /> : null}
                 <TextSection
-                    title="Motivation"
-                    text={motivationText}
+                    title="Hintergründe"
+                    text={backgroundText}
                 />
                 {featureParagraphs.length !== 0 ? <FeatureSection
                 title="Funktionen"

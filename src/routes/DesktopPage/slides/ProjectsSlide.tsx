@@ -1,10 +1,7 @@
-import { styled } from "goober";
-
-import javascriptIcon from "src/assets/javascript.png";
-import threencrypt from "src/assets/3ncrypt.png";
+import threencrypt from "src/assets/encrypt4.png";
 import vssort from "src/assets/VSSort.png";
 import pychess from "src/assets/pychess.png";
-import hubertJan from "src/assets/hubertJan.png";
+import hubertJan from "src/assets/hubertJan2.png";
 import itspy from "src/assets/itspy.png";
 import morningChess from "src/assets/morningChess.png";
 import { DesktopAppButton } from "src/components/elements/DesktopAppButton/DesktopAppButton";
@@ -52,7 +49,7 @@ export const ProjectsSlide: React.FC<{ isScrolling?: boolean }> = ({ isScrolling
                     />
                 </AppIconRow>
                 <AppIconRow>
-                    <DesktopAppButton title={"hubertJan.dev"}
+                    <DesktopAppButton title={"hubertJan.de"}
                         backgroundColor="#434656"
                         iconImage={hubertJan}
                         onClick={() => {

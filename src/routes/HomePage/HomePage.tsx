@@ -30,7 +30,7 @@ export const HomePage: React.FC<{}> = () => {
                     timeInMs: fadeTime
                 });
                 setTimeout(function () {
-                    navigate("/main");
+                    navigate("/main/0");
                 }, fadeTime);
             }
         }

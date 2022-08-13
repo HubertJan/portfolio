@@ -76,10 +76,10 @@ export const Button: React.FC<
     );
 }
 
-export const PrimaryButton: React.FC<{ label: string }> = (
-    { label }
+export const PrimaryButton: React.FC<{ label: string, onClick: ()=> void }> = (
+    { label, onClick }
 ) => {
     const theme = useTheme();
     const style = getPrimaryStylingBy(theme);
-    return <Button {...style} label={label} />
+    return <Button {...style} label={label} onClick={onClick} />
 }

@@ -65,7 +65,7 @@ export const AboutMeSlide: React.FC<{}> = () => {
         </NameAndMapContainer>
         <SlogenContainer >
             <SecondBoxText>Ich programmiere und entwerfe
-                Anwendungen mit einen Fokus auf <SecondaryColorSpan>verständlichen Code und Design
+                Anwendungen mit Fokus auf <SecondaryColorSpan>verständlichem Code und Design
                 </SecondaryColorSpan>.</SecondBoxText>
         </SlogenContainer>
     </Content>);

@@ -39,10 +39,11 @@ function createOnDragStart(
             scrollLeft: element.current!.scrollLeft,
             scrollTop: element.current!.scrollTop,
         };
+        const currentPage = calculateCurrentPage(element.current!);
         const { getSpeed, stopMeasuring } = startMeasuringSpeed(element);
         return {
-            onMove: (e: TouchEvent | MouseEvent) => scrollByDraggingEvent(e, dragPoint, element), onStop: (event: MouseEvent | TouchEvent) => {
-                onEndDrag(element, getSpeed)(event);
+            onMove: (e: TouchEvent | MouseEvent) => scrollByDraggingEvent(e, dragPoint, element), onStop: (_: MouseEvent | TouchEvent) => {
+                onEndDrag(element, getSpeed, currentPage)(event);
                 stopMeasuring();
             }
         };
@@ -54,16 +55,18 @@ function createOnDragStart(
 function onEndDrag(
     sliderRef: React.RefObject<HTMLDivElement>,
     getCurrentScrollSpeed: () => number,
+    currentPageIndex: number,
 ) {
     return (event: MouseEvent | TouchEvent) => {
         const isMouse = isMouseEvent(event);
         const minimumScrollSpeedToScrollToNextPage = isMouse ? 100000000000 : 0;
         const scrollSpeed = getCurrentScrollSpeed();
-        const currentPageIndex = calculateCurrentPage(sliderRef.current!);
         if (Math.abs(scrollSpeed) > minimumScrollSpeedToScrollToNextPage) {
-            const nextPageIndex = scrollSpeed > 0 ? calculateCurrentPage(sliderRef.current!)! + 1 : currentPageIndex! - 1;
+            const nextPageIndex = scrollSpeed > 0 ? currentPageIndex + 1 : currentPageIndex - 1;
+            console.log(`currentPage: ${currentPageIndex}, nextPage: ${nextPageIndex}`);
             scrollToPageIndex(nextPageIndex, sliderRef.current!);
         } else {
+            console.log(`currentPage: ${currentPageIndex}`);
             scrollToPageIndex(currentPageIndex, sliderRef.current!);
         }
     }

@@ -82,7 +82,7 @@ export const VisualSortPage: React.FC<{}> = () => {
      
         />,
       ]}
-      backgroundText="VisualSort stellt ein Schuleprojekt dar, worin verschiedene Sortieralgorithmen dargestellt werden sollten. Hierbei wurden einige Funktionen eingebaut, die beim Verstehen der Algorithmen helfen sollen. Dabei wurde auch auf ein gutes Design gedachtet, welches dabei eine Hommage an die IDE VS Code ist."
+      backgroundText="VisualSort stellt ein Schuleprojekt dar, worin verschiedene Sortieralgorithmen dargestellt werden sollten. Hierbei wurden einige Funktionen eingebaut, die beim Verstehen der Algorithmen helfen sollen. Dabei entschied ich mich für ein Design, welches eine Hommage auf VS Code IDE ist."
     />
   );
 }

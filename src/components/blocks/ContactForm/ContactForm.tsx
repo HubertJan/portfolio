@@ -52,11 +52,11 @@ export const ContactForm: React.FC<{
                 <FieldLabeled label="Email">
                     <TextField placeHolder="max@mustermann.de" />
                 </FieldLabeled>
-                <FieldLabeled label="Nachricht">
+                <FieldLabeled label="Nachricht" >
                     <MultiLineTextField placeHolder="Ich möchte mit dir arbeiten." />
                 </FieldLabeled>
                 <div>
-                    <PrimaryButton label="Kontaktieren"
+                    <PrimaryButton label="Kontaktieren" onClick={()=>{}}
                     />
                 </div>
             </FormContent>

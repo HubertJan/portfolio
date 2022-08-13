@@ -20,7 +20,7 @@ export const PythonPage: React.FC<{}> = () => {
           backgroundColor={"#dfb209"}
           color={theme.colors.onPrimary}
         />}
-      experienceText="Zuerst genutzt habe ich Python nicht wegen ihrer einfachen Syntax, sondern aus einen banaleren Grund. Python kann alles und jeder nutzt es. Ich nutzte bereits Python seit vier Jahren und Pythons größter Vorteil war immer, die vielen Packages und die vielen Menschen, die Python nutzen. Dadurch lassen sich viele sehr verschiedene Aufgaben oft am schnellsten und einfachsten lösen."
+      experienceText="Ich nutzte bereits Python seit vier Jahren und Pythons größter Vorteil war immer, die vielen Packages und die große Community. Insbesondere bei Aufgaben mit ungewöhnlichen Anforderungen, bietet Python oft große Vorteile, durch viele sehr spezifische Libraries. Dadurch lassen sich viele sehr verschiedene Aufgaben oft am schnellsten und einfachsten lösen."
       featureParagraphs={[
         <FeatureParagraph 
         title="Backend"

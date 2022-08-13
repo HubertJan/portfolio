@@ -68,7 +68,7 @@ export const ThreencryptPage: React.FC<{}> = () => {
         />,
       ]}
       backgroundText="
-      3ncrypt begann als Schuleprojekt und wurde dann zu einer Android App umgewandelt und veröffentlicht. Später wurde dann noch die UI an den Material 3 Anfoderungen angepasst. Inbesondere die große Anzahl von Algorithmen stellte eine Herausforderung dar. Da hier einige Algorithmen selbst implementiert und umgesetzt wurden, während andere komplexere Algorithmen per Library eingebuat wurden."
+      3ncrypt begann als Schuleprojekt und wurde dann zu einer Android App umgewandelt und veröffentlicht. Später wurde dann noch die UI an den Material 3 Anfoderungen angepasst. Inbesondere die große Anzahl von Algorithmen stellte eine Herausforderung dar. Da hier einige Algorithmen selbst implementiert und umgesetzt wurden, während andere komplexere Algorithmen per Library eingebaut wurden."
     />
   );
 }

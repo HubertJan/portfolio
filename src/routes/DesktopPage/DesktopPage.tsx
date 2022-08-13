@@ -56,7 +56,7 @@ export const DesktopPage: React.FC<{}> = () => {
                 <NavigationBar
                     backgroundColor="black"
                 >
-                    <NavigationMenuTitle>hubertJan.dev</NavigationMenuTitle>
+                    <NavigationMenuTitle>hubertJan.de</NavigationMenuTitle>
                     <NavigationButton
                         currentPageIndex={currentPageIndex ?? 0}
                         buttonPageIndex={0}

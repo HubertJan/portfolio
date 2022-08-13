@@ -4,16 +4,27 @@ export function startMeasuringSpeed(element: React.RefObject<HTMLDivElement>): {
 } {
     let lastScrollPos = element.current!.scrollLeft;
     let lastScrollPosTimeStamp = new Date();
-    let scrollSpeed = 0;
+    let scrollSpeed = 5;
+    let checksWithoutSpeed = 0;
     const speedMeasure = setInterval(() => {
-        let currentTime = new Date();
-        let currentScrollPos = element.current!.scrollLeft;
-        let timeDifference = currentTime.getMilliseconds() - lastScrollPosTimeStamp.getMilliseconds();
-        let posDifference = currentScrollPos - lastScrollPos;
-        scrollSpeed = posDifference * 100000000000 / timeDifference;
+        const currentTime = new Date();
+        const currentScrollPos = element.current!.scrollLeft;
+        const timeDifference = currentTime.getMilliseconds() - lastScrollPosTimeStamp.getMilliseconds();
+        const posDifference = currentScrollPos - lastScrollPos;
+
+        const currentScrollSpeed = posDifference * 100000000000 / timeDifference;
+        if (currentScrollSpeed === 0) {
+            checksWithoutSpeed += 1;
+        } else {
+            scrollSpeed = currentScrollSpeed;
+        }
+        if (checksWithoutSpeed >= 11) {
+            scrollSpeed = currentScrollSpeed;
+            checksWithoutSpeed = 0;
+        }
         lastScrollPos = element.current!.scrollLeft;
         lastScrollPosTimeStamp = new Date();
-    }, 10);
+    }, 1);
     return {
         getSpeed: () => scrollSpeed,
         stopMeasuring: () => {

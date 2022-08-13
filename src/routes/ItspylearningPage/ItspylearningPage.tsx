@@ -51,7 +51,7 @@ export const ItspylearningPage: React.FC<{}> = () => {
      
         />,
       ]}
-      backgroundText="itsLearning wurde viel auf meiner ehemaligen Schule genutzt, allerdings fehlt es ihr an einer guten API. Die Web API war nur unzureichend dokumentiert. Um die API für den Schuleserver nütztlich zu machen, entschiede ich mich dazu eine Library in Python dafür zu schreiben."
+      backgroundText="itsLearning wurde viel auf meiner ehemaligen Schule genutzt, allerdings fehlt es ihr an einer guten API. Die Web-API war nur unzureichend dokumentiert. Um die API für den Schuleserver nützlich zu machen, entschiede ich mich dazu eine Library in Python dafür zu schreiben."
     />
   );
 }

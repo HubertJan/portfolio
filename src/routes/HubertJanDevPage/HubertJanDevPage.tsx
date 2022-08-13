@@ -39,7 +39,7 @@ export const HubertJanDevPage: React.FC<{}> = () => {
       featureParagraphs={[
 
      ]}
-        backgroundText="Entwickelt wurde die Webseite mithilfe von React und soll insbesondere durch ein einzigartiges Konzept überzeugen. Das App Home Screen Design war dabei schwieriger umzusetzen als gedacht, da HTML ganz offensichtlich nicht für ein solches Design ausgelegt ist."
+        backgroundText="Entwickelt wurde die Webseite mithilfe von React und soll insbesondere durch ein einzigartiges Konzept überzeugen. Das App Homescreen Design war dabei schwieriger umzusetzen als gedacht, da HTML ganz offensichtlich nicht für ein solches Design ausgelegt ist."
     />
   );
 }

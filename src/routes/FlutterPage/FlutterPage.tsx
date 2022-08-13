@@ -21,7 +21,7 @@ export const FlutterPage: React.FC<{}> = () => {
           backgroundColor={"#2196F3"}
           color={theme.colors.onPrimary}
         />}
-      experienceText="Flutter gehört zu meinen Lieblingsframeworks. Ich habe bereits über 5 Jahre Erfahrung mit Flutter. Angefangen habe ich mit einigen Tutorials, ein Kurs und der Dokumentation. Heutzutage ist es meine erste Wahl sowohl bei Android als auch Windows Anwendungen."
+      experienceText="Ich habe bereits über 5 Jahre Erfahrung mit Flutter. Angefangen habe ich mit einigen Tutorials, ein Kurs und der Dokumentation. Heutzutage ist es meine erste Wahl sowohl bei Android als auch Windows Anwendungen. Vieler meiner privaten Projekte entstanden mithilfe von Flutter."
       featureParagraphs={[
         <FeatureParagraph
           title="Android und iOS Apps"

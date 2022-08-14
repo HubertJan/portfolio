@@ -8,7 +8,7 @@ import emailIcon from 'src/assets/email.svg';
 import { styled } from "goober";
 import { TextButton } from "src/components/elements/TextButton";
 import { useTheme } from "src";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ContactForm } from "src/components/functionals/ContactForm/ContactForm";
 import { Overlay } from "src/components/elements/Overlay/Overlay";
 import { StandardContainer } from "src/components/elements/StandardContainer/StandardContainer";
@@ -49,9 +49,14 @@ const LabelContent = styled("div")`
 
 `;
 
-export const ContactSlide: React.FC<{}> = () => {
+export const ContactSlide: React.FC<{ setIsAllowedToSlide: (isAllowedToSlide: boolean) => void, }> = ({ setIsAllowedToSlide }) => {
     const [isShowingOverlay, setIsShowingOverlay] = useState(false);
     const [hasCopiedEmail, setHasCopiedEmail] = useState(false);
+
+    useEffect(() => {
+        console.log("yooooo");
+        setIsAllowedToSlide(!isShowingOverlay);
+    }, [isShowingOverlay]);
 
     const themeContext = useTheme();
     return (
@@ -104,10 +109,10 @@ export const ContactSlide: React.FC<{}> = () => {
                 isShown={isShowingOverlay}
             >
                 <ContactForm
-                    onSubmit={({email, message,name,resetForm}) => {
+                    onSubmit={({ email, message, name, resetForm }) => {
                         setIsShowingOverlay(false);
                         console.log("test");
-                        postFirebaseMessage({email,message,name}).then(
+                        postFirebaseMessage({ email, message, name }).then(
                             (_) => {
                                 Store.addNotification({
                                     title: "Nachricht abgeschickt",
@@ -124,7 +129,7 @@ export const ContactSlide: React.FC<{}> = () => {
                                 });
                                 resetForm();
                             }
-                        ).catch((e)=>{
+                        ).catch((e) => {
                             console.log(e);
                             Store.addNotification({
                                 title: "Nachricht konnte nicht abgeschickt werden",

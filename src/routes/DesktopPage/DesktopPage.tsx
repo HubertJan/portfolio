@@ -28,7 +28,7 @@ const ImpressumText = styled("div")`
 
 export const DesktopPage: React.FC<{}> = () => {
     const sliderController = useSliderController();
-    const { pageIndex, scrollToPageIndex, setPageIndex, isScrolling } = sliderController;
+    const { pageIndex, scrollToPageIndex, setPageIndex, isScrolling, setIsAllowedToSlide } = sliderController;
     const navigate = useNavigate();
     const { currentPageId } = useParams();
 
@@ -100,7 +100,7 @@ export const DesktopPage: React.FC<{}> = () => {
                     <AboutMeSlide />
                     <SkillsSlide isScrolling={isScrolling} />
                     <ProjectsSlide isScrolling={isScrolling} />
-                    <ContactSlide />
+                    <ContactSlide setIsAllowedToSlide={setIsAllowedToSlide}/>
                 </SliderList>
                 {pageIndex === 3 ? <ImpressumText onClick={() => { navigate("/impressum") }}>Impressum</ImpressumText> : null}
             </FillScreenContainer >

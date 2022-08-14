@@ -1,11 +1,13 @@
 interface addDragListenersProps {
     element: React.RefObject<HTMLDivElement>,
+
     onStartReturnOnMoveAndOnEnd:
     (event: MouseEvent | TouchEvent) =>
         {
             onMove: (event: MouseEvent | TouchEvent) => void,
             onStop: (event: MouseEvent | TouchEvent) => void,
         },
+  
         isDetectionMoveAndEndForWholeWindow?: boolean
 }
 

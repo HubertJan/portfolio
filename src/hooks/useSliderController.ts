@@ -82,14 +82,18 @@ export interface SliderControllerProviderInterface {
     sliderRef: React.RefObject<HTMLDivElement>;
     isScrolling: boolean;
     setPageIndex: (pageIndex: number) => void;
+    setIsAllowedToSlide: (isAllowedToSlide: boolean) => void,
 }
 
 export function useSliderController(): SliderControllerProviderInterface {
     const sliderRef = useRef<HTMLDivElement>(null);
+    const [isAllowedToSlide, setIsAllowedToSlide] = useState<boolean>(true);
     const currentPageIndex = usePageIndex(sliderRef);
+    const [lastPageIndexBeforeNoSliding, setLastPageIndexBeforeNoSliding] = useState(0);
     const { hasBeenResized, acknowledgeResize } = useResize();
     const container = sliderRef.current;
     let isScrolling = false;
+
     if (container !== null) {
         const difference = (container.scrollLeft % container.clientWidth) / container.clientWidth;
         isScrolling = difference > 0.01 && difference < 0.99;
@@ -104,10 +108,26 @@ export function useSliderController(): SliderControllerProviderInterface {
             onStartReturnOnMoveAndOnEnd: createOnDragStart(sliderRef),
         });
     }, []);
+
+    useEffect(() => {
+        if (!isAllowedToSlide) {
+            scrollToPageIndexWithoutDelay(lastPageIndexBeforeNoSliding!, sliderRef.current!);
+        }
+    }, [currentPageIndex]);
+
+    useEffect(() => {
+        if (!isAllowedToSlide) {
+            setLastPageIndexBeforeNoSliding(currentPageIndex!);
+        }
+    }, [isAllowedToSlide]);
     return {
         pageIndex: currentPageIndex,
+        setIsAllowedToSlide,
         scrollToPageIndex:
             (pageIndex: number) => {
+                if (!isAllowedToSlide) {
+                    return;
+                }
                 sliderRef.current != null && scrollToPageIndex(pageIndex, sliderRef.current);
             },
         setPageIndex: (pageIndex: number) => {

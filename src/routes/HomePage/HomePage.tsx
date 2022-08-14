@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-
+import ReactScrollWheelHandler from "react-scroll-wheel-handler";
 import styles from './HomePage.module.scss';
 import backgroundImage from "src/assets/background_image.jpg";
 import { FillScreenContainer } from "src/components/elements/FillScreenContainer/FillScreenContainer";
@@ -9,14 +9,6 @@ import { FadingOptions, NotificationStyledBanner } from "src/components/patterns
 import { ButtonText } from "src/styles/fonts";
 import { useUpSwipe } from "src/hooks/useUpSwipe";
 import { css } from "goober";
-
-function getWindowDimensions() {
-    const { innerWidth: width, innerHeight: height } = window;
-    return {
-        width,
-        height
-    };
-}
 
 export const HomePage: React.FC<{}> = () => {
     const navigate = useNavigate();
@@ -37,19 +29,32 @@ export const HomePage: React.FC<{}> = () => {
     });
 
     return (
-        <FillScreenContainer
-            backgroundImage={backgroundImage}
-            withBackgroundOverlay={true}
+        <ReactScrollWheelHandler
+            upHandler={(_) => {
+                const fadeTime = 500;
+                setFadingStartValue({
+                    fadingStartValue: 1,
+                    timeInMs: fadeTime
+                });
+                setTimeout(function () {
+                    navigate("/main/0");
+                }, fadeTime);
+            }}
         >
-            <div className={styles.portfolioPage}>
-                <div className={styles.banner}>
-                    <NotificationStyledBanner fadingOptions={fadingOptions ?? undefined} currentFadeProgress={1 - (clickedMouseHeightInPercentage ?? 0)} />
-                </div>
-                <div ref={ref}>
-                    <ButtonText className={css`  user-select: none; `}>Zum Entsprechen nach oben wischen.</ButtonText>
-                </div>
-            </div>
-        </FillScreenContainer>
+            <FillScreenContainer
+                backgroundImage={backgroundImage}
+                withBackgroundOverlay={true}
+            >
+                <div className={styles.portfolioPage}>
+                    <div className={styles.banner}>
+                        <NotificationStyledBanner fadingOptions={fadingOptions ?? undefined} currentFadeProgress={1 - (clickedMouseHeightInPercentage ?? 0)} />
+                    </div>
 
+                    <div ref={ref}>
+                        <ButtonText className={css`  user-select: none; `}>Zum Entsprechen nach oben wischen.</ButtonText>
+                    </div>
+                </div>
+            </FillScreenContainer>
+        </ReactScrollWheelHandler>
     );
 };

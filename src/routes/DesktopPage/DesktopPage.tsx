@@ -11,6 +11,7 @@ import { NavigationButton } from "../../components/elements/NavigationButton";
 import { FillScreenContainer } from "src/components/elements/FillScreenContainer/FillScreenContainer";
 import { NavigationMenuTitle } from "src/components/elements/NavigationMenuTitle/NavigationMenuTitle";
 import { NavigationBar } from "src/components/elements/NavigationBar/NavigationBar";
+import ReactScrollWheelHandler from "react-scroll-wheel-handler";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { styled } from "goober";
@@ -30,7 +31,7 @@ export const DesktopPage: React.FC<{}> = () => {
     const { pageIndex, scrollToPageIndex, setPageIndex, isScrolling } = sliderController;
     const navigate = useNavigate();
     const { currentPageId } = useParams();
-   
+
 
     useEffect(() => {
         if (currentPageId === undefined) {
@@ -46,50 +47,63 @@ export const DesktopPage: React.FC<{}> = () => {
         window.history.pushState('', '', `/main/${pageIndex}`)
     }, [pageIndex]);
 
-    
-    return (
-        <FillScreenContainer
-            backgroundImage={backgroundImage}
-            withBackgroundOverlay={true}
-        >
-            {<div className={styles.navigationBar}>
-                <NavigationBar
-                    backgroundColor="black"
-                >
-                    <NavigationMenuTitle>hubertJan.de</NavigationMenuTitle>
-                    <NavigationButton
-                        currentPageIndex={currentPageIndex ?? 0}
-                        buttonPageIndex={0}
-                        scrollToPageIndex={scrollToPageIndex}
-                        label="Über Mich" />
-                    <NavigationButton
-                        currentPageIndex={currentPageIndex ?? 0}
-                        buttonPageIndex={1}
-                        scrollToPageIndex={scrollToPageIndex}
-                        label="Skills" />
-                    <NavigationButton
-                        currentPageIndex={currentPageIndex ?? 0}
-                        buttonPageIndex={2}
-                        scrollToPageIndex={scrollToPageIndex}
-                        label="Projekte" />
-                    <NavigationButton
-                        currentPageIndex={currentPageIndex ?? 0}
-                        buttonPageIndex={3}
-                        scrollToPageIndex={scrollToPageIndex}
-                        label="Kontakt" />
-                </NavigationBar>
-            </div>
-            }
-            <SliderList
-                sliderController={sliderController}
-            >
-                <AboutMeSlide />
-                <SkillsSlide isScrolling={isScrolling} />
-                <ProjectsSlide isScrolling={isScrolling} />
-                <ContactSlide />
-            </SliderList>
-            {pageIndex === 3 ? <ImpressumText onClick={()=>{navigate("/impressum")}}>Impressum</ImpressumText> : null}
-        </FillScreenContainer >
 
+    return (
+        <ReactScrollWheelHandler
+            downHandler={(_) => {
+                console.log(currentPageIndex);
+                if(currentPageIndex !== 3){
+                    scrollToPageIndex((currentPageIndex ?? 0) + 1);
+                }
+            }}
+            upHandler={(_)=>{
+                if(currentPageIndex !== 0){
+                    scrollToPageIndex((currentPageIndex ?? 0) - 1);
+                }
+            }}
+        >
+            <FillScreenContainer
+                backgroundImage={backgroundImage}
+                withBackgroundOverlay={true}
+            >
+                {<div className={styles.navigationBar}>
+                    <NavigationBar
+                        backgroundColor="black"
+                    >
+                        <NavigationMenuTitle>hubertJan.de</NavigationMenuTitle>
+                        <NavigationButton
+                            currentPageIndex={currentPageIndex ?? 0}
+                            buttonPageIndex={0}
+                            scrollToPageIndex={scrollToPageIndex}
+                            label="Über Mich" />
+                        <NavigationButton
+                            currentPageIndex={currentPageIndex ?? 0}
+                            buttonPageIndex={1}
+                            scrollToPageIndex={scrollToPageIndex}
+                            label="Skills" />
+                        <NavigationButton
+                            currentPageIndex={currentPageIndex ?? 0}
+                            buttonPageIndex={2}
+                            scrollToPageIndex={scrollToPageIndex}
+                            label="Projekte" />
+                        <NavigationButton
+                            currentPageIndex={currentPageIndex ?? 0}
+                            buttonPageIndex={3}
+                            scrollToPageIndex={scrollToPageIndex}
+                            label="Kontakt" />
+                    </NavigationBar>
+                </div>
+                }
+                <SliderList
+                    sliderController={sliderController}
+                >
+                    <AboutMeSlide />
+                    <SkillsSlide isScrolling={isScrolling} />
+                    <ProjectsSlide isScrolling={isScrolling} />
+                    <ContactSlide />
+                </SliderList>
+                {pageIndex === 3 ? <ImpressumText onClick={() => { navigate("/impressum") }}>Impressum</ImpressumText> : null}
+            </FillScreenContainer >
+        </ReactScrollWheelHandler>
     );
 };

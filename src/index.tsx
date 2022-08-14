@@ -1,6 +1,9 @@
 import React, { createContext, useContext } from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { ReactNotifications } from 'react-notifications-component';
+import 'react-notifications-component/dist/theme.css';
+
 
 import { setup } from "goober";
 
@@ -35,6 +38,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
     <BrowserRouter>
+          <ReactNotifications />
       <GlobalStyles />
       <Routes>
         <Route path="/" element={<HomePage />} />

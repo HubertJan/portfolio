@@ -1,4 +1,6 @@
-import { BodyText, Heading2Text, SmallText, SubHeading3Text } from "src/styles/fonts";
+import { Store } from 'react-notifications-component';
+
+import { Heading2Text, SubHeading3Text } from "src/styles/fonts";
 import { StandardSlide } from "../../../components/elements/StandardSlide";
 
 import chatIcon from 'src/assets/chat.svg';
@@ -7,11 +9,12 @@ import { styled } from "goober";
 import { TextButton } from "src/components/elements/TextButton";
 import { useTheme } from "src";
 import { useState } from "react";
-import { ContactForm } from "src/components/blocks/ContactForm/ContactForm";
+import { ContactForm } from "src/components/functionals/ContactForm/ContactForm";
 import { Overlay } from "src/components/elements/Overlay/Overlay";
 import { StandardContainer } from "src/components/elements/StandardContainer/StandardContainer";
 import copy from 'copy-to-clipboard';
- 
+import { postFirebaseMessage } from "src/services/firebase";
+
 
 const CallToActionContainer = styled(StandardContainer)`
     display: flex;
@@ -99,12 +102,51 @@ export const ContactSlide: React.FC<{}> = () => {
             </CallToActionContainer>
             <Overlay
                 isShown={isShowingOverlay}
-                onBackgroundClick={(e) => {
-                    if (e.target === e.currentTarget) {
+            >
+                <ContactForm
+                    onSubmit={({email, message,name,resetForm}) => {
                         setIsShowingOverlay(false);
+                        console.log("test");
+                        postFirebaseMessage({email,message,name}).then(
+                            (_) => {
+                                Store.addNotification({
+                                    title: "Nachricht abgeschickt",
+                                    message: "Ich werde mich bei Ihnen melden. ",
+                                    type: "success",
+                                    insert: "bottom",
+                                    container: "top-right",
+                                    animationIn: ["animate__animated", "animate__fadeIn"],
+                                    animationOut: ["animate__animated", "animate__fadeOut"],
+                                    dismiss: {
+                                        duration: 5000,
+                                        onScreen: true
+                                    }
+                                });
+                                resetForm();
+                            }
+                        ).catch((e)=>{
+                            console.log(e);
+                            Store.addNotification({
+                                title: "Nachricht konnte nicht abgeschickt werden",
+                                message: "Versuchen sie es nochmal oder schreiben sie mir eine E-Mail. ",
+                                type: "danger",
+                                insert: "bottom",
+                                container: "top-right",
+                                animationIn: ["animate__animated", "animate__fadeIn"],
+                                animationOut: ["animate__animated", "animate__fadeOut"],
+                                dismiss: {
+                                    duration: 5000,
+                                    onScreen: true
+                                }
+                            });
+                        });
                     }
-                }}>
-                <ContactForm />
+
+                    }
+                    onBack={() => {
+                        setIsShowingOverlay(false);
+                    }}
+                />
             </Overlay>
         </StandardSlide>
     );

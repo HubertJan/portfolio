@@ -1,7 +1,7 @@
 import { css, styled } from "goober";
 import { ButtonText } from "src/styles/fonts";
 
-interface ButtonStyling {
+export interface ButtonStyling {
     color?: string,
     hoverColor?: string;
     hoverBackgroundColor?: string;
@@ -17,6 +17,7 @@ const Button = styled("div") <{
     shouldHoverStyle: boolean
 }>`
     padding: 8px 16px;
+    display: inline-block;
     color:  ${(props) => props.colorStyle ?? props.theme.colors.onBackground};
     ${(props) => props.backgroundColorStyle === undefined ? "" :
     `
@@ -36,7 +37,7 @@ const Button = styled("div") <{
     }
 `;
 
-interface TextButtonInterface extends ButtonStyling {
+export interface TextButtonInterface extends ButtonStyling {
     label: string,
     onClick?: React.MouseEventHandler<HTMLDivElement> | undefined,
 }

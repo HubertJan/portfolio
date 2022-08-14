@@ -1,4 +1,15 @@
 import { styled } from "goober";
+import { BodyText, NormalText } from "src/styles/fonts";
+
+const InputDiv = styled("div")`
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+`;
+
+const ErrorText = styled(NormalText)`
+    color: #dd4848;
+`;
 
 const Input = styled('input')`
     font-style: normal;
@@ -9,16 +20,33 @@ const Input = styled('input')`
     border-radius: 16px;
     border-color: transparent;
     padding: 16px;
+
+    &:invalid {
+        border: red solid 1px;
+    }
 `;
 
-export interface TextFieldProps{ placeHolder?: string };
+export interface TextFieldProps {
+    placeHolder?: string,
+    onChange?: (text: string) => void,
+    errorText?: string,
+};
 
 export const TextField: React.FC<TextFieldProps> = (
-    { placeHolder = "" }
+    { placeHolder = "", onChange, errorText }
 ) => {
     return (
-        <Input type="text"
-            placeholder={placeHolder}
-        />
+        <InputDiv>
+            <Input type="text"
+                placeholder={placeHolder}
+                onChange={(e) => onChange !== null ? onChange!(e.target.value) : null}
+            />
+            {errorText != null ? <ErrorText>
+                {errorText}
+            </ErrorText>
+                : null}
+        </InputDiv>
+
+
     );
 }

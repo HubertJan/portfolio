@@ -1,4 +1,4 @@
-import { styled } from "goober";
+import { css, styled } from "goober";
 import { ReactComponent as ChatIcon } from 'src/assets/chat.svg';
 import { PrimaryButton } from "src/components/elements/Button/Button";
 import { MultiLineTextField } from "src/components/elements/MultiLineTextField/MultiLineTextField";
@@ -17,8 +17,7 @@ const FormContainer = styled(StandardContainer)`
     margin: 16px;
 `;
 
-const FormContent = styled("form") <{
-}>`
+const FormContent = css`
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -54,7 +53,7 @@ function isEmailValid(text: string): boolean {
 export const ContactForm: React.FC<{
     onSubmit?: ({ name, email, message, resetForm }: {
         name: string, email: string, message: string,
-        resetForm: ()=> void
+        resetForm: () => void
     }) => void,
     onBack?: () => void
 }> = ({ onSubmit, onBack }) => {
@@ -69,8 +68,7 @@ export const ContactForm: React.FC<{
     const theme = useTheme();
     return (
         <FormContainer >
-            <form ref={ref as LegacyRef<HTMLFormElement>}>
-            <FormContent >
+            <form className={FormContent} ref={ref! as LegacyRef<HTMLFormElement>} >
                 <TitleRow>
                     <Icon />
                     <SubHeading3Text>Schreibt mir direkt.</SubHeading3Text>
@@ -106,30 +104,31 @@ export const ContactForm: React.FC<{
                         if (!isEmailValid(email)) {
                             setEmailErrorText("Gebe eine gültige E-Mail Adresse ein.");
                             isValid = false;
-                        }else{
+                        } else {
                             setEmailErrorText(undefined);
                         }
                         if (name.length === 0) {
                             setNameErrorText("Gebe einen Name ein.");
                             isValid = false;
                         }
-                        else{
+                        else {
                             setNameErrorText(undefined);
                         }
                         if (message.length === 0) {
                             setMessageErrorText("Gebe eine Nachricht ein.");
                             isValid = false;
                         }
-                        else{
+                        else {
                             setMessageErrorText(undefined);
                         }
                         if (!isValid) {
                             return;
                         }
-                        onSubmit!({ name, email, message, resetForm: ()=> {
-
-                            ref.current!.reset();
-                        } });
+                        onSubmit!({
+                            name, email, message, resetForm: () => {
+                                ref.current!.reset();
+                            }
+                        });
                     }}
                     />
                     <SizedBox />
@@ -144,9 +143,7 @@ export const ContactForm: React.FC<{
                         hoverColor={theme.colors.background}
                     />
                 </div>
-            </FormContent>
             </form>
-
         </FormContainer>
     );
 }

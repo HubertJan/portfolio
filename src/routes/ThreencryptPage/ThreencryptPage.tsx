@@ -22,7 +22,7 @@ export const ThreencryptPage: React.FC<{}> = () => {
       projectHeader={
         <ProjectHeader
           title="3ncrypt"
-          description="Ver- und Entschlüsselungs App für Android und iOS"
+          description="Ver- und Entschlüsselungs App für Android"
           tags={["Flutter", "Dart"]}
           color={primaryColor}
           backgroundColor="white"
@@ -51,24 +51,23 @@ export const ThreencryptPage: React.FC<{}> = () => {
       featureParagraphs={[
         <FeatureParagraph
           title="Viele Verschlüsselungsverfahren"
-          description="Die App hat sowohl historische , wie Caeser oder Vigenere, aber auch moderne Verfahren, wie AES oder DES implementiert."
+          description="Die App hat sowohl historische, wie Caeser oder Vigenere, als auch moderne Verfahren, wie AES oder DES implementiert."
           renderIcon={(props) => <KeyIcon {...props} />}
 
         />,
         <FeatureParagraph
           title="Dark Modus"
-          description="Selbstverständlich ist die App auch komplett in einen Dark Modus erhältlich.."
+          description="Selbstverständlich ist die App auch komplett in einem Dark Modus erhältlich."
           renderIcon={(props) => <DarkModeIcon {...props} />}
         />,
         <FeatureParagraph
           title="Text Modus"
-          description="Um besonders einfach größere Texte zu verschlüsseln, wurde ein Text Modus implementiert."
+          description="Um besonders einfach größere Texte zu verschlüsseln, wurde ein Textmodus implementiert."
           renderIcon={(props) => <DescriptionIcon {...props} />}
 
         />,
       ]}
-      backgroundText="
-      3ncrypt begann als Schuleprojekt und wurde dann zu einer Android App umgewandelt und veröffentlicht. Später wurde dann noch die UI an den Material 3 Anfoderungen angepasst. Inbesondere die große Anzahl von Algorithmen stellte eine Herausforderung dar. Da hier einige Algorithmen selbst implementiert und umgesetzt wurden, während andere komplexere Algorithmen per Library eingebaut wurden."
+      backgroundText="3ncrypt begann als Schulprojekt und wurde dann zu einer Android-App umgewandelt und veröffentlicht. Später wurde die UI an den Material 3 Anforderungen angepasst. Insbesondere die große Anzahl von Algorithmen stellte eine Herausforderung dar, da hier einige Algorithmen selbst implementiert und umgesetzt wurden, während andere komplexere Algorithmen per Library eingebaut wurden."
     />
   );
 }

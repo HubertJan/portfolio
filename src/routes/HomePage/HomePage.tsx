@@ -93,7 +93,7 @@ export const HomePage: React.FC<{}> = () => {
                     <div ref={ref}>
                         <CallToSwipeText className={css`
 
-                        `}>Zum Entsprechen nach oben wischen.</CallToSwipeText>
+                        `}>Zum Entsperren nach oben wischen.</CallToSwipeText>
                     </div>
                 </div>
             </FillScreenContainer>

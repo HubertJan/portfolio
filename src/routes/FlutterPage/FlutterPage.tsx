@@ -25,13 +25,13 @@ export const FlutterPage: React.FC<{}> = () => {
       featureParagraphs={[
         <FeatureParagraph
           title="Android und iOS Apps"
-          description="Flutter ist als eine Crossplattform Framework perfekt für Apps, die sowohl auf iOS als auch Android laufen müssen. Besonders Apps, die mit viel angepasster UI arbeiten, profitieren von Flutter.."
+          description="Flutter ist als eine Crossplattform Framework perfekt für Apps, die sowohl auf iOS als auch Android laufen müssen. Besonders Apps, die mit viel angepasster UI arbeiten, profitieren von Flutter."
           renderIcon={(props) => <PhoneIcon {...props} />}
         />
         ,
         <FeatureParagraph
           title="Desktop Anwendungen"
-          description="Auch Apps für Windows, Mac und auch Linux sind mithilfe von Flutter mittlerweile sehr einfach zu erstellen und auch sehr performant."
+          description="Auch Apps für Windows, Mac und auch Linux sind mithilfe von Flutter mittlerweile einfach zu erstellen und auch sehr performant."
           renderIcon={(props) => <DesktopIcon {...props} />}
         />
         ,

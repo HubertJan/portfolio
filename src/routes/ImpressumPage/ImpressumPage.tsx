@@ -14,7 +14,28 @@ const Page = styled('div')`
     align-items: stretch;
 `;
 
-
+const ImpressumText = styled("div")`
+    color: black;
+    padding: 32px;
+    h1 { 
+    display: block;
+    font-size: 2em;
+    margin-top: 0.67em;
+    margin-bottom: 0.67em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-top: 0.83em;
+    margin-bottom: 0.83em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+`;
 
 export const ImpressumPage: React.FC<{
 }> = (
@@ -31,10 +52,21 @@ export const ImpressumPage: React.FC<{
                         hoverColor="grey"
                         onClick={() => { navigate(-1) }} />
                 </NavigationBar>
-                <TextSection
-                    title="Impressum"
-                    text={"experienceText"}
-                />
+                <ImpressumText>
+                    <h1>Impressum</h1>
+
+                    <h2>Angaben gem&auml;&szlig; &sect; 5 TMG</h2>
+                    <p>Hubert Tomaszczak<br />
+                        Karlstra&szlig;e 5<br />
+                        27607 Geestland</p>
+
+                    <h2>Kontakt</h2>
+                    <p>Telefon: +49 174 9224029<br />
+                        E-Mail: hubert@tomfamilie.de</p>
+                    <br />
+                    <br />
+                    <p>Quelle: <a href="https://www.e-recht24.de">https://www.e-recht24.de</a></p>
+                </ImpressumText>
             </Page>
         );
     }

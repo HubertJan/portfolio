@@ -51,7 +51,7 @@ export const VisualSortPage: React.FC<{}> = () => {
       featureParagraphs={[
         <FeatureParagraph
           title="Sechs verschiedene Algorithmen"
-          description="Es gibt sechs sehr unterschiedliche Algorithmen, die man analysieren und durchführen kann."
+          description="Es gibt sechs unterschiedliche Algorithmen, die man analysieren und durchführen kann."
           renderIcon={(props) => <AnalyseIcon {...props} />}
 
         />,
@@ -86,7 +86,7 @@ export const VisualSortPage: React.FC<{}> = () => {
 
         />,
       ]}
-      backgroundText="VisualSort stellt ein Schuleprojekt dar, worin verschiedene Sortieralgorithmen dargestellt werden sollten. Hierbei wurden einige Funktionen eingebaut, die beim Verstehen der Algorithmen helfen sollen. Dabei entschied ich mich für ein Design, welches eine Hommage auf VS Code IDE ist."
+      backgroundText="VisualSort stellt ein Schulprojekt dar, worin verschiedene Sortieralgorithmen dargestellt werden sollten. Hierbei wurden einige Funktionen eingebaut, die beim Verstehen der Algorithmen helfen sollen. Dabei entschied ich mich für ein Design, welches eine Hommage auf die VS Code IDE ist."
     />
   );
 }

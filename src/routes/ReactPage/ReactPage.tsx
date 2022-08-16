@@ -19,7 +19,7 @@ export const ReactPage: React.FC<{}> = () => {
           backgroundColor={"#61DBFB"}
           color={"	#20232a"}
         />}
-      experienceText="JavaScript ist meine erste Programmieresprache, die ich gelernt habe. Damit habe ich sieben Jahre Erfahrung in JS. Zuerst genutzt habe ich JavaScript um einfache Browserspiele zu entwickeln. Heutzutage nutzte ich JavaScript, und häufiger TypeScript, um Webseiten zu erstellen. React stellt dabei ein etablierter Standard dar, der dank seiner Flexibilität noch aktuell ist."
+      experienceText="In JavaScript habe ich bereits sieben Jahre Erfahrung. Zuerst genutzt habe ich JavaScript, um einfache Browserspiel zu entwickeln. Heutzutage nutzte ich JavaScript, und häufiger TypeScript, um Webseiten zu erstellen. React stellt dabei ein etablierter Standard dar, weshalb ich diesen nutze."
       featureParagraphs={[
         <FeatureParagraph
           title="Webseiten"
@@ -35,7 +35,7 @@ export const ReactPage: React.FC<{}> = () => {
         ,
         <FeatureParagraph
           title="Desktop Anwendungen"
-          description="Mithilfe von Electron lassen sich Webanwendungen in vollständige Desktopanwendungen ummünzen. Damit lässt sich viel Zeit sparen, besonders wenn sowohl eine Web- als auch Desktopapp erstellt werden muss."
+          description="Mithilfe von Electron lassen sich Webanwendungen in vollständige Desktopanwendungen ummünzen. Damit lässt sich viel Zeit sparen, besonders wenn sowohl eine Web- als auch Desktop-App erstellt werden muss."
           renderIcon={(props) => <DesktopIcon {...props} />}
         />
       ]}

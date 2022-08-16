@@ -1,13 +1,13 @@
 import { useTheme } from "src";
 import {  ProjectHeader } from "src/components/blocks/CustomHeader/CustomHeader";
 
-import screenshot1 from "src/assets/AChessScreenshots/1.png";
-import screenshot2 from "src/assets/AChessScreenshots/2.png";
-import screenshot3 from "src/assets/AChessScreenshots/3.png";
-import screenshot4 from "src/assets/AChessScreenshots/4.png";
+
 import { Button } from "src/components/elements/Button/Button";
 import { PortfolioProjectTemplate } from "src/components/templates/PortfolioProjectTemplate/PortfolioProjectTemplate";
 
+const screenshot1 = "https://www.web29.s186.goserver.host/assets/HubertJanScreenshots/1.png";
+const screenshot2 = "https://www.web29.s186.goserver.host/assets/HubertJanScreenshots/2.png";
+const screenshot3 = "https://www.web29.s186.goserver.host/assets/HubertJanScreenshots/3.png";
 export const HubertJanDevPage: React.FC<{}> = () => {
   const theme = useTheme();
   return (
@@ -33,13 +33,12 @@ export const HubertJanDevPage: React.FC<{}> = () => {
           screenshot1,
           screenshot2,
           screenshot3,
-          screenshot4,
         ]
       }
       featureParagraphs={[
 
      ]}
-        backgroundText="Entwickelt wurde die Webseite mithilfe von React und soll insbesondere durch ein einzigartiges Konzept überzeugen. Das App Homescreen Design war dabei schwieriger umzusetzen als gedacht, da HTML ganz offensichtlich nicht für ein solches Design ausgelegt ist."
+        backgroundText="Entwickelt wurde die Webseite mithilfe von React und soll insbesondere durch ein einzigartiges Konzept überzeugen. Das Design ist dabei inspiriert von Smartphone Homescreens. Die Replikation eines Homescreens stellte einen vor Herausforderungen, da HTML/CSS nicht für solche Anwendungen konzipiert wurde."
     />
   );
 }

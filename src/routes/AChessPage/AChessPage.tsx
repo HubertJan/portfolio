@@ -50,7 +50,7 @@ export const AChessPage: React.FC<{}> = () => {
       featureParagraphs={[
         <FeatureParagraph
           title="Verschiedene Zeitlimits"
-          description="Es ist möglich sowohl 1 min, 10 min, aber auch 60 min Matches zu spielen."
+          description="Es ist möglich sowohl 1 min, 10 min, als auch 60 min Matches zu spielen."
           renderIcon={(props) => <TimeIcon {...props} />}
         />,
         <FeatureParagraph

@@ -40,7 +40,7 @@ export const ItspylearningPage: React.FC<{}> = () => {
       featureParagraphs={[
         <FeatureParagraph
           title="Einfach auf itslearing API zugreifen"
-          description="Nutze die API, ohne die komplizierte Dokumentation lesen zu müssen.."
+          description="Nutze die API, ohne die komplizierte Dokumentation lesen zu müssen."
           renderIcon={(props) => <GearIcon {...props} />}
      
         />,
@@ -57,7 +57,7 @@ export const ItspylearningPage: React.FC<{}> = () => {
      
         />,
       ]}
-      backgroundText="itsLearning wurde viel auf meiner ehemaligen Schule genutzt, allerdings fehlt es ihr an einer guten API. Die Web-API war nur unzureichend dokumentiert. Um die API für den Schuleserver nützlich zu machen, entschiede ich mich dazu eine Library in Python dafür zu schreiben."
+      backgroundText="itsLearning wurde viel auf meiner ehemaligen Schule genutzt, allerdings fehlt es ihr an einer guten API. Die Web-API war nur unzureichend dokumentiert. Um die API für den Schulserver nützlich zu machen, entschiede ich mich dazu eine Library in Python dafür zu schreiben."
     />
   );
 }

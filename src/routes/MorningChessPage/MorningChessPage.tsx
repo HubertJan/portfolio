@@ -27,7 +27,7 @@ export const MorningChessPage: React.FC<{}> = () => {
         <ProjectHeader
           title="MorningChess"
           description="Eine Weckerapp für Schachfans"
-          tags={["Flutter", "Dart"]}
+          tags={["Flutter", "Dart", "Java",]}
           backgroundColor={"#121212"}
           color={"#1999B3"}
           buttons={
@@ -45,14 +45,14 @@ export const MorningChessPage: React.FC<{}> = () => {
       }
       featureParagraphs={[
         <FeatureParagraph
-          title="Ein Puzzle zum aufwecken"
+          title="Ein Puzzle zum Aufwecken"
           description="Stelle dein Wecker, der dich erst in Ruhe lässt, sobald du ein Schachpuzzle gelöst hast."
           renderIcon={(props)=> <WakeUpIcon {...props} />}
      
         />,
         <FeatureParagraph
           title="Einstellbare Puzzles"
-          description="Stelle deine eigenes Puzzle Profil ein mit bestimmten Puzzlethemen und Schwierigkeitsgrad."
+          description="Stelle dein eigenes Puzzle Profil ein, mit bestimmten Puzzlethemen und Schwierigkeitsgrad."
           renderIcon={(props)=> <CustomiseIcon {...props} />}
      
         />,
@@ -69,7 +69,7 @@ export const MorningChessPage: React.FC<{}> = () => {
      
         />,
       ]}
-      backgroundText="MorningChess enstand aus der Idee eine interessante Wecker App zu erstellen. Dabei wurde eine Wecker App mit dem Lösen von sogenannten Schach Puzzle verbunden. Die Umsetzung war komplexer als andere Projekte, da hier  der Zugriff auf Betriebsystemfunktionen notwendig war, um zum Beispiel einen Wecker stellen zu können. Aber auch die Umsetzung des Schachspiel selbst war komplexer als die meisten anderen UIs."
+      backgroundText="MorningChess entstand aus der Idee, eine interessante Wecker-App zu erstellen. Dabei wurde eine Wecker-App mit dem Lösen von sogenanntem Schach Puzzle verbunden. Bei der Umsetzung mussten viele mit der Android-API kommuniziert werden, um den Alarm umzusetzen. Auch musste die relativ komplexe Logik für das Lösen des Schachpuzzles implementiert werden."
     />
   );
 }

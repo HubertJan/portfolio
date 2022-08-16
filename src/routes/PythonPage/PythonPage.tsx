@@ -20,11 +20,11 @@ export const PythonPage: React.FC<{}> = () => {
           backgroundColor={"#dfb209"}
           color={theme.colors.onPrimary}
         />}
-      experienceText="Ich nutzte bereits Python seit vier Jahren und Pythons größter Vorteil war immer, die vielen Packages und die große Community. Insbesondere bei Aufgaben mit ungewöhnlichen Anforderungen, bietet Python oft große Vorteile, durch viele sehr spezifische Libraries. Dadurch lassen sich viele sehr verschiedene Aufgaben oft am schnellsten und einfachsten lösen."
+      experienceText="Ich nutzte bereits Python seit vier Jahren und Pythons größter Vorteil war immer, die vielen Packages und die große Community. Insbesondere bei Aufgaben mit ungewöhnlichen Anforderungen, bietet Python oft Vorteile im Vergleich zu anderen Sprache, durch die vielen Python Packages. Ich selbst habe bereits Python für Backendserver, Spiele, Algorithmen und Webscrappler genutzt."
       featureParagraphs={[
         <FeatureParagraph 
         title="Backend"
-        description="Python ist eine etablierte Wahl zum Erstellen von Webanwendungen aber auch Serveranwendungen im allgemeinen. Dabei sind viele gute Backendframeworks wie Flask oder Django verantwortlich."
+        description="Python ist eine etablierte Wahl zum Erstellen von Webanwendungen, aber auch Serveranwendungen im Allgemeinen. Einige gute Backendframeworks wie Flask oder Django beweisen diese."
         renderIcon={(props)=> <ServerIcon {...props} />}
        />
        ,

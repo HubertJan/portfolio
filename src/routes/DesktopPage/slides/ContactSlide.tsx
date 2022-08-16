@@ -79,7 +79,7 @@ export const ContactSlide: React.FC<{ setIsAllowedToSlide: (isAllowedToSlide: bo
                 <LabelContent>
                     <img src={emailIcon} alt="Heart Icon" />
                     <SubHeading3Text>
-                        hallo@hubertJan.dev
+                        hallo@hubertJan.de
                     </SubHeading3Text>
                 </LabelContent>
                 <TextButton
@@ -96,7 +96,7 @@ export const ContactSlide: React.FC<{ setIsAllowedToSlide: (isAllowedToSlide: bo
                     }
                     onClick={hasCopiedEmail ? () => { } :
                         (e) => {
-                            copy('hallo@hubertJan.dev');
+                            copy('hallo@hubertJan.de');
                             setHasCopiedEmail(true);
                             setTimeout(() => {
                                 setHasCopiedEmail(false);

@@ -40,6 +40,17 @@ export const HomePage: React.FC<{}> = () => {
                     navigate("/main/0");
                 }, fadeTime);
             }}
+            downHandler={(_) => {
+                const fadeTime = 500;
+                setFadingStartValue({
+                    fadingStartValue: 1,
+                    timeInMs: fadeTime
+                });
+                setTimeout(function () {
+                    navigate("/main/0");
+                }, fadeTime);
+            }}
+            preventScroll={true}
         >
             <FillScreenContainer
                 backgroundImage={backgroundImage}

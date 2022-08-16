@@ -5,6 +5,7 @@ import { ReactComponent as VisualIcon } from 'src/assets/icons/visual.svg';
 import { ReactComponent as DiagramIcon } from 'src/assets/icons/diagram.svg';
 import { ReactComponent as AnalyseIcon } from 'src/assets/icons/analyse.svg';
 import { ReactComponent as CustomiseIcon } from 'src/assets/icons/customise.svg';
+import { ReactComponent as PhoneIcon } from 'src/assets/icons/phone.svg';
 import screenshot1 from "src/assets/VSCScreenshots/1.png";
 import screenshot2 from "src/assets/VSCScreenshots/2.png";
 import screenshot3 from "src/assets/VSCScreenshots/3.png";
@@ -72,7 +73,7 @@ export const VisualSortPage: React.FC<{}> = () => {
         <FeatureParagraph
           title="Responsive"
           description="Die App lässt sich sowohl im Vollbild als auch als kleines Fenster noch angenehm bedienen."
-          renderIcon={(props)=> <VisualIcon {...props} />}
+          renderIcon={(props)=> <PhoneIcon {...props} />}
      
         />,
         <FeatureParagraph

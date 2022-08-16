@@ -2,6 +2,12 @@ import { useTheme } from "src";
 import { CustomHeader, ProjectHeader } from "src/components/blocks/CustomHeader/CustomHeader";
 
 import { ReactComponent as EmailIcon } from 'src/assets/email.svg';
+
+import { ReactComponent as AlarmClockIcon } from 'src/assets/icons/alarmClock.svg';
+
+import { ReactComponent as PuzzlePieceIcon } from 'src/assets/icons/puzzlePiece.svg';
+import { ReactComponent as CustomiseIcon } from 'src/assets/icons/customise.svg';
+import { ReactComponent as WakeUpIcon } from 'src/assets/icons/wakeUp.svg';
 import screenshot1 from "src/assets/AChessScreenshots/1.png";
 import screenshot2 from "src/assets/AChessScreenshots/2.png";
 import screenshot3 from "src/assets/AChessScreenshots/3.png";
@@ -43,25 +49,25 @@ export const MorningChessPage: React.FC<{}> = () => {
         <FeatureParagraph
           title="Ein Puzzle zum aufwecken"
           description="Stelle dein Wecker, der dich erst in Ruhe lässt, sobald du ein Schachpuzzle gelöst hast."
-          renderIcon={(props)=> <EmailIcon {...props} />}
+          renderIcon={(props)=> <WakeUpIcon {...props} />}
      
         />,
         <FeatureParagraph
           title="Einstellbare Puzzles"
           description="Stelle deine eigenes Puzzle Profil ein mit bestimmten Puzzlethemen und Schwierigkeitsgrad."
-          renderIcon={(props)=> <EmailIcon {...props} />}
+          renderIcon={(props)=> <CustomiseIcon {...props} />}
      
         />,
         <FeatureParagraph
           title="So viele Puzzles und so viel Zeit wie du willst"
           description="Du kannst entscheiden, wie viel Puzzle du lösen willst und wie viel Zeit du haben sollst."
-          renderIcon={(props)=> <EmailIcon {...props} />}
+          renderIcon={(props)=> <PuzzlePieceIcon {...props} />}
      
         />,
         <FeatureParagraph
           title="Freie Klingeltonwahl"
           description="Wähle frei zwischen eingebauten Klingeltönen."
-          renderIcon={(props)=> <EmailIcon {...props} />}
+          renderIcon={(props)=> <AlarmClockIcon {...props} />}
      
         />,
       ]}

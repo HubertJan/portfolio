@@ -12,7 +12,7 @@ import { FillScreenContainer } from "src/components/elements/FillScreenContainer
 import { NavigationMenuTitle } from "src/components/elements/NavigationMenuTitle/NavigationMenuTitle";
 import { NavigationBar } from "src/components/elements/NavigationBar/NavigationBar";
 import ReactScrollWheelHandler from "react-scroll-wheel-handler";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { styled } from "goober";
 
@@ -32,6 +32,9 @@ export const DesktopPage: React.FC<{}> = () => {
     const navigate = useNavigate();
     const { currentPageId } = useParams();
 
+    // Prevent MacBook touchpad to scroll immediatily to next page, after transitioning to desktop page by touchpad scrolling from home page.
+    const [canScrollWheel, setCanScrollWheel] = useState(false);
+
 
     useEffect(() => {
         if (currentPageId === undefined) {
@@ -39,6 +42,9 @@ export const DesktopPage: React.FC<{}> = () => {
         }
         const currentIdAsNumber = parseInt(currentPageId);
         setPageIndex(currentIdAsNumber);
+        setTimeout(() => {
+            setCanScrollWheel(true);
+        }, 1000);
     }, []);
 
     const currentPageIndex = (pageIndex === undefined && currentPageId !== undefined) ? parseInt(currentPageId) : pageIndex;
@@ -51,13 +57,18 @@ export const DesktopPage: React.FC<{}> = () => {
     return (
         <ReactScrollWheelHandler
             downHandler={(_) => {
-                console.log(currentPageIndex);
-                if(currentPageIndex !== 3){
+                if (!canScrollWheel) {
+                    return;
+                }
+                if (currentPageIndex !== 3) {
                     scrollToPageIndex((currentPageIndex ?? 0) + 1);
                 }
             }}
-            upHandler={(_)=>{
-                if(currentPageIndex !== 0){
+            upHandler={(_) => {
+                if (!canScrollWheel) {
+                    return;
+                }
+                if (currentPageIndex !== 0) {
                     scrollToPageIndex((currentPageIndex ?? 0) - 1);
                 }
             }}
@@ -100,7 +111,7 @@ export const DesktopPage: React.FC<{}> = () => {
                     <AboutMeSlide />
                     <SkillsSlide isScrolling={isScrolling} />
                     <ProjectsSlide isScrolling={isScrolling} />
-                    <ContactSlide setIsAllowedToSlide={setIsAllowedToSlide}/>
+                    <ContactSlide setIsAllowedToSlide={setIsAllowedToSlide} />
                 </SliderList>
                 {pageIndex === 3 ? <ImpressumText onClick={() => { navigate("/impressum") }}>Impressum</ImpressumText> : null}
             </FillScreenContainer >

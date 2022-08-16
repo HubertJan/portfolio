@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+
+
 import styles from "./FillScreenContainer.module.scss";
 
 function getWindowDimensions() {
@@ -10,12 +13,25 @@ function getWindowDimensions() {
     };
 }
 
+const useProgressiveImage = (src: string, placeHolder: string) => {
+    const [sourceLoaded, setSourceLoaded] = useState<string>(placeHolder)
+
+    useEffect(() => {
+        const img = new Image()
+        img.src = src
+        img.onload = () => setSourceLoaded(src)
+    }, [src])
+
+    return sourceLoaded
+}
 
 export const FillScreenContainer: React.FC<{
-    backgroundImage?: string,
+    backgroundImage: string,
+    backgroundImagePlaceholder: string,
     withBackgroundOverlay?: boolean,
     children?: React.ReactNode,
-}> = ({ backgroundImage, withBackgroundOverlay = false, children }) => {
+}> = ({ backgroundImage, backgroundImagePlaceholder, withBackgroundOverlay = false, children }) => {
+    const image = useProgressiveImage(backgroundImage, backgroundImagePlaceholder);
     const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
 
     useEffect(() => {
@@ -27,12 +43,13 @@ export const FillScreenContainer: React.FC<{
     }, []);
     return (
         <div
+
             className={`${styles.container} ${withBackgroundOverlay ? styles.backgroundOverlay : ""}`}
             style={
                 {
                     height: windowDimensions.height,
                     width: windowDimensions.width,
-                    backgroundImage: `url(${backgroundImage})`
+                    backgroundImage: `url(${image})`,
                 }
             }>
             <div className={`${withBackgroundOverlay ? styles.backgroundOverlay : ""}`}

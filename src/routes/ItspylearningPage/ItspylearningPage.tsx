@@ -24,6 +24,10 @@ export const ItspylearningPage: React.FC<{}> = () => {
             [<Button label="Github"
               hoverBackgroundColor={theme.colors.primaryVariants[50]}
               hoverColor={theme.colors.background}
+              onClick={() => {
+                window.open("https://github.com/HubertJan/itspylearning")
+              }
+              }
             />,
             ]
           }

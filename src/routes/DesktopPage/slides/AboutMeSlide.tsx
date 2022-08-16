@@ -1,9 +1,11 @@
 import { styled } from "goober";
 import { Heading2Text, SubHeading3Text } from "src/styles/fonts";
 
-import germanyMap from 'src/assets/germany.svg';
 import { SecondaryColorSpan } from "src/styles/color";
 import { StandardContainer } from "src/components/elements/StandardContainer/StandardContainer";
+
+
+const germanyMap = 'https://www.web29.s186.goserver.host/assets/germany.svg';
 
 const Content = styled('div')`
     height: 100%;

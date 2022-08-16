@@ -1,6 +1,6 @@
 import styles from "./MainPage.module.scss";
 
-import backgroundImage from "src/assets/galaxy.jpg";
+
 import { SliderList } from "src/components/blocks/SliderList/SliderList";
 import { useSliderController } from "src/hooks/useSliderController";
 import { AboutMeSlide } from "./slides/AboutMeSlide";
@@ -15,6 +15,9 @@ import ReactScrollWheelHandler from "react-scroll-wheel-handler";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { styled } from "goober";
+
+const backgroundImage = "https://www.web29.s186.goserver.host/assets/galaxy.jpg";
+const backgroundImagePlaceholder = "https://www.web29.s186.goserver.host/assets/galaxy-min.jpg";
 
 
 const ImpressumText = styled("div")`
@@ -50,7 +53,7 @@ export const DesktopPage: React.FC<{}> = () => {
     const currentPageIndex = (pageIndex === undefined && currentPageId !== undefined) ? parseInt(currentPageId) : pageIndex;
 
     useEffect(() => {
-        window.history.pushState('', '', `/main/${pageIndex}`)
+        window.history.pushState('', '', `/desktop/${pageIndex}`)
     }, [pageIndex]);
 
 
@@ -75,6 +78,7 @@ export const DesktopPage: React.FC<{}> = () => {
         >
             <FillScreenContainer
                 backgroundImage={backgroundImage}
+                backgroundImagePlaceholder={backgroundImagePlaceholder}
                 withBackgroundOverlay={true}
             >
                 {<div className={styles.navigationBar}>

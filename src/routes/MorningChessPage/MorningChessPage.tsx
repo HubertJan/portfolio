@@ -8,13 +8,15 @@ import { ReactComponent as AlarmClockIcon } from 'src/assets/icons/alarmClock.sv
 import { ReactComponent as PuzzlePieceIcon } from 'src/assets/icons/puzzlePiece.svg';
 import { ReactComponent as CustomiseIcon } from 'src/assets/icons/customise.svg';
 import { ReactComponent as WakeUpIcon } from 'src/assets/icons/wakeUp.svg';
-import screenshot1 from "src/assets/AChessScreenshots/1.png";
-import screenshot2 from "src/assets/AChessScreenshots/2.png";
-import screenshot3 from "src/assets/AChessScreenshots/3.png";
-import screenshot4 from "src/assets/AChessScreenshots/4.png";
+
 import { Button } from "src/components/elements/Button/Button";
 import { PortfolioProjectTemplate } from "src/components/templates/PortfolioProjectTemplate/PortfolioProjectTemplate";
 import { FeatureParagraph } from "src/components/blocks/FeatureSection/FeatureSection";
+
+const screenshot1 = "https://www.web29.s186.goserver.host/assets/MorningChessScreenshots/alarms.png";
+const screenshot2 = "https://www.web29.s186.goserver.host/assets/MorningChessScreenshots/alarm.png";
+const screenshot3 = "https://www.web29.s186.goserver.host/assets/MorningChessScreenshots/chess.png";
+const screenshot4 = "https://www.web29.s186.goserver.host/assets/MorningChessScreenshots/puzzles.png";
 
 export const MorningChessPage: React.FC<{}> = () => {
   const theme = useTheme();
@@ -29,11 +31,7 @@ export const MorningChessPage: React.FC<{}> = () => {
           backgroundColor={"#121212"}
           color={"#1999B3"}
           buttons={
-            [<Button label="Github"
-              color="#1999B3"
-              hoverBackgroundColor={theme.colors.primaryVariants[50]}
-              hoverColor={theme.colors.background}
-            />,
+            [
             ]
           }
         />}

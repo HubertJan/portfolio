@@ -38,13 +38,15 @@ setup(React.createElement, undefined, useTheme, shouldForwardProp((prop) => {
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
+document.title = "hubertJan.de";
 root.render(
     <BrowserRouter>
           <ReactNotifications />
       <GlobalStyles />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="main/:currentPageId" element={<DesktopPage />} />
+        <Route path="desktop/:currentPageId" element={<DesktopPage />} />
         <Route path="threencrypt" element={<ThreencryptPage />} />
         <Route path="visualSort" element={<VisualSortPage />} />
         <Route path="flutter" element={<FlutterPage />} />

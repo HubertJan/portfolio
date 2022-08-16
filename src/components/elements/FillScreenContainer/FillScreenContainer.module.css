@@ -9,5 +9,6 @@
   flex-grow: 1;
   min-width: 0;
   background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+  background-position: center;
   display: flex;
   flex-direction: column; }

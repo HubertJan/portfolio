@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import ReactScrollWheelHandler from "react-scroll-wheel-handler";
 import styles from './HomePage.module.scss';
-import backgroundImage from "src/assets/background_image.jpg";
+
 import { FillScreenContainer } from "src/components/elements/FillScreenContainer/FillScreenContainer";
 import { FadingOptions, NotificationStyledBanner } from "src/components/patterns/NotificationStyledBanner/NotificationStyledBanner";
 import { ButtonText } from "src/styles/fonts";
@@ -50,7 +50,7 @@ export const HomePage: React.FC<{}> = () => {
                     timeInMs: fadeTime
                 });
                 setTimeout(function () {
-                    navigate("/main/0");
+                    navigate("/desktop/0");
                 }, fadeTime);
             }
         }
@@ -65,7 +65,7 @@ export const HomePage: React.FC<{}> = () => {
                     timeInMs: fadeTime
                 });
                 setTimeout(function () {
-                    navigate("/main/0");
+                    navigate("/desktop/0");
                 }, fadeTime);
             }}
             downHandler={(_) => {
@@ -75,13 +75,14 @@ export const HomePage: React.FC<{}> = () => {
                     timeInMs: fadeTime
                 });
                 setTimeout(function () {
-                    navigate("/main/0");
+                    navigate("/desktop/0");
                 }, fadeTime);
             }}
             preventScroll={true}
         >
             <FillScreenContainer
-                backgroundImage={backgroundImage}
+                backgroundImage={"https://www.web29.s186.goserver.host/assets/mountains.jpg"}
+                backgroundImagePlaceholder={"https://www.web29.s186.goserver.host/assets/mountains-min.jpg"}
                 withBackgroundOverlay={true}
             >
                 <div className={styles.portfolioPage}>

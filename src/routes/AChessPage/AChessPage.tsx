@@ -5,13 +5,15 @@ import { ReactComponent as LogIcon } from 'src/assets/icons/log.svg';
 import { ReactComponent as ManualIcon } from 'src/assets/icons/manual.svg';
 import { ReactComponent as MultiplayerIcon } from 'src/assets/icons/multiplayer.svg';
 import { ReactComponent as TimeIcon } from 'src/assets/icons/time.svg';
-import screenshot1 from "src/assets/AChessScreenshots/1.png";
-import screenshot2 from "src/assets/AChessScreenshots/2.png";
-import screenshot3 from "src/assets/AChessScreenshots/3.png";
-import screenshot4 from "src/assets/AChessScreenshots/4.png";
+
 import { Button } from "src/components/elements/Button/Button";
 import { PortfolioProjectTemplate } from "src/components/templates/PortfolioProjectTemplate/PortfolioProjectTemplate";
 import { FeatureParagraph } from "src/components/blocks/FeatureSection/FeatureSection";
+
+const screenshot1 = "https://www.web29.s186.goserver.host/assets/AChessScreenshots/1.png";
+const screenshot2 = "https://www.web29.s186.goserver.host/assets/AChessScreenshots/2.png";
+const screenshot3 = "https://www.web29.s186.goserver.host/assets/AChessScreenshots/3.png";
+const screenshot4 = "https://www.web29.s186.goserver.host/assets/AChessScreenshots/4.png";
 
 export const AChessPage: React.FC<{}> = () => {
   const theme = useTheme();
@@ -29,6 +31,10 @@ export const AChessPage: React.FC<{}> = () => {
             [<Button label="Github"
               hoverBackgroundColor={theme.colors.primaryVariants[50]}
               hoverColor={theme.colors.background}
+              onClick={() => {
+                window.open("https://github.com/HubertJan/tkinter-chess")
+              }
+              }
             />,
             ]
           }

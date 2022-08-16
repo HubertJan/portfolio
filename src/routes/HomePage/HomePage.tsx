@@ -51,7 +51,13 @@ export const HomePage: React.FC<{}> = () => {
                     </div>
 
                     <div ref={ref}>
-                        <ButtonText className={css`  user-select: none; `}>Zum Entsprechen nach oben wischen.</ButtonText>
+                        <ButtonText className={css`
+                          user-select: all;
+                        -webkit-user-select: text; /* Safari fallback only */
+                        -webkit-user-select: all; /* Chrome/Safari */
+                        -moz-user-select: all; /* Firefox */
+                        -ms-user-select: all; /* IE10+ */
+                        `}>Zum Entsprechen nach oben wischen.</ButtonText>
                     </div>
                 </div>
             </FillScreenContainer>

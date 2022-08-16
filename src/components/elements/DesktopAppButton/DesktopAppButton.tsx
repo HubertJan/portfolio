@@ -38,7 +38,7 @@ const Icon = styled("div") <IconProps> `
         width: 128px;
         background-size: cover, auto 65%;
     }
-    @media screen and (min-width: 1200px) {
+    @media screen and (min-width: 2000px) {
         width: 256px;
         height: 256px;
         background-size: cover, auto 65%;
@@ -58,7 +58,7 @@ const AppIconText = styled("h3")`
         width: 150px;
         font-size: 16px;
     }
-    @media screen and (min-width: 1200px) {
+    @media screen and (min-width: 2000px) {
         width: 256px;
         font-size: 24px;
     }

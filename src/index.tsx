@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ReactNotifications } from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css';
+import { polyfill } from "seamless-scroll-polyfill";
+
 
 
 import { setup } from "goober";
@@ -25,7 +27,7 @@ import { ItspylearningPage } from './routes/ItspylearningPage/ItspylearningPage'
 import { MorningChessPage } from './routes/MorningChessPage/MorningChessPage';
 import { ImpressumPage } from './routes/ImpressumPage/ImpressumPage';
 
-
+polyfill();
 const ThemeContext = createContext(theme);
 export const useTheme = () => useContext(ThemeContext);
 

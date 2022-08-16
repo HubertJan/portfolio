@@ -2,7 +2,8 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-blend-mode: overlay;
-  display: flex; }
+  display: flex;
+  overflow-y: hidden; }
 
 .backgroundOverlay {
   flex-grow: 1;

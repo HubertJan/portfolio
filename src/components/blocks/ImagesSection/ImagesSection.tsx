@@ -29,8 +29,8 @@ const Image = styled("img")`
     max-height:500px;
     width: auto;
     height: auto; 
-    padding-top: 128px; 
-    padding-bottom: 128px;
+    padding-top: 32px; 
+    padding-bottom: 32px;
 `
 
 

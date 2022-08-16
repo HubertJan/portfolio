@@ -12,8 +12,8 @@ const Container = styled(StandardContainer)`
     flex-direction: column;
     align-items: center;
     max-width: 1000px;
-    margin-top: 128px;
-    margin-bottom: 128px;
+    margin-top: 64px;
+    margin-bottom: 64px;
 `;
 
 const Heading = styled(Heading3Text)`

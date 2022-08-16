@@ -1,11 +1,13 @@
+import { AppTouchEvent  } from "./compatibility";
+
 interface addDragListenersProps {
     element: React.RefObject<HTMLDivElement>,
 
     onStartReturnOnMoveAndOnEnd:
-    (event: MouseEvent | TouchEvent) =>
+    (event: MouseEvent | AppTouchEvent) =>
         {
-            onMove: (event: MouseEvent | TouchEvent) => void,
-            onStop: (event: MouseEvent | TouchEvent) => void,
+            onMove: (event: MouseEvent | AppTouchEvent) => void,
+            onStop: (event: MouseEvent | AppTouchEvent) => void,
         },
   
         isDetectionMoveAndEndForWholeWindow?: boolean
@@ -17,12 +19,12 @@ export function addDragListenersAndReturnRemover(
         isDetectionMoveAndEndForWholeWindow = false }: addDragListenersProps
 ) {
     let elementNode =  isDetectionMoveAndEndForWholeWindow ? document.body : element.current;
-    let onStartAndAddListener = (event: MouseEvent | TouchEvent) => {
+    let onStartAndAddListener = (event: MouseEvent | AppTouchEvent) => {
         let { onMove, onStop } = onStartReturnOnMoveAndOnEnd(event);
         let eventMoveName: "mousemove" | "touchmove" = event instanceof MouseEvent ? "mousemove" : "touchmove";
         let eventStopName: "mouseup" | "touchend" = event instanceof MouseEvent ? "mouseup" : "touchend";
         elementNode?.addEventListener(eventMoveName, onMove);
-        let onStopAndRemove = (event: MouseEvent | TouchEvent) => {
+        let onStopAndRemove = (event: MouseEvent | AppTouchEvent ) => {
             onStop(event);
             elementNode?.removeEventListener(eventMoveName, onMove);
             elementNode?.removeEventListener(eventStopName, onStopAndRemove);

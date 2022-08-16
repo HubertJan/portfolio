@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { AppTouchEvent } from "src/helper/compatibility";
 import { isMouseEvent } from "src/helper/isMouseEvent";
 import { scrollByDraggingEvent, scrollToPageIndex, scrollToPageIndexWithoutDelay } from "src/helper/scrollElement";
 import { startMeasuringSpeed } from "src/helper/startMeasuringSpeed";
@@ -32,17 +33,17 @@ function usePageIndex(ref: React.RefObject<HTMLDivElement>) {
 function createOnDragStart(
     element: React.RefObject<HTMLDivElement>,
 ) {
-    return (event: MouseEvent | TouchEvent) => {
+    return (event: MouseEvent | AppTouchEvent) => {
         const dragPoint = {
-            clientX: event instanceof TouchEvent ? event.touches[0].clientX : event.clientX,
-            clientY: event instanceof TouchEvent ? event.touches[0].clientY : event.clientY,
+            clientX: event instanceof MouseEvent ? event.clientX : event.touches[0].clientX,
+            clientY: event instanceof MouseEvent ? event.clientY : event.touches[0].clientY,
             scrollLeft: element.current!.scrollLeft,
             scrollTop: element.current!.scrollTop,
         };
         const currentPage = calculateCurrentPage(element.current!);
         const { getSpeed, stopMeasuring } = startMeasuringSpeed(element);
         return {
-            onMove: (e: TouchEvent | MouseEvent) => scrollByDraggingEvent(e, dragPoint, element), onStop: (_: MouseEvent | TouchEvent) => {
+            onMove: (e: AppTouchEvent | MouseEvent) => scrollByDraggingEvent(e, dragPoint, element), onStop: (_: MouseEvent | AppTouchEvent) => {
                 onEndDrag(element, getSpeed, currentPage)(event);
                 stopMeasuring();
             }
@@ -57,7 +58,7 @@ function onEndDrag(
     getCurrentScrollSpeed: () => number,
     currentPageIndex: number,
 ) {
-    return (event: MouseEvent | TouchEvent) => {
+    return (event: MouseEvent | AppTouchEvent) => {
         const isMouse = isMouseEvent(event);
         const minimumScrollSpeedToScrollToNextPage = isMouse ? 100000000000 : 0;
         const scrollSpeed = getCurrentScrollSpeed();
@@ -72,9 +73,6 @@ function onEndDrag(
     }
 
 }
-
-
-
 
 export interface SliderControllerProviderInterface {
     pageIndex: number | undefined;

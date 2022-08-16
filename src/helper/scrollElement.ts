@@ -1,8 +1,14 @@
+import { AppTouchEvent } from "./compatibility";
 import { isMouseEvent } from "./isMouseEvent";
+import { scrollBy } from "seamless-scroll-polyfill";
+
 
 export function scrollToPageIndex(pageIndex: number, ref: HTMLDivElement) {
-    ref.scrollTo({
-        left: ref.clientWidth * (pageIndex),
+    console.log(ref.clientWidth);
+    const supposedScrollWidth = pageIndex * ref.clientWidth;
+    const differenceToCurrent = supposedScrollWidth - ref.scrollLeft;
+    scrollBy(ref, {
+        left: differenceToCurrent,
         behavior: "smooth",
     });
 }
@@ -21,7 +27,7 @@ interface ScrollDragPointInterface {
     clientY: number;
 }
 
-export function scrollByDraggingEvent(event: MouseEvent | TouchEvent,
+export function scrollByDraggingEvent(event: MouseEvent | AppTouchEvent,
     dragPoint: ScrollDragPointInterface,
     sliderRef: React.RefObject<HTMLDivElement>,
 ) {
@@ -30,7 +36,7 @@ export function scrollByDraggingEvent(event: MouseEvent | TouchEvent,
         event = event as MouseEvent;
         scrollByDragging(event.clientX, event.clientY, dragPoint, sliderRef);
     } else {
-        event = event as TouchEvent;
+        event = event as AppTouchEvent;
         scrollByDragging(event.touches[0].clientX, event.touches[0].clientY, dragPoint, sliderRef);
     }
 }

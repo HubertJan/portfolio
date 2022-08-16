@@ -29,7 +29,7 @@ export const PortfolioProjectTemplate: React.FC<{
         projectHeader,
         productImageUrls,
         behindNavigationBarColor,
-        backgroundText: backgroundText,
+        backgroundText,
     }
 ) => {
         const navigate = useNavigate();

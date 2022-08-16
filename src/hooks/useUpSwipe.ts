@@ -1,27 +1,28 @@
 import { useEffect, useRef, useState } from "react";
 import { addDragListenersAndReturnRemover } from "src/helper/addDragListenersAndReturnRemover";
+import { AppTouchEvent } from "src/helper/compatibility";
 import { isMouseEvent } from "src/helper/isMouseEvent";
 
-function getYPos(event: MouseEvent | TouchEvent) {
+function getYPos(event: MouseEvent | AppTouchEvent) {
     const isMouse = isMouseEvent(event);
-    return isMouse ? (event as MouseEvent).pageY : (event as TouchEvent).touches[0].clientY;
+    return isMouse ? (event as MouseEvent).pageY : (event as AppTouchEvent).touches[0].clientY;
 }
 
 export function useUpSwipe({ onStop }:
-    { onStop: (event: MouseEvent | TouchEvent, clickedMouseHeightInPercentage: number) => void }) {
+    { onStop: (event: MouseEvent | AppTouchEvent, clickedMouseHeightInPercentage: number) => void }) {
     const element = useRef<HTMLDivElement>(null);
     const [clickedMouseHeightInPercentage, setClickedMouseHeightInPercentage] = useState<null | number>(null);
     useEffect(() => {
         return addDragListenersAndReturnRemover({
-            element: element, onStartReturnOnMoveAndOnEnd: (event: MouseEvent | TouchEvent) => {
+            element: element, onStartReturnOnMoveAndOnEnd: (event: MouseEvent | AppTouchEvent) => {
                 const startPointY = getYPos(event);
                 let currentPosY: number | undefined;
                 return {
-                    onMove: (e: MouseEvent | TouchEvent) => {
+                    onMove: (e: MouseEvent | AppTouchEvent) => {
                         currentPosY = getYPos(e) / startPointY;
                         setClickedMouseHeightInPercentage(getYPos(e) / startPointY);
                     },
-                    onStop: (e: MouseEvent | TouchEvent) => {
+                    onStop: (e: MouseEvent | AppTouchEvent) => {
                         currentPosY = isMouseEvent(e)
                             ? getYPos(e) / startPointY :
                             currentPosY!;

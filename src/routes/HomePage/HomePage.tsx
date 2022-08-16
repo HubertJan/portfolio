@@ -8,7 +8,35 @@ import { FillScreenContainer } from "src/components/elements/FillScreenContainer
 import { FadingOptions, NotificationStyledBanner } from "src/components/patterns/NotificationStyledBanner/NotificationStyledBanner";
 import { ButtonText } from "src/styles/fonts";
 import { useUpSwipe } from "src/hooks/useUpSwipe";
-import { css } from "goober";
+import { css, keyframes, styled } from "goober";
+
+const resizeForAttention = keyframes`
+    from, to  {
+        transform: scale(1);
+
+    }
+
+    50% {
+        transform: scale(1.1);
+        padding-top: -16px;
+        padding-bottom: 16px;
+    }
+`;
+
+const CallToSwipeText = styled(ButtonText)`
+    animation: ${resizeForAttention} 5s ease;
+    animation-iteration-count: infinite;
+
+    user-select: all;
+    -webkit-user-select: text; /* Safari fallback only */
+    -webkit-user-select: all; /* Chrome/Safari */
+    -moz-user-select: all; /* Firefox */
+    -ms-user-select: all; /* IE10+ */
+`;
+
+
+
+
 
 export const HomePage: React.FC<{}> = () => {
     const navigate = useNavigate();
@@ -62,13 +90,9 @@ export const HomePage: React.FC<{}> = () => {
                     </div>
 
                     <div ref={ref}>
-                        <ButtonText className={css`
-                          user-select: all;
-                        -webkit-user-select: text; /* Safari fallback only */
-                        -webkit-user-select: all; /* Chrome/Safari */
-                        -moz-user-select: all; /* Firefox */
-                        -ms-user-select: all; /* IE10+ */
-                        `}>Zum Entsprechen nach oben wischen.</ButtonText>
+                        <CallToSwipeText className={css`
+
+                        `}>Zum Entsprechen nach oben wischen.</CallToSwipeText>
                     </div>
                 </div>
             </FillScreenContainer>
